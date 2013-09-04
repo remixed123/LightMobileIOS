@@ -29,7 +29,7 @@ int blueInt;
 int selectedIndexReturn;
 
 NSString *effectType = @"00";
-int sliderSpeed = "500";
+int sliderSpeed = 500;
 
 
 -(void)setupArray
