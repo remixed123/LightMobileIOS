@@ -14,12 +14,18 @@
 
 @interface SSSingleViewController ()
 
+
 @end
 
 @implementation SSSingleViewController
 
 @synthesize allOnButton;
 @synthesize offButton;
+
+
+CGFloat mCurrentScale;
+CGFloat mLastScale;
+
 
 - (void)viewDidLoad
 {
@@ -38,7 +44,26 @@
                                                                   wheelSize.height)];
     _colorWheel.delegate = self;
     _colorWheel.continuous = true;
-    [self.view addSubview:_colorWheel];   
+    
+    [self.view  addSubview:_colorWheel];
+    
+    [self.view sendSubviewToBack:_colorWheel];
+    
+    UIPinchGestureRecognizer *zoomColorWheel = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(zoomColorWheel:)];
+    UIPanGestureRecognizer *panColorWheel = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panColorWheel:)];
+    UITapGestureRecognizer *doubleTapColorWheel = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(doubleTapColorWheel:)];
+    
+    zoomColorWheel.delegate = self;
+    panColorWheel.delegate = self;
+    doubleTapColorWheel.delegate = self;
+    
+    panColorWheel.minimumNumberOfTouches = 2;
+    doubleTapColorWheel.numberOfTapsRequired = 2;
+    
+    [_colorWheel addGestureRecognizer:zoomColorWheel];
+    [_colorWheel addGestureRecognizer:panColorWheel];
+    [_colorWheel addGestureRecognizer:doubleTapColorWheel];
+    
     
     _brightnessSlider = [[UISlider alloc] initWithFrame:CGRectMake(size.width * .45,
                                                                    size.height * .78,
@@ -49,6 +74,7 @@
     _brightnessSlider.maximumValue = 1.0;
     _brightnessSlider.value = 1.0;
     [_brightnessSlider addTarget:self action:@selector(changeBrightness:) forControlEvents:UIControlEventValueChanged];
+
     [self.view addSubview:_brightnessSlider];
     
     
@@ -80,6 +106,96 @@
     conn = [[SSConnection alloc] init];
     utils = [[SSUtilities alloc] init];
     
+}
+
+-(IBAction)zoomColorWheel:(UIPinchGestureRecognizer*)sender
+{
+    mCurrentScale += [sender scale] - mLastScale;
+    mLastScale = [sender scale];
+    
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        mLastScale = 1.0;
+    }
+    
+    if (mCurrentScale < 0.75)
+    {
+        mCurrentScale = 0.75;
+    }
+    if (mCurrentScale > 5)
+    {
+        mCurrentScale = 5;
+    }
+    
+    CGAffineTransform currentTransform = CGAffineTransformIdentity;
+    CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, mCurrentScale, mCurrentScale);
+    _colorWheel.transform = newTransform;
+}
+
+-(IBAction)panColorWheel:(UIPanGestureRecognizer*) sender
+{
+    CGPoint translation = [sender translationInView:self.view];
+    sender.view.center = CGPointMake(sender.view.center.x + translation.x, sender.view.center.y + translation.y);
+    [sender setTranslation:CGPointMake(0, 0) inView:self.view];
+}
+
+-(IBAction)doubleTapColorWheel:(UITapGestureRecognizer*)sender
+{
+    if (mCurrentScale != 1)
+    {
+    [UIView animateWithDuration:0.5 animations:^
+        {
+        _colorWheel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+        _colorWheel.transform = CGAffineTransformIdentity;
+        }];
+        mCurrentScale = 1;
+    }
+    else
+    {
+        CGPoint tapPoint = [sender locationInView:_colorWheel];
+        int tapX = (int) tapPoint.x;
+        int tapY = (int) tapPoint.y;
+        
+        CGRect zoomRect = [self zoomRectForScale:4
+                                      withCenter:[sender locationInView:_colorWheel]];
+        CGFloat s = 4;
+        CGAffineTransform tr = CGAffineTransformScale(_colorWheel.transform, s, s);
+        //CGFloat h = _colorWheel.frame.size.height;
+        //CGFloat w = _colorWheel.frame.size.width;
+        [UIView animateWithDuration:0.5 delay:0 options:0 animations:^{
+            _colorWheel.transform = tr;
+            _colorWheel.center = CGPointMake(50,220);  //zoomRect.origin.y,zoomRect.origin.x);
+        } completion:^(BOOL finished) {}];
+
+
+        NSLog(@"TAPPED X:%d Y:%d", tapX, tapY);
+        NSLog(@"x: %0.0f: y: %0.0f",zoomRect.origin.x,zoomRect.origin.y );
+        
+        mCurrentScale = 4;
+    }
+
+}
+
+- (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center {
+    
+    CGRect zoomRect;
+    
+    zoomRect.size.height = [_colorWheel frame].size.height / scale;
+    zoomRect.size.width  = [_colorWheel frame].size.width  / scale;
+    
+    center = [_colorWheel convertPoint:center fromView:_colorWheel];
+    
+    zoomRect.origin.x    = center.x - ((zoomRect.size.width / 2.0));
+    zoomRect.origin.y    = center.y - ((zoomRect.size.height / 2.0));
+    
+    return zoomRect;
+}
+
+
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

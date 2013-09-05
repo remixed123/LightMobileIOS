@@ -11,7 +11,7 @@
 #import "SSConnection.h"
 #import "SSUtilities.h"
 
-@interface SSSingleViewController : UIViewController  <NSStreamDelegate>
+@interface SSSingleViewController : UIViewController  <NSStreamDelegate, UIGestureRecognizerDelegate>
 {
     SSColorWheel*   _colorWheel;
     SSConnection*   conn;

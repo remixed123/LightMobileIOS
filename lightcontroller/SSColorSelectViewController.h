@@ -13,7 +13,7 @@
 
 @class SSColorSelectViewController;
 
-@protocol SSColorSelectViewControllerDelegate <NSObject>
+@protocol SSColorSelectViewControllerDelegate <NSObject,UIGestureRecognizerDelegate>
 
 - (void)colorSelectViewController: (SSColorSelectViewController *)controller setupCellColor:(int)redInt :(int)greenInt :(int)blueInt :(int)selectedIndex;
 - (void)colorSelectViewController: (SSColorSelectViewController *)controller removeCellColor:(int)selectedIndex;

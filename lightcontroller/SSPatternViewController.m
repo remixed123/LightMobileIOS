@@ -337,7 +337,7 @@ int sliderSpeed = 500;
     selectedIndexReturn = selectedIndexReturnv;
 	[self.navigationController popViewControllerAnimated:YES];
     
-    [self.detailMenu replaceObjectAtIndex:selectedIndexReturn withObject:@"candiliscous"];
+    [self.detailMenu replaceObjectAtIndex:selectedIndexReturn withObject:@"candyliscous"];
     [self.cellStatus replaceObjectAtIndex:selectedIndexReturn withObject:@"yes"];
     [self.redCellValue replaceObjectAtIndex:selectedIndexReturn withObject:[NSNumber numberWithInt:redInt]];
     [self.greenCellValue replaceObjectAtIndex:selectedIndexReturn withObject:[NSNumber numberWithInt:greenInt]];
