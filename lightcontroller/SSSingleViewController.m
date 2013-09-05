@@ -34,6 +34,18 @@ CGFloat mLastScale;
 	// Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor darkGrayColor];
     
+    //Check to see if they have configured an IP Address yet, if not, send them to the config page
+    int portNumber = 0;
+    SSGlobalSettings *connSettings = [SSGlobalSettings sharedManager];
+    NSString *ipAddress = connSettings.ipAddress;
+    portNumber = connSettings.portNumber;
+    
+    if (([ipAddress isEqualToString:@""]) || (portNumber == 0))
+    {
+        //self.tabBarController.selectedIndex = 4;
+        //[self.tabBarController.selectedViewController loadView];
+    }
+    
     CGSize size = self.view.bounds.size;
     
     CGSize wheelSize = CGSizeMake(size.width * .85, size.width * .85);

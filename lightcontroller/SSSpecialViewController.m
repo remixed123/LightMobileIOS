@@ -131,30 +131,38 @@ void audioRouteChangeListenerCallback (
 @synthesize playing;					// An application that responds to interruptions must keep track of its playing/
 //		not-playing state.
 
-//@synthesize ipAddressText;
-//@synthesize portNumberText;
 
-//#pragma mark Connection Methods________________________________
-//
-//- (IBAction)connectNow:(id)sender
-//{
-//
-//    SSGlobalSettings *connSettings = [SSGlobalSettings sharedManager];
-//    connSettings.ipAddress = self.ipAddressText.text;
-//    connSettings.portNumber = [self.portNumberText.text intValue]; 
-//    
-//    [[NSUserDefaults standardUserDefaults]setObject:connSettings.ipAddress forKey:@"ipAddress"];
-//    [[NSUserDefaults standardUserDefaults]setInteger:connSettings.portNumber forKey:@"portNumber"];
-//    
-//     NSLog(@"connectNow: connSettings.ipAddress: %@", connSettings.ipAddress);
-//     NSLog(@"connectNow: connSettings.portNumber: %d", connSettings.portNumber);
-//    
-//     conn = [[SSConnection alloc] init];
-//     [conn initNetworkCommunication];
-//    
-//    self.statusDescription.text = connSettings.ipAddress;
-//    
-//}
+
+
+#pragma Button Manager Methods________________________________
+//////////////////////////////////////////////
+// Button Manager Methods.,
+//////////////////////////////////////////////
+- (void)stateManager :(NSString*) selectedFeature
+{
+    if (![selectedFeature isEqual: @"tilt"])
+    {
+        [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+    }
+    if (!([selectedFeature isEqual: @"mic"]))
+    {
+        [recorder stop];
+        recorder = nil;
+        if(levelTimer)
+        {
+            [levelTimer invalidate];
+            levelTimer = nil;
+        }
+    }
+    if (!([selectedFeature isEqual: @"music"]))
+    {
+        [musicPlayer stop];
+    }
+    if (!([selectedFeature isEqual: @"photo"]))
+    {
+        //stop photo feature
+    }
+}
 
 
 #pragma mark accelerometer Methods________________________________
@@ -164,16 +172,22 @@ void audioRouteChangeListenerCallback (
 
 - (IBAction)accelerometerToggle:(id)sender
 {
+
     
     if ([UIAccelerometer sharedAccelerometer].delegate == nil)
     {
+        [self stateManager :@"tilt"];
     
         [[UIAccelerometer sharedAccelerometer] setUpdateInterval:0.2];
         [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+        
+        self.featureDescription.text = @"Tilt Adjust";
     }
     else
     {
         [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+        
+        self.featureDescription.text = @"Tilt Adjust Off";
     }
 }
 
@@ -209,7 +223,7 @@ void audioRouteChangeListenerCallback (
 
 - (IBAction)microphoneToggle:(id)sender
 {
-   
+    
     NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
     
   	NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -221,18 +235,40 @@ void audioRouteChangeListenerCallback (
     
   	NSError *error;
     
-  	recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
     
-  	if (recorder) {
-  		[recorder prepareToRecord];
-  		recorder.meteringEnabled = YES;
-  		[recorder record];
-        levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
-        
-  	} else
-  		NSLog([error description]);
+    if (levelTimer == nil)
+    {
+        recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
     
+        if (recorder)
+        {
+            [self stateManager:@"mic"];
+            
+            [recorder prepareToRecord];
+            recorder.meteringEnabled = YES;
+            [recorder record];
+            levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+            
+             self.featureDescription.text = @"Microphone";
+        }
+        else
+        {
+           // NSLog([@"error description: %@",error]);
+        }
+    }
+    else
+    {
+        if(levelTimer)
+        {
+            [levelTimer invalidate];
+            levelTimer = nil;
+        }
+        [recorder stop];
+        recorder = nil;
+        self.featureDescription.text = @"Mic Off";
+    }
 }
+
 
 - (void)levelTimerCallback:(NSTimer *)timer {
 	[recorder updateMeters];
@@ -283,7 +319,9 @@ void audioRouteChangeListenerCallback (
 }
 
 
-
+//////////////////////////////////////////////
+// Music Player Methods
+//////////////////////////////////////////////
 
 #pragma mark Music control________________________________
 
@@ -293,10 +331,16 @@ void audioRouteChangeListenerCallback (
     
 	MPMusicPlaybackState playbackState = [musicPlayer playbackState];
     
-	if (playbackState == MPMusicPlaybackStateStopped || playbackState == MPMusicPlaybackStatePaused) {
+	if (playbackState == MPMusicPlaybackStateStopped || playbackState == MPMusicPlaybackStatePaused)
+    {
+        [self stateManager:@"music"];
 		[musicPlayer play];
-	} else if (playbackState == MPMusicPlaybackStatePlaying) {
+        self.featureDescription.text = @"Music";
+    }
+	else if (playbackState == MPMusicPlaybackStatePlaying)
+    {
 		[musicPlayer pause];
+        self.featureDescription.text = @"Music Paused";
 	}
     
     OSStatus status = AudioOutputUnitStart(audioUnit);
@@ -567,8 +611,6 @@ void audioRouteChangeListenerCallback (
 	}
 }
 
-
-
 #pragma mark Table view delegate methods________________
 
 // Invoked when the user taps the Done button in the table view.
@@ -577,7 +619,6 @@ void audioRouteChangeListenerCallback (
 	[self dismissModalViewControllerAnimated: YES];
 	[self restorePlaybackState];
 }
-
 
 
 #pragma mark Application setup____________________________
@@ -707,6 +748,26 @@ void audioRouteChangeListenerCallback (
     [self.view endEditing:YES];
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    //Changing views so turn off everything that is currentoy running.
+    [musicPlayer stop];
+    
+    
+    [recorder stop];
+    recorder = nil;
+    if(levelTimer)
+    {
+        [levelTimer invalidate];
+        levelTimer = nil;
+    }
+    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+    
+    self.featureDescription.text = @"";
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -726,8 +787,8 @@ void audioRouteChangeListenerCallback (
     // UI Configuration
     //////////////////////////////////////////////
     
-    
-     self.view.backgroundColor = [UIColor darkGrayColor];
+    self.featureDescription.text = @"";
+    self.view.backgroundColor = [UIColor darkGrayColor];
     
     //_statusDescription.layer.borderColor = [UIColor lightGrayColor].CGColor;
     //_statusDescription.layer.borderWidth = 1.5;

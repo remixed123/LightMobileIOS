@@ -34,7 +34,7 @@
         
         if ([def objectForKey:@"ipAddress"]==nil)
         {   
-            ipAddress = @"192.168.1.8";
+            ipAddress = @"";
             portNumber = 8999;
             
             [[NSUserDefaults standardUserDefaults]setObject:ipAddress forKey:@"ipAddress"];

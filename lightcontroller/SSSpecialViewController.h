@@ -115,5 +115,7 @@ extern AudioComponentInstance audioUnit;
 
 - (void)levelTimerCallback:(NSTimer *)timer;
 
+- (void)stateManager :(NSString*) selectedFeature;
+
 
 @end
