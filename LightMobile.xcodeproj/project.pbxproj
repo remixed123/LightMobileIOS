@@ -183,6 +183,11 @@
 		21EDB7CF17D98A3D0019DF14 /* firework@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB7CD17D98A3C0019DF14 /* firework@2x.png */; };
 		21EDB7D217D98A630019DF14 /* christmas-sock.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB7D017D98A630019DF14 /* christmas-sock.png */; };
 		21EDB7D317D98A630019DF14 /* christmas-sock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB7D117D98A630019DF14 /* christmas-sock@2x.png */; };
+		21EDB7D517D9D04C0019DF14 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB7D417D9D04B0019DF14 /* Icon.png */; };
+		21EDB7D717D9D0570019DF14 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB7D617D9D0570019DF14 /* Icon@2x.png */; };
+		21EDB7DA17D9E2060019DF14 /* SSLightDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21EDB7D817D9E2050019DF14 /* SSLightDataModel.xcdatamodeld */; };
+		21EDB7E217D9E6F60019DF14 /* LightData.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EDB7E117D9E6F50019DF14 /* LightData.m */; };
+		21EDB7E517D9E8300019DF14 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21EDB7E417D9E8300019DF14 /* CoreData.framework */; };
 		21F3A56717D5608700241985 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F3A56617D5608700241985 /* line.png */; };
 		21F3A57117D566F400241985 /* SSConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F3A57017D566F400241985 /* SSConfigViewController.m */; };
 		21F3A57417D56B3300241985 /* camera-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F3A57217D56B3300241985 /* camera-mini.png */; };
@@ -243,12 +248,12 @@
 		2157E5D617C84CBE00729F30 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		2157E5D817C84CBF00729F30 /* SSSpecialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSSpecialViewController.h; sourceTree = "<group>"; };
 		2157E5D917C84CBF00729F30 /* SSSpecialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSSpecialViewController.m; sourceTree = "<group>"; };
-		2157E5DB17C84CBF00729F30 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		2157E5DD17C84CBF00729F30 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		2157E5DB17C84CBF00729F30 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = first.png; path = ../first.png; sourceTree = "<group>"; };
+		2157E5DD17C84CBF00729F30 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "first@2x.png"; path = "../first@2x.png"; sourceTree = "<group>"; };
 		2157E5DF17C84CBF00729F30 /* SSSingleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSSingleViewController.h; sourceTree = "<group>"; };
 		2157E5E017C84CBF00729F30 /* SSSingleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSSingleViewController.m; sourceTree = "<group>"; };
-		2157E5E217C84CBF00729F30 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		2157E5E417C84CBF00729F30 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		2157E5E217C84CBF00729F30 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = second.png; path = ../second.png; sourceTree = "<group>"; };
+		2157E5E417C84CBF00729F30 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "second@2x.png"; path = "../second@2x.png"; sourceTree = "<group>"; };
 		2157E5EB17C84CBF00729F30 /* LightMobileTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightMobileTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2157E5EC17C84CBF00729F30 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2157E5F417C84CBF00729F30 /* LightMobileTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LightMobileTests-Info.plist"; sourceTree = "<group>"; };
@@ -401,6 +406,12 @@
 		21EDB7CD17D98A3C0019DF14 /* firework@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firework@2x.png"; sourceTree = "<group>"; };
 		21EDB7D017D98A630019DF14 /* christmas-sock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "christmas-sock.png"; sourceTree = "<group>"; };
 		21EDB7D117D98A630019DF14 /* christmas-sock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "christmas-sock@2x.png"; sourceTree = "<group>"; };
+		21EDB7D417D9D04B0019DF14 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		21EDB7D617D9D0570019DF14 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		21EDB7D917D9E2060019DF14 /* SSLightDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SSLightDataModel.xcdatamodel; sourceTree = "<group>"; };
+		21EDB7E017D9E6F40019DF14 /* LightData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightData.h; sourceTree = "<group>"; };
+		21EDB7E117D9E6F50019DF14 /* LightData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightData.m; sourceTree = "<group>"; };
+		21EDB7E417D9E8300019DF14 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		21F3A56617D5608700241985 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
 		21F3A56F17D566F400241985 /* SSConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSConfigViewController.h; sourceTree = "<group>"; };
 		21F3A57017D566F400241985 /* SSConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSConfigViewController.m; sourceTree = "<group>"; };
@@ -425,6 +436,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21EDB7E517D9E8300019DF14 /* CoreData.framework in Frameworks */,
 				2130611117CF7BC00060644B /* CoreAudio.framework in Frameworks */,
 				2130610817CF59080060644B /* AudioToolbox.framework in Frameworks */,
 				2130610917CF59080060644B /* AVFoundation.framework in Frameworks */,
@@ -453,6 +465,8 @@
 		2157E5B117C84CBE00729F30 = {
 			isa = PBXGroup;
 			children = (
+				21EDB7D617D9D0570019DF14 /* Icon@2x.png */,
+				21EDB7D417D9D04B0019DF14 /* Icon.png */,
 				2157E5C317C84CBE00729F30 /* lightcontroller */,
 				2157E5F217C84CBF00729F30 /* lightcontrollerTests */,
 				2157E5BC17C84CBE00729F30 /* Frameworks */,
@@ -472,6 +486,7 @@
 		2157E5BC17C84CBE00729F30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21EDB7E417D9E8300019DF14 /* CoreData.framework */,
 				2130611017CF7BC00060644B /* CoreAudio.framework */,
 				2130610517CF59060060644B /* AudioToolbox.framework */,
 				2130610617CF59060060644B /* AVFoundation.framework */,
@@ -489,7 +504,9 @@
 		2157E5C317C84CBE00729F30 /* lightcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				2157E5C417C84CBE00729F30 /* Supporting Files */,
 				21E4C60C17D04A1500C4E6B7 /* images */,
+				21EDB7E317D9E7C80019DF14 /* CoreData */,
 				2157E60617C8DC6300729F30 /* SSColorSetting.h */,
 				2157E60717C8DC6400729F30 /* SSColorSetting.m */,
 				21237CF917D0E57E00CCD195 /* SSGlobalSettings.h */,
@@ -522,12 +539,7 @@
 				2130610C17CF59610060644B /* MusicTableViewController.m */,
 				2130610E17CF684E0060644B /* MusicTableView.xib */,
 				2157E5D517C84CBE00729F30 /* MainStoryboard.storyboard */,
-				2157E5DB17C84CBF00729F30 /* first.png */,
-				2157E5DD17C84CBF00729F30 /* first@2x.png */,
-				2157E5E217C84CBF00729F30 /* second.png */,
-				2157E5E417C84CBF00729F30 /* second@2x.png */,
 				2130610317CF2CBF0060644B /* Stuff.rtf */,
-				2157E5C417C84CBE00729F30 /* Supporting Files */,
 			);
 			path = lightcontroller;
 			sourceTree = "<group>";
@@ -570,6 +582,10 @@
 		21E4C60C17D04A1500C4E6B7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2157E5DB17C84CBF00729F30 /* first.png */,
+				2157E5DD17C84CBF00729F30 /* first@2x.png */,
+				2157E5E217C84CBF00729F30 /* second.png */,
+				2157E5E417C84CBF00729F30 /* second@2x.png */,
 				21EDB7D017D98A630019DF14 /* christmas-sock.png */,
 				21EDB7D117D98A630019DF14 /* christmas-sock@2x.png */,
 				21EDB7C817D988140019DF14 /* sport-shirt-white.png */,
@@ -717,6 +733,16 @@
 				21E4C64217D04A1500C4E6B7 /* spray-white@2x.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		21EDB7E317D9E7C80019DF14 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				21EDB7E017D9E6F40019DF14 /* LightData.h */,
+				21EDB7E117D9E6F50019DF14 /* LightData.m */,
+				21EDB7D817D9E2050019DF14 /* SSLightDataModel.xcdatamodeld */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -952,6 +978,8 @@
 				21EDB7CF17D98A3D0019DF14 /* firework@2x.png in Resources */,
 				21EDB7D217D98A630019DF14 /* christmas-sock.png in Resources */,
 				21EDB7D317D98A630019DF14 /* christmas-sock@2x.png in Resources */,
+				21EDB7D517D9D04C0019DF14 /* Icon.png in Resources */,
+				21EDB7D717D9D0570019DF14 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,6 +1030,8 @@
 				21F3A57117D566F400241985 /* SSConfigViewController.m in Sources */,
 				21F3A58817D5D24D00241985 /* SSTableViewController.m in Sources */,
 				21F3A58C17D5F3CF00241985 /* SSColorSelectViewController.m in Sources */,
+				21EDB7DA17D9E2060019DF14 /* SSLightDataModel.xcdatamodeld in Sources */,
+				21EDB7E217D9E6F60019DF14 /* LightData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1212,6 +1242,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		21EDB7D817D9E2050019DF14 /* SSLightDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				21EDB7D917D9E2060019DF14 /* SSLightDataModel.xcdatamodel */,
+			);
+			currentVersion = 21EDB7D917D9E2060019DF14 /* SSLightDataModel.xcdatamodel */;
+			path = SSLightDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2157E5B217C84CBE00729F30 /* Project object */;
 }
