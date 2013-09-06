@@ -28,7 +28,7 @@ int greenInt;
 int blueInt;
 int selectedIndexReturn;
 
-NSString *effectType = @"00";
+NSString *effectType = @"0000";
 int sliderSpeed = 500;
 
 
@@ -139,25 +139,25 @@ int sliderSpeed = 500;
 {
 	if(effectsSegment.selectedSegmentIndex == 0)
     {
-        effectType = @"00";
+        effectType = @"0000";
 		sequenceText.text = @"Stationary";
 	}
     
 	if(effectsSegment.selectedSegmentIndex == 1)
     {
-        effectType = @"01";
+        effectType = @"0001";
         sequenceText.text = @"Jump";
 	}
     
     if(effectsSegment.selectedSegmentIndex == 2)
     {
-        effectType = @"02";
+        effectType = @"0002";
         sequenceText.text = @"Transition";
 	}
     
     if(effectsSegment.selectedSegmentIndex == 3)
     {
-        effectType = @"03";
+        effectType = @"0003";
         sequenceText.text = @"Waves";
 	}
     
@@ -198,9 +198,11 @@ int sliderSpeed = 500;
     NSString *hexStripeCount = [NSString stringWithFormat:@"%@",[utils intToHex:stripeCount]];
     NSString *hexEffectType = effectType;
     
-    NSString *payLoad = [NSString stringWithFormat:@"%@%@%@%@",hexTimeSeperation,hexStripeCount,hexEffectType,colorHex];
+    NSString *payLoad = [NSString stringWithFormat:@"%@%@%@%@",hexEffectType,hexTimeSeperation,hexStripeCount,colorHex];
     
-    NSString *lwdpPacket = [utils createLwdpPacket:@"10" :payLoad];
+    NSLog(@"sendPacket: hexEffectType: %@, hexTimeSeperation: %@, hexStripeCount: %@, colorHex: %@",hexEffectType,hexTimeSeperation,hexStripeCount,colorHex);
+    
+    NSString *lwdpPacket = [utils createLwdpPacket:@"20" :payLoad];
     
     NSLog(@"sendPacket: lwdpPacket: %@", lwdpPacket);
     
@@ -232,16 +234,6 @@ int sliderSpeed = 500;
     [cell.detailTextLabel setTextColor:[UIColor blackColor]];
     
     cell.textLabel.text = [NSString stringWithFormat:@"c%i",[[self.colorMenu objectAtIndex:indexPath.row] intValue]];
-    //cell.detailTextLabel.text = [self.detailMenu objectAtIndex:indexPath.row];
-    
-    
-    
-//    if ([cell.detailTextLabel.text isEqual: @""])
-//    {
-//        //cell.detailTextLabel.text = @"not in use";
-//        //cell.userInteractionEnabled = false;
-//
-//    }
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -264,7 +256,7 @@ int sliderSpeed = 500;
     {
         //cell.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:0.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
         cell.backgroundColor = [UIColor colorWithRed:redInt/255.f green:greenInt/255.f blue:blueInt/255.f alpha:1];
-        cell.detailTextLabel.text = @"candiliscious";
+        cell.detailTextLabel.text = @"flavour included";
     }
     
     NSLog(@"tableView : willDisplayCell:%@p",indexPath);
@@ -337,7 +329,7 @@ int sliderSpeed = 500;
     selectedIndexReturn = selectedIndexReturnv;
 	[self.navigationController popViewControllerAnimated:YES];
     
-    [self.detailMenu replaceObjectAtIndex:selectedIndexReturn withObject:@"candyliscous"];
+    [self.detailMenu replaceObjectAtIndex:selectedIndexReturn withObject:@"flavour included"];
     [self.cellStatus replaceObjectAtIndex:selectedIndexReturn withObject:@"yes"];
     [self.redCellValue replaceObjectAtIndex:selectedIndexReturn withObject:[NSNumber numberWithInt:redInt]];
     [self.greenCellValue replaceObjectAtIndex:selectedIndexReturn withObject:[NSNumber numberWithInt:greenInt]];

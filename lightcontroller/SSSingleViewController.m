@@ -236,7 +236,7 @@ CGFloat mLastScale;
     int blueInt = (int) _colorWheel.blueValue;
 
     colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
-    NSString *lwdpPacket = [utils createLwdpPacket:@"00" :colorHex];
+    NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];  //Using LWDPr - Light Weight Data Protocol Reduced in the color wheel.
     NSLog(@"colorWheelDidChangeColor: lwdpPacket: %@", lwdpPacket);
     
     [conn sendPacket:lwdpPacket];
@@ -263,7 +263,7 @@ CGFloat mLastScale;
     int blueInt = (int) _colorWheel.blueValue;
 
     colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
-    NSString *lwdpPacket = [utils createLwdpPacket:@"00" :colorHex];
+    NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
     NSLog(@"changeBrightness: lwdpPacket: %@", lwdpPacket);
     
     [conn sendPacket:lwdpPacket];
@@ -272,7 +272,7 @@ CGFloat mLastScale;
 - (IBAction)off:(id)sender
 {
     NSString *colorHex = @"000000";
-    NSString *lwdpPacket = [utils createLwdpPacket:@"00" :colorHex];
+    NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
     NSLog(@"off: lwdpPacket: %@", lwdpPacket);
     
     self.redValue.text = @"0";
@@ -285,7 +285,7 @@ CGFloat mLastScale;
 - (IBAction)allOn:(id)sender;
 {
     NSString *colorHex = @"FFFFFF";
-    NSString *lwdpPacket = [utils createLwdpPacket:@"00" :colorHex];
+    NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
     NSLog(@"off: lwdpPacket: %@", lwdpPacket);
     
     self.redValue.text = @"255";

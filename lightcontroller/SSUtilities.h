@@ -17,7 +17,7 @@
 - (NSString*)colorInHex:(NSString*)redHex :(NSString*)greenHex :(NSString*)blueHex;
 - (NSString*)intToHex:(int)intValue;
 - (NSString*)intToHex2Byte:(int)intValue;
-- (NSString*)createLwdpPacket:(NSString*)packetType :(NSString*)colorHex;
+- (NSString*)createLwdpPacket:(NSString*)groupType :(NSString*)colorHex;
 - (NSString*)returnPinNumber;
 
 @end

@@ -209,7 +209,7 @@ void audioRouteChangeListenerCallback (
     NSLog(@"accelerometer: blueInt: %i", blueInt);
     
     colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
-    NSString *lwdpPacket = [utils createLwdpPacket:@"00" :colorHex];
+    NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
 
     NSLog(@"accelerometer: lwdpPacket: %@", lwdpPacket);   
     [conn sendPacket:lwdpPacket];
@@ -302,7 +302,7 @@ void audioRouteChangeListenerCallback (
     NSLog(@"accelerometer: colorHex: %@", colorHex);
 
     colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
-    NSString *lwdpPacket = [utils createLwdpPacket:@"00" :colorHex];
+    NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
     
     NSLog(@"levelTimerCallback: lwdpPacket: %@", lwdpPacket);
     [conn sendPacket:lwdpPacket];

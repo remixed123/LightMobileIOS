@@ -75,9 +75,9 @@
 }
 
 
-- (NSString*)createLwdpPacket:(NSString*)packetType :(NSString*)payLoad
+- (NSString*)createLwdpPacket:(NSString*)groupType :(NSString*)payLoad
 {
-    return [NSString stringWithFormat:@"%@%@%@",packetType, self.returnPinNumber, payLoad];
+    return [NSString stringWithFormat:@"%@%@%@%@",@"45", self.returnPinNumber, groupType, payLoad];
 
 }
 
