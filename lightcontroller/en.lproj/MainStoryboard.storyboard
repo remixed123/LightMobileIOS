@@ -9,7 +9,7 @@
             <objects>
                 <viewController title="First" modalTransitionStyle="flipHorizontal" id="2" userLabel="specialViewController" customClass="SSSpecialViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="990" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ebg-jD-jtD">
@@ -108,7 +108,7 @@
                                 <rect key="frame" x="175" y="190" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="circle-crop-white@2x.png">
+                                <state key="normal" image="dimension-xyz-white.png" backgroundImage="circle-crop-white@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -126,11 +126,30 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="Alarm Clock" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cml-El-02b">
+                                <rect key="frame" x="14" y="341" width="153" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DY1-F3-f6n">
                                 <rect key="frame" x="166" y="249" width="78" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="aperture-mini-white@2x.png">
+                                <state key="normal" image="aperture-white@2x.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8Cr-ZE-2OC">
+                                <rect key="frame" x="175" y="328" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="clock-white@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -158,7 +177,7 @@
             <objects>
                 <viewController title="Second" modalTransitionStyle="crossDissolve" id="3" userLabel="singleViewController" customClass="SSSingleViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="redButton" id="17">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="brightness-white.png" id="nGA-kb-RHp">
@@ -270,7 +289,7 @@
             <objects>
                 <viewController id="LQW-qO-fAK" userLabel="patternViewController" customClass="SSPatternViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TLz-UO-xwo">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ug0-jx-c4c">
@@ -344,7 +363,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="38" sectionHeaderHeight="10" sectionFooterHeight="10" id="NjG-tc-Bqe">
-                                <rect key="frame" x="5" y="0.0" width="310" height="206"/>
+                                <rect key="frame" x="5" y="0.0" width="310" height="294"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -407,7 +426,7 @@
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" id="xx7-SA-eKc" userLabel="colorSelectViewController" customClass="SSColorSelectViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="clN-NI-lJC">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="255" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dxF-DI-LxI" userLabel="redValue">
@@ -522,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F8M-et-S36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="-144"/>
+            <point key="canvasLocation" x="1836" y="-150"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -537,7 +556,7 @@
                     <connections>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="Kim-J2-RoM" kind="relationship" relationship="viewControllers" id="BIN-wL-T24"/>
-                        <segue destination="e2C-2Z-Tq7" kind="relationship" relationship="viewControllers" id="BYc-Kk-EDm"/>
+                        <segue destination="wml-rD-WrP" kind="relationship" relationship="viewControllers" id="BYc-Kk-EDm"/>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="e4Z-by-TuR" kind="relationship" relationship="viewControllers" id="TiQ-pi-HaX"/>
                     </connections>
@@ -551,7 +570,7 @@
             <objects>
                 <viewController modalTransitionStyle="partialCurl" id="e4Z-by-TuR" userLabel="configViewController" customClass="SSConfigViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YRs-4z-tBr">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MSy-5d-umk">
@@ -569,7 +588,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="Help" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GvN-mw-mhU">
-                                <rect key="frame" x="13" y="205" width="88" height="37"/>
+                                <rect key="frame" x="13" y="206" width="88" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="24"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -641,31 +660,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="LightMobile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DVw-wO-c08">
-                                <rect key="frame" x="13" y="246" width="294" height="31"/>
+                                <rect key="frame" x="13" y="257" width="294" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="LightServer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wZN-4k-4k4">
-                                <rect key="frame" x="13" y="299" width="153" height="31"/>
+                                <rect key="frame" x="13" y="305" width="153" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="LightShow Pro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IIP-NI-fSv">
-                                <rect key="frame" x="13" y="350" width="182" height="34"/>
+                                <rect key="frame" x="13" y="356" width="182" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cfa-c2-hcg">
-                                <rect key="frame" x="225" y="239" width="45" height="45"/>
+                                <rect key="frame" x="227" y="253" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="earth-wireframe-mini-white@2x.png">
+                                <state key="normal" image="question-white@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -674,10 +693,10 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9aI-YR-q0f">
-                                <rect key="frame" x="225" y="292" width="45" height="45"/>
+                                <rect key="frame" x="227" y="301" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="earth-wireframe-mini-white@2x.png">
+                                <state key="normal" image="question-white@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -686,11 +705,23 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hgo-6x-Oun">
-                                <rect key="frame" x="225" y="344" width="45" height="45"/>
+                                <rect key="frame" x="227" y="353" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="earth-wireframe-mini-white@2x.png">
+                                <state key="normal" image="question-white@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FnA-6P-8Hn">
+                                <rect key="frame" x="227" y="204" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldItalicMT" family="Arial" pointSize="21"/>
+                                <state key="normal" image="info-white@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -718,96 +749,273 @@
             <objects>
                 <viewController id="e2C-2Z-Tq7" userLabel="sequenceViewController" customClass="SSSequenceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ncE-kZ-I3F">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Jb4-Xp-c5B">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="eEF-g3-KCj" style="IBUITableViewCellStyleDefault" id="XDE-5D-iEq">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Strobe Effect" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eEF-g3-KCj">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="iLl-jl-ndc" style="IBUITableViewCellStyleDefault" id="tEt-wF-uEU">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Sequences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iLl-jl-ndc">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="FNl-Vy-f9n" style="IBUITableViewCellStyleDefault" id="JHd-bb-JvJ">
-                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Sports Teams" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FNl-Vy-f9n">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="mal-NY-d9E" style="IBUITableViewCellStyleDefault" id="8m3-H5-0zS">
-                                        <rect key="frame" x="0.0" y="154" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Special Occasions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mal-NY-d9E">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QSQ-RZ-Cmn">
+                                <rect key="frame" x="32" y="11" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Chases" backgroundImage="firework@2x.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ecW-wx-1bf">
+                                <rect key="frame" x="128" y="11" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Events" backgroundImage="christmas-sock@2x.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="04E-NB-eFp">
+                                <rect key="frame" x="226" y="11" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Nations" backgroundImage="flag@2x.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kwp-Ml-EOq">
+                                <rect key="frame" x="32" y="78" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="NFL" backgroundImage="football@2x.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RRk-Il-TJT">
+                                <rect key="frame" x="226" y="79" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="NBA" backgroundImage="basketball@2x.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mCm-uP-SEB">
+                                <rect key="frame" x="128" y="78" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="MLB" backgroundImage="baseball@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BQZ-e7-nHn">
+                                <rect key="frame" x="128" y="140" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="NHL" backgroundImage="ice-hockey@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3uc-Hi-ca2">
+                                <rect key="frame" x="32" y="140" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="MLS" backgroundImage="soccer@2x.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="udE-Gr-Xut">
+                                <rect key="frame" x="226" y="140" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="CFL" backgroundImage="football@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MMh-2E-J05">
+                                <rect key="frame" x="32" y="203" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="NRL" backgroundImage="football@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oze-YN-KJ7">
+                                <rect key="frame" x="128" y="203" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="AFL" backgroundImage="football@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B6A-fO-eSc">
+                                <rect key="frame" x="32" y="263" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="FIFA" backgroundImage="soccer@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3aZ-LY-Vcv">
+                                <rect key="frame" x="226" y="263" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="PL" backgroundImage="soccer@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" id="fgk-yz-I0r">
+                                <rect key="frame" x="32" y="331" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="CSL" backgroundImage="soccer@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" id="543-xN-EpV">
+                                <rect key="frame" x="128" y="331" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="CBA" backgroundImage="basketball@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" id="6zj-ag-EPi">
+                                <rect key="frame" x="226" y="201" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                <state key="normal" title="Super Rugby" backgroundImage="football.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t5s-dV-bmr">
+                                <rect key="frame" x="128" y="263" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="UEFA" backgroundImage="soccer@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" id="WcZ-DT-dcY">
+                                <rect key="frame" x="226" y="331" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="CVA" backgroundImage="volleyball@2x.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="rgb-white.png" id="rfT-MP-eo7" userLabel="Tab Bar Item - Forth"/>
+                    <navigationItem key="navigationItem" id="7qr-Xg-xVx"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebC-f0-zxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631" y="180"/>
+            <point key="canvasLocation" x="1777" y="474"/>
+        </scene>
+        <!--sequenceSelectViewController-->
+        <scene sceneID="jRd-Hj-dgb">
+            <objects>
+                <viewController id="sdD-Wb-3CV" userLabel="sequenceSelectViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p72-1p-NaB">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AC2-1t-uSA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RTg-hs-QZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2281" y="515"/>
+        </scene>
+        <!--teamViewController-->
+        <scene sceneID="ukF-i6-f9f">
+            <objects>
+                <viewController id="lqi-qL-Egn" userLabel="teamViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ekO-Eq-Sb1">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cnk-W3-UXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2283" y="1111"/>
+        </scene>
+        <!--strobeViewController-->
+        <scene sceneID="lJ4-9G-dw8">
+            <objects>
+                <viewController id="823-4L-qbN" userLabel="strobeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YAz-xS-ykx">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QpT-cm-CIb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgY-cZ-do2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2283" y="-63"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cS3-ga-b2A">
@@ -836,29 +1044,132 @@
             </objects>
             <point key="canvasLocation" x="1015" y="-144"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rwp-MA-xLO">
+            <objects>
+                <navigationController id="wml-rD-WrP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="sport-shirt-white.png" id="rfT-MP-eo7" userLabel="Tab Bar Item - Forth"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BiH-9M-jtg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e2C-2Z-Tq7" kind="relationship" relationship="rootViewController" id="jTb-oX-4IP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B0k-A0-tuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1379" y="464"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="aperture-mini-white@2x.png" width="40" height="40"/>
+        <image name="aperture-white@2x.png" width="60" height="60"/>
+        <image name="baseball@2x.png" width="60" height="60"/>
+        <image name="basketball@2x.png" width="60" height="60"/>
         <image name="brightness-white.png" width="30" height="30"/>
         <image name="button-next-white@2x.png" width="60" height="60"/>
         <image name="button-play-white@2x.png" width="60" height="60"/>
         <image name="button-record-white@2x.png" width="60" height="60"/>
         <image name="candy-stick-white.png" width="30" height="30"/>
         <image name="candy-stick-white@2x.png" width="60" height="60"/>
+        <image name="christmas-sock@2x.png" width="60" height="60"/>
         <image name="circle-crop-white@2x.png" width="60" height="60"/>
+        <image name="clock-white@2x.png" width="58" height="60"/>
         <image name="cogwheel-white.png" width="30" height="30"/>
         <image name="color-palette-white.png" width="30" height="30"/>
-        <image name="earth-wireframe-mini-white@2x.png" width="38" height="40"/>
+        <image name="dimension-xyz-white.png" width="30" height="30"/>
+        <image name="firework@2x.png" width="60" height="60"/>
+        <image name="flag@2x.png" width="60" height="60"/>
+        <image name="football.png" width="30" height="30"/>
+        <image name="football@2x.png" width="60" height="60"/>
+        <image name="ice-hockey@2x.png" width="60" height="60"/>
+        <image name="info-white@2x.png" width="60" height="60"/>
         <image name="iphone-cpu-connect-white@2x.png" width="60" height="60"/>
         <image name="lightbulb-off-white@2x.png" width="58" height="60"/>
         <image name="lightbulb-on-white@2x.png" width="58" height="60"/>
         <image name="music-list-white@2x.png" width="60" height="60"/>
         <image name="music-note-white.png" width="30" height="30"/>
-        <image name="rgb-white.png" width="30" height="30"/>
+        <image name="question-white@2x.png" width="60" height="60"/>
+        <image name="soccer@2x.png" width="60" height="60"/>
+        <image name="sport-shirt-white.png" width="30" height="30"/>
+        <image name="volleyball@2x.png" width="60" height="60"/>
     </resources>
+    <classes>
+        <class className="SSColorSelectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSColorSelectViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="blueValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="greenValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSConfigViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSConfigViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="connectNow:"/>
+                <relationship kind="outlet" name="connectNowButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="ipAddressText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="portNumberText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="statusDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSPatternViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPatternViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="adjustSpeed:"/>
+                <relationship kind="action" name="selectEffect:"/>
+                <relationship kind="action" name="sendPacket:"/>
+                <relationship kind="outlet" name="cell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="effectsSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sendPacketButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sequenceText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="speedSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SSSequenceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSequenceViewController.h"/>
+        </class>
+        <class className="SSSingleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSingleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="allOn:"/>
+                <relationship kind="action" name="off:"/>
+                <relationship kind="outlet" name="allOnButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="blueValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="greenValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="redValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSSpecialViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSpecialViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="AddMusicOrShowMusic:"/>
+                <relationship kind="action" name="accelerometerToggle:"/>
+                <relationship kind="action" name="microphoneToggle:"/>
+                <relationship kind="action" name="playAppSound:"/>
+                <relationship kind="action" name="playOrPauseMusic:"/>
+                <relationship kind="action" name="startRecording"/>
+                <relationship kind="outlet" name="acceleratorButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="acceleromterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addOrShowMusicButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="appSoundButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="artworkItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="featureDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="microphoneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="nowPlayingLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "SSSequenceViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SSSequenceViewController ()
 
@@ -20,7 +21,18 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor darkGrayColor];
+
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+    
+    self.tabBarController.tabBar.hidden=NO;
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
