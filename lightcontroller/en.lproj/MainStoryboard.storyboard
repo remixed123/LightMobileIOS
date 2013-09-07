@@ -548,10 +548,10 @@
             </objects>
             <point key="canvasLocation" x="1836" y="-150"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="15">
             <objects>
-                <tabBarController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="flipHorizontal" id="4" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="flipHorizontal" id="4" customClass="SSTabBarViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -1422,6 +1422,9 @@
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="nowPlayingLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="SSTabBarViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTabBarViewController.h"/>
         </class>
         <class className="SSTeamViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTeamViewController.h"/>

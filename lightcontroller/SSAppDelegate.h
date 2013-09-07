@@ -13,7 +13,7 @@
 @class SSSpecialViewController;
 @class SSConnection;
 
-@interface SSAppDelegate : UIResponder <UIApplicationDelegate>
+@interface SSAppDelegate : UIResponder 
 {
     UIWindow* _window;
     //UIViewController*     _dataViewController;

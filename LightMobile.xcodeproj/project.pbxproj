@@ -50,6 +50,7 @@
 		21C9F1DF17DB3E24006F773A /* arrow-back-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1DD17DB3E24006F773A /* arrow-back-white.png */; };
 		21C9F1E017DB3E24006F773A /* arrow-back-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */; };
 		21C9F1E417DB4B7C006F773A /* LightData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1E317DB4B7C006F773A /* LightData.sqlite */; };
+		21C9F1E717DB9EB6006F773A /* SSTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F1E617DB9EB2006F773A /* SSTabBarViewController.m */; };
 		21E4C60A17D0363000C4E6B7 /* PauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C60817D0363000C4E6B7 /* PauseButton.png */; };
 		21E4C60B17D0363000C4E6B7 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C60917D0363000C4E6B7 /* PlayButton.png */; };
 		21E4C64317D04A1500C4E6B7 /* arrow-small-27-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C60D17D04A1500C4E6B7 /* arrow-small-27-white.png */; };
@@ -279,6 +280,8 @@
 		21C9F1DD17DB3E24006F773A /* arrow-back-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-back-white.png"; path = "../../../iconbeast-pro/png/tab-bar/white/arrow-back-white.png"; sourceTree = "<group>"; };
 		21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-back-white@2x.png"; path = "../../../iconbeast-pro/png/tab-bar/white/arrow-back-white@2x.png"; sourceTree = "<group>"; };
 		21C9F1E317DB4B7C006F773A /* LightData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = LightData.sqlite; path = "../../../../Library/Application Support/iPhone Simulator/6.1/Applications/3FE16CE9-0AC2-4531-AA8C-F732551A52D9/Documents/LightData.sqlite"; sourceTree = "<group>"; };
+		21C9F1E517DB9EB0006F773A /* SSTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTabBarViewController.h; sourceTree = "<group>"; };
+		21C9F1E617DB9EB2006F773A /* SSTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTabBarViewController.m; sourceTree = "<group>"; };
 		21E4C60817D0363000C4E6B7 /* PauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseButton.png; sourceTree = "<group>"; };
 		21E4C60917D0363000C4E6B7 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
 		21E4C60D17D04A1500C4E6B7 /* arrow-small-27-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-small-27-white.png"; sourceTree = "<group>"; };
@@ -560,6 +563,8 @@
 				2130610317CF2CBF0060644B /* Stuff.rtf */,
 				21EDB81417DA03FC0019DF14 /* SSExtraViewController.h */,
 				21EDB81517DA03FD0019DF14 /* SSExtraViewController.m */,
+				21C9F1E517DB9EB0006F773A /* SSTabBarViewController.h */,
+				21C9F1E617DB9EB2006F773A /* SSTabBarViewController.m */,
 			);
 			path = lightcontroller;
 			sourceTree = "<group>";
@@ -1062,6 +1067,7 @@
 				21F3A58817D5D24D00241985 /* SSTableViewController.m in Sources */,
 				21237CF817D0B9E700CCD195 /* SSUtilities.m in Sources */,
 				21EDB81617DA03FD0019DF14 /* SSExtraViewController.m in Sources */,
+				21C9F1E717DB9EB6006F773A /* SSTabBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
