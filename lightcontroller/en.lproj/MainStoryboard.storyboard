@@ -175,7 +175,7 @@
         <!--singleViewController-->
         <scene sceneID="13">
             <objects>
-                <viewController title="Second" modalTransitionStyle="crossDissolve" id="3" userLabel="singleViewController" customClass="SSSingleViewController" sceneMemberID="viewController">
+                <viewController title="Second" modalTransitionStyle="flipHorizontal" id="3" userLabel="singleViewController" customClass="SSSingleViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="redButton" id="17">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,7 +307,7 @@
                                     <action selector="sendPacket:" destination="LQW-qO-fAK" eventType="touchUpInside" id="mRw-Qy-kXa"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="10" maxValue="30000" id="hfF-v1-Zii">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="10" maxValue="2000" id="hfF-v1-Zii">
                                 <rect key="frame" x="135" y="323" width="172" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -551,7 +551,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
-                <tabBarController modalTransitionStyle="flipHorizontal" id="4" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="flipHorizontal" id="4" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -573,7 +573,7 @@
         <!--configViewController-->
         <scene sceneID="YvL-AA-Gm5">
             <objects>
-                <viewController modalTransitionStyle="partialCurl" id="e4Z-by-TuR" userLabel="configViewController" customClass="SSConfigViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="e4Z-by-TuR" userLabel="configViewController" customClass="SSConfigViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YRs-4z-tBr">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -752,7 +752,7 @@
         <!--sequenceViewController-->
         <scene sceneID="j8A-E0-yGz">
             <objects>
-                <viewController id="e2C-2Z-Tq7" userLabel="sequenceViewController" customClass="SSSequenceViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="e2C-2Z-Tq7" userLabel="sequenceViewController" customClass="SSSequenceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ncE-kZ-I3F">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -769,7 +769,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="823-4L-qbN" kind="modal" modalTransitionStyle="flipHorizontal" id="v1U-22-fLl"/>
+                                    <segue destination="823-4L-qbN" kind="modal" identifier="Chases" modalTransitionStyle="flipHorizontal" id="v1U-22-fLl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ecW-wx-1bf">
@@ -976,9 +976,6 @@
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="sdD-Wb-3CV" kind="modal" id="hHB-b1-obT"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t5s-dV-bmr">
                                 <rect key="frame" x="128" y="263" width="60" height="60"/>
@@ -1083,14 +1080,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="10" maxValue="30000" id="Cgd-lz-Ieb">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="10" maxValue="2000" id="Cgd-lz-Ieb">
                                 <rect key="frame" x="134" y="367" width="172" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="adjustSpeed:" destination="LQW-qO-fAK" eventType="valueChanged" id="B3O-VV-S9B"/>
+                                    <action selector="adjustSpeed:" destination="sdD-Wb-3CV" eventType="valueChanged" id="70p-Qp-nng"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="Sequence" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a74-J6-bvb">
@@ -1178,7 +1175,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="done:" destination="sdD-Wb-3CV" eventType="touchUpInside" id="86U-AC-TmT"/>
+                                    <action selector="done:" destination="823-4L-qbN" eventType="touchUpInside" id="jtz-Rt-qAc"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="grouped" rowHeight="38" sectionHeaderHeight="10" sectionFooterHeight="10" id="1pW-GU-blJ">
@@ -1215,8 +1212,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="sdD-Wb-3CV" id="0f9-Ed-QZy"/>
-                                    <outlet property="delegate" destination="sdD-Wb-3CV" id="WMb-kU-Lpk"/>
+                                    <outlet property="dataSource" destination="823-4L-qbN" id="Dxa-mj-QLF"/>
+                                    <outlet property="delegate" destination="823-4L-qbN" id="tba-PS-BZB"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="Stationary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hBI-3m-ANU">
@@ -1226,14 +1223,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="10" maxValue="30000" id="jRZ-OC-DwR">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="500" minValue="10" maxValue="2000" id="jRZ-OC-DwR">
                                 <rect key="frame" x="134" y="314" width="172" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="adjustSpeed:" destination="LQW-qO-fAK" eventType="valueChanged" id="Tew-Rx-LnU"/>
+                                    <action selector="adjustSpeed:" destination="823-4L-qbN" eventType="valueChanged" id="wmv-5I-QBO"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="Sequence" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ayj-DH-LfF">
@@ -1254,6 +1251,11 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="QpT-cm-CIb"/>
+                    <connections>
+                        <outlet property="sequenceText" destination="hBI-3m-ANU" id="u4x-hp-DIe"/>
+                        <outlet property="speedSlider" destination="jRZ-OC-DwR" id="fh0-MJ-qjg"/>
+                        <outlet property="tableView" destination="1pW-GU-blJ" id="cFx-bg-8RZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgY-cZ-do2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1262,7 +1264,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cS3-ga-b2A">
             <objects>
-                <navigationController id="Kim-J2-RoM" sceneMemberID="viewController">
+                <navigationController modalTransitionStyle="flipHorizontal" id="Kim-J2-RoM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="candy-stick-white.png" id="461-Iu-Myl" userLabel="Tab Bar Item - First"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="z7F-TT-E9u">
@@ -1320,12 +1322,128 @@
         <image name="sport-shirt-white.png" width="30" height="30"/>
         <image name="volleyball@2x.png" width="60" height="60"/>
     </resources>
+    <classes>
+        <class className="SSChasesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSChasesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="adjustSpeed:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="addDataButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="sequenceText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="speedSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SSColorSelectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSColorSelectViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="blueValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="greenValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSConfigViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSConfigViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="connectNow:"/>
+                <relationship kind="outlet" name="connectNowButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="ipAddressText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="portNumberText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="statusDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSPatternViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPatternViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="adjustSpeed:"/>
+                <relationship kind="action" name="selectEffect:"/>
+                <relationship kind="action" name="sendPacket:"/>
+                <relationship kind="outlet" name="cell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="effectsSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sendPacketButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sequenceText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="speedSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SSSequenceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSequenceViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="aflButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cbaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cflButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="chasesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cslButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cvaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="fifaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mlbButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mlsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nationsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nbaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nflButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nhlButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nrlButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="plButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="srButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uefaButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SSSingleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSingleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="allOn:"/>
+                <relationship kind="action" name="off:"/>
+                <relationship kind="outlet" name="allOnButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="blueValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="greenValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="redValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSSpecialViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSpecialViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="AddMusicOrShowMusic:"/>
+                <relationship kind="action" name="accelerometerToggle:"/>
+                <relationship kind="action" name="microphoneToggle:"/>
+                <relationship kind="action" name="playAppSound:"/>
+                <relationship kind="action" name="playOrPauseMusic:"/>
+                <relationship kind="action" name="startRecording"/>
+                <relationship kind="outlet" name="acceleratorButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="acceleromterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addOrShowMusicButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="appSoundButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="artworkItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="featureDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="microphoneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="nowPlayingLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSTeamViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTeamViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="adjustSpeed:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="selectEffect:"/>
+                <relationship kind="outlet" name="addDataButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="effectsSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sequenceText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="speedSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QZ9-hW-2d0"/>
+        <segue reference="4Ns-FI-4jR"/>
     </inferredMetricsTieBreakers>
 </document>

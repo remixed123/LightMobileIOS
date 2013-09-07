@@ -37,7 +37,9 @@
 {
     NSLog(@"prepareForSegue: %@", segue.identifier);
     
-    if ([segue.identifier isEqualToString:@"Events"]) {
+    if ([segue.identifier isEqualToString:@"Chases"]) {
+        [segue.destinationViewController setSortType:@"Chases"];
+    } else if ([segue.identifier isEqualToString:@"Events"]) {
         [segue.destinationViewController setSortType:@"Events"];
     } else if ([segue.identifier isEqualToString:@"Nations"]) {
         [segue.destinationViewController setSortType:@"Nations"];
@@ -57,7 +59,7 @@
         [segue.destinationViewController setSortType:@"NRL"];
     } else if ([segue.identifier isEqualToString:@"AFL"]) {
         [segue.destinationViewController setSortType:@"AFL"];
-    }
+    } 
 }
 - (void)didReceiveMemoryWarning
 {
