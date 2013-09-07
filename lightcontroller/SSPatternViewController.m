@@ -141,24 +141,26 @@ int sliderSpeed = 500;
     {
         effectType = @"0000";
 		sequenceText.text = @"Stationary";
+        
+        
 	}
     
 	if(effectsSegment.selectedSegmentIndex == 1)
     {
         effectType = @"0001";
-        sequenceText.text = @"Jump";
+        sequenceText.text = @"Chase";
 	}
     
     if(effectsSegment.selectedSegmentIndex == 2)
     {
         effectType = @"0002";
-        sequenceText.text = @"Transition";
+        sequenceText.text = @"Pulse";
 	}
     
     if(effectsSegment.selectedSegmentIndex == 3)
     {
         effectType = @"0003";
-        sequenceText.text = @"Waves";
+        sequenceText.text = @"Strobe";
 	}
     
 }

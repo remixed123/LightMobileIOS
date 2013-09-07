@@ -13,15 +13,15 @@
 
 @interface SSSingleViewController : UIViewController  <NSStreamDelegate, UIGestureRecognizerDelegate>
 {
-    SSColorWheel*   _colorWheel;
-    SSConnection*   conn;
-    SSUtilities*    utils;
+    SSColorWheel*       _colorWheel;
+    SSConnection*       conn;
+    SSUtilities*        utils;
     
-    UISlider* _brightnessSlider;
-    UIView* _wellView;
+    UISlider*   _brightnessSlider;
+    UIView*     _wellView;
     
-    UIButton* offButton;
-    UIButton* allOnButton;
+    UIButton*   offButton;
+    UIButton*   allOnButton;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *redValue;

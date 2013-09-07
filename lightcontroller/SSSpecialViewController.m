@@ -624,7 +624,7 @@ void audioRouteChangeListenerCallback (
 #pragma mark Application setup____________________________
 
 #if TARGET_IPHONE_SIMULATOR
-#warning *** Simulator mode: iPod library access works only when running on a device.
+//#warning *** Simulator mode: iPod library access works only when running on a device.
 #endif
 
 - (void) setupApplicationAudio {
