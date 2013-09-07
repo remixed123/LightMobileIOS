@@ -46,6 +46,10 @@
 		2157E60817C8DC6500729F30 /* SSColorSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2157E60717C8DC6400729F30 /* SSColorSetting.m */; };
 		2157E60A17C8EC6900729F30 /* SSPatternViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = 2157E60917C8EC6800729F30 /* SSPatternViewController.m */; };
 		2157E60E17C8ED8800729F30 /* SSSequenceViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = 2157E60D17C8ED8800729F30 /* SSSequenceViewController.m */; };
+		21C9F1D717DAD511006F773A /* SSTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F1D617DAD511006F773A /* SSTeamViewController.m */; };
+		21C9F1DF17DB3E24006F773A /* arrow-back-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1DD17DB3E24006F773A /* arrow-back-white.png */; };
+		21C9F1E017DB3E24006F773A /* arrow-back-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */; };
+		21C9F1E417DB4B7C006F773A /* LightData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1E317DB4B7C006F773A /* LightData.sqlite */; };
 		21E4C60A17D0363000C4E6B7 /* PauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C60817D0363000C4E6B7 /* PauseButton.png */; };
 		21E4C60B17D0363000C4E6B7 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C60917D0363000C4E6B7 /* PlayButton.png */; };
 		21E4C64317D04A1500C4E6B7 /* arrow-small-27-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C60D17D04A1500C4E6B7 /* arrow-small-27-white.png */; };
@@ -188,6 +192,8 @@
 		21EDB7DA17D9E2060019DF14 /* SSLightDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21EDB7D817D9E2050019DF14 /* SSLightDataModel.xcdatamodeld */; };
 		21EDB7E217D9E6F60019DF14 /* LightData.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EDB7E117D9E6F50019DF14 /* LightData.m */; };
 		21EDB7E517D9E8300019DF14 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21EDB7E417D9E8300019DF14 /* CoreData.framework */; };
+		21EDB81617DA03FD0019DF14 /* SSExtraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EDB81517DA03FD0019DF14 /* SSExtraViewController.m */; };
+		21EDB81917DA05190019DF14 /* SSChasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EDB81817DA05180019DF14 /* SSChasesViewController.m */; };
 		21F3A56717D5608700241985 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F3A56617D5608700241985 /* line.png */; };
 		21F3A57117D566F400241985 /* SSConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F3A57017D566F400241985 /* SSConfigViewController.m */; };
 		21F3A57417D56B3300241985 /* camera-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F3A57217D56B3300241985 /* camera-mini.png */; };
@@ -268,6 +274,11 @@
 		2157E60B17C8ECA900729F30 /* SSPatternViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPatternViewController.h; sourceTree = "<group>"; };
 		2157E60C17C8ED5500729F30 /* SSSequenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSequenceViewController.h; sourceTree = "<group>"; };
 		2157E60D17C8ED8800729F30 /* SSSequenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSequenceViewController.m; sourceTree = "<group>"; };
+		21C9F1D517DAD511006F773A /* SSTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTeamViewController.h; sourceTree = "<group>"; };
+		21C9F1D617DAD511006F773A /* SSTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTeamViewController.m; sourceTree = "<group>"; };
+		21C9F1DD17DB3E24006F773A /* arrow-back-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-back-white.png"; path = "../../../iconbeast-pro/png/tab-bar/white/arrow-back-white.png"; sourceTree = "<group>"; };
+		21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-back-white@2x.png"; path = "../../../iconbeast-pro/png/tab-bar/white/arrow-back-white@2x.png"; sourceTree = "<group>"; };
+		21C9F1E317DB4B7C006F773A /* LightData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = LightData.sqlite; path = "../../../../Library/Application Support/iPhone Simulator/6.1/Applications/3FE16CE9-0AC2-4531-AA8C-F732551A52D9/Documents/LightData.sqlite"; sourceTree = "<group>"; };
 		21E4C60817D0363000C4E6B7 /* PauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseButton.png; sourceTree = "<group>"; };
 		21E4C60917D0363000C4E6B7 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
 		21E4C60D17D04A1500C4E6B7 /* arrow-small-27-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-small-27-white.png"; sourceTree = "<group>"; };
@@ -406,12 +417,16 @@
 		21EDB7CD17D98A3C0019DF14 /* firework@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firework@2x.png"; sourceTree = "<group>"; };
 		21EDB7D017D98A630019DF14 /* christmas-sock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "christmas-sock.png"; sourceTree = "<group>"; };
 		21EDB7D117D98A630019DF14 /* christmas-sock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "christmas-sock@2x.png"; sourceTree = "<group>"; };
-		21EDB7D417D9D04B0019DF14 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		21EDB7D617D9D0570019DF14 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		21EDB7D417D9D04B0019DF14 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../Icon.png; sourceTree = "<group>"; };
+		21EDB7D617D9D0570019DF14 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../Icon@2x.png"; sourceTree = "<group>"; };
 		21EDB7D917D9E2060019DF14 /* SSLightDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SSLightDataModel.xcdatamodel; sourceTree = "<group>"; };
 		21EDB7E017D9E6F40019DF14 /* LightData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightData.h; sourceTree = "<group>"; };
 		21EDB7E117D9E6F50019DF14 /* LightData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightData.m; sourceTree = "<group>"; };
 		21EDB7E417D9E8300019DF14 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		21EDB81417DA03FC0019DF14 /* SSExtraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSExtraViewController.h; sourceTree = "<group>"; };
+		21EDB81517DA03FD0019DF14 /* SSExtraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSExtraViewController.m; sourceTree = "<group>"; };
+		21EDB81717DA05170019DF14 /* SSChasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSChasesViewController.h; sourceTree = "<group>"; };
+		21EDB81817DA05180019DF14 /* SSChasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSChasesViewController.m; sourceTree = "<group>"; };
 		21F3A56617D5608700241985 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
 		21F3A56F17D566F400241985 /* SSConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSConfigViewController.h; sourceTree = "<group>"; };
 		21F3A57017D566F400241985 /* SSConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSConfigViewController.m; sourceTree = "<group>"; };
@@ -465,8 +480,6 @@
 		2157E5B117C84CBE00729F30 = {
 			isa = PBXGroup;
 			children = (
-				21EDB7D617D9D0570019DF14 /* Icon@2x.png */,
-				21EDB7D417D9D04B0019DF14 /* Icon.png */,
 				2157E5C317C84CBE00729F30 /* lightcontroller */,
 				2157E5F217C84CBF00729F30 /* lightcontrollerTests */,
 				2157E5BC17C84CBE00729F30 /* Frameworks */,
@@ -504,6 +517,7 @@
 		2157E5C317C84CBE00729F30 /* lightcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				21C9F1E317DB4B7C006F773A /* LightData.sqlite */,
 				2157E5C417C84CBE00729F30 /* Supporting Files */,
 				21E4C60C17D04A1500C4E6B7 /* images */,
 				21EDB7E317D9E7C80019DF14 /* CoreData */,
@@ -539,7 +553,13 @@
 				2130610C17CF59610060644B /* MusicTableViewController.m */,
 				2130610E17CF684E0060644B /* MusicTableView.xib */,
 				2157E5D517C84CBE00729F30 /* MainStoryboard.storyboard */,
+				21C9F1D517DAD511006F773A /* SSTeamViewController.h */,
+				21C9F1D617DAD511006F773A /* SSTeamViewController.m */,
+				21EDB81717DA05170019DF14 /* SSChasesViewController.h */,
+				21EDB81817DA05180019DF14 /* SSChasesViewController.m */,
 				2130610317CF2CBF0060644B /* Stuff.rtf */,
+				21EDB81417DA03FC0019DF14 /* SSExtraViewController.h */,
+				21EDB81517DA03FD0019DF14 /* SSExtraViewController.m */,
 			);
 			path = lightcontroller;
 			sourceTree = "<group>";
@@ -582,6 +602,10 @@
 		21E4C60C17D04A1500C4E6B7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				21C9F1DD17DB3E24006F773A /* arrow-back-white.png */,
+				21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */,
+				21EDB7D417D9D04B0019DF14 /* Icon.png */,
+				21EDB7D617D9D0570019DF14 /* Icon@2x.png */,
 				2157E5DB17C84CBF00729F30 /* first.png */,
 				2157E5DD17C84CBF00729F30 /* first@2x.png */,
 				2157E5E217C84CBF00729F30 /* second.png */,
@@ -980,6 +1004,9 @@
 				21EDB7D317D98A630019DF14 /* christmas-sock@2x.png in Resources */,
 				21EDB7D517D9D04C0019DF14 /* Icon.png in Resources */,
 				21EDB7D717D9D0570019DF14 /* Icon@2x.png in Resources */,
+				21C9F1DF17DB3E24006F773A /* arrow-back-white.png in Resources */,
+				21C9F1E017DB3E24006F773A /* arrow-back-white@2x.png in Resources */,
+				21C9F1E417DB4B7C006F773A /* LightData.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,24 +1041,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21237CF417D0ADD200CCD195 /* SSPatternViewController.m in Sources */,
-				21237CF517D0ADD200CCD195 /* SSSequenceViewController.m in Sources */,
 				2157E5CA17C84CBE00729F30 /* main.m in Sources */,
-				2157E5CE17C84CBE00729F30 /* SSAppDelegate.m in Sources */,
-				2157E5DA17C84CBF00729F30 /* SSSpecialViewController.m in Sources */,
-				2157E5E117C84CBF00729F30 /* SSSingleViewController.m in Sources */,
-				2157E60517C84E3E00729F30 /* SSColorWheel.m in Sources */,
-				2157E60817C8DC6500729F30 /* SSColorSetting.m in Sources */,
 				2130609617CCFE210060644B /* GCDAsyncSocket.m in Sources */,
 				2130610D17CF59610060644B /* MusicTableViewController.m in Sources */,
-				21E4C68717D09D5200C4E6B7 /* SSConnection.m in Sources */,
-				21237CF817D0B9E700CCD195 /* SSUtilities.m in Sources */,
-				21237CFB17D0E57F00CCD195 /* SSGlobalSettings.m in Sources */,
-				21F3A57117D566F400241985 /* SSConfigViewController.m in Sources */,
-				21F3A58817D5D24D00241985 /* SSTableViewController.m in Sources */,
-				21F3A58C17D5F3CF00241985 /* SSColorSelectViewController.m in Sources */,
-				21EDB7DA17D9E2060019DF14 /* SSLightDataModel.xcdatamodeld in Sources */,
 				21EDB7E217D9E6F60019DF14 /* LightData.m in Sources */,
+				21C9F1D717DAD511006F773A /* SSTeamViewController.m in Sources */,
+				2157E5CE17C84CBE00729F30 /* SSAppDelegate.m in Sources */,
+				21EDB81917DA05190019DF14 /* SSChasesViewController.m in Sources */,
+				21F3A58C17D5F3CF00241985 /* SSColorSelectViewController.m in Sources */,
+				2157E60817C8DC6500729F30 /* SSColorSetting.m in Sources */,
+				2157E60517C84E3E00729F30 /* SSColorWheel.m in Sources */,
+				21F3A57117D566F400241985 /* SSConfigViewController.m in Sources */,
+				21E4C68717D09D5200C4E6B7 /* SSConnection.m in Sources */,
+				21237CFB17D0E57F00CCD195 /* SSGlobalSettings.m in Sources */,
+				21EDB7DA17D9E2060019DF14 /* SSLightDataModel.xcdatamodeld in Sources */,
+				21237CF417D0ADD200CCD195 /* SSPatternViewController.m in Sources */,
+				21237CF517D0ADD200CCD195 /* SSSequenceViewController.m in Sources */,
+				2157E5E117C84CBF00729F30 /* SSSingleViewController.m in Sources */,
+				2157E5DA17C84CBF00729F30 /* SSSpecialViewController.m in Sources */,
+				21F3A58817D5D24D00241985 /* SSTableViewController.m in Sources */,
+				21237CF817D0B9E700CCD195 /* SSUtilities.m in Sources */,
+				21EDB81617DA03FD0019DF14 /* SSExtraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

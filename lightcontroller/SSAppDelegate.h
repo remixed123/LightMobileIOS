@@ -18,11 +18,17 @@
     UIWindow* _window;
     //UIViewController*     _dataViewController;
     UIViewController        *SSSpecialViewController;
+    //UIViewController        *SSAdminViewController;
     SSConnection            *conn;
 }
 
 //@property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIWindow				    *window;
 @property (nonatomic, retain) IBOutlet SSSpecialViewController	*mainViewController;
+
+//@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+//@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+//@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
 
 @end

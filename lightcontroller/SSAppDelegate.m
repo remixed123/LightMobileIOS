@@ -11,24 +11,17 @@
 
 @implementation SSAppDelegate
 
-
+//@synthesize managedObjectContext = _managedObjectContext;
+//@synthesize managedObjectModel = _managedObjectModel;
+//@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-
     
-    // Literal syntax
-//    NSDictionary *defaultColors = @{
-//                                @"red" : [NSArray arrayWithObjects:@"255",@"0",@"0", nil],
-//                                @"green" : [NSNumber numberWithInt:22],
-//                                @"blue" : [NSNumber numberWithInt:19],
-//                                @"yellow" : [NSNumber numberWithInt:16],
-//                                };
+//    conn = [[SSConnection alloc] init];
+//    [conn initNetworkCommunication];
     
-    conn = [[SSConnection alloc] init];
-    [conn initNetworkCommunication];
-    
+    NSLog(@"application");
     
         return YES;
 }
@@ -56,6 +49,8 @@
     
     conn = [[SSConnection alloc] init];
     [conn initNetworkCommunication];
+    
+    NSLog(@"applicationDidBecomeActive");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
