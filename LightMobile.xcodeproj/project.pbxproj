@@ -46,6 +46,7 @@
 		2157E60817C8DC6500729F30 /* SSColorSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2157E60717C8DC6400729F30 /* SSColorSetting.m */; };
 		2157E60A17C8EC6900729F30 /* SSPatternViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = 2157E60917C8EC6800729F30 /* SSPatternViewController.m */; };
 		2157E60E17C8ED8800729F30 /* SSSequenceViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = 2157E60D17C8ED8800729F30 /* SSSequenceViewController.m */; };
+		2174E3D317E228D6005B52A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2174E3D217E228D6005B52A2 /* Accelerate.framework */; };
 		21C9F1D717DAD511006F773A /* SSTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F1D617DAD511006F773A /* SSTeamViewController.m */; };
 		21C9F1DF17DB3E24006F773A /* arrow-back-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1DD17DB3E24006F773A /* arrow-back-white.png */; };
 		21C9F1E017DB3E24006F773A /* arrow-back-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */; };
@@ -275,6 +276,7 @@
 		2157E60B17C8ECA900729F30 /* SSPatternViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPatternViewController.h; sourceTree = "<group>"; };
 		2157E60C17C8ED5500729F30 /* SSSequenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSequenceViewController.h; sourceTree = "<group>"; };
 		2157E60D17C8ED8800729F30 /* SSSequenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSequenceViewController.m; sourceTree = "<group>"; };
+		2174E3D217E228D6005B52A2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		21C9F1D517DAD511006F773A /* SSTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTeamViewController.h; sourceTree = "<group>"; };
 		21C9F1D617DAD511006F773A /* SSTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTeamViewController.m; sourceTree = "<group>"; };
 		21C9F1DD17DB3E24006F773A /* arrow-back-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-back-white.png"; path = "../../../iconbeast-pro/png/tab-bar/white/arrow-back-white.png"; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2174E3D317E228D6005B52A2 /* Accelerate.framework in Frameworks */,
 				21EDB7E517D9E8300019DF14 /* CoreData.framework in Frameworks */,
 				2130611117CF7BC00060644B /* CoreAudio.framework in Frameworks */,
 				2130610817CF59080060644B /* AudioToolbox.framework in Frameworks */,
@@ -502,6 +505,7 @@
 		2157E5BC17C84CBE00729F30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2174E3D217E228D6005B52A2 /* Accelerate.framework */,
 				21EDB7E417D9E8300019DF14 /* CoreData.framework */,
 				2130611017CF7BC00060644B /* CoreAudio.framework */,
 				2130610517CF59060060644B /* AudioToolbox.framework */,

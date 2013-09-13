@@ -216,7 +216,7 @@ void audioRouteChangeListenerCallback (
 
 }
 
-#pragma mark accelerometer Methods________________________________
+#pragma mark Microphone Methods________________________________
 //////////////////////////////////////////////
 // Microphone Methods
 //////////////////////////////////////////////
@@ -247,7 +247,11 @@ void audioRouteChangeListenerCallback (
             [recorder prepareToRecord];
             recorder.meteringEnabled = YES;
             [recorder record];
-            levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+            levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.005 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+            
+            // This is where we do our sampling
+            
+            
             
              self.featureDescription.text = @"Microphone";
         }
@@ -271,7 +275,9 @@ void audioRouteChangeListenerCallback (
 
 
 - (void)levelTimerCallback:(NSTimer *)timer {
-	[recorder updateMeters];
+	
+    
+    [recorder updateMeters];
 	NSLog(@"levelTimerCallback: Average input: %f Peak input: %f", [recorder averagePowerForChannel:0], [recorder peakPowerForChannel:0]);
     
     
@@ -281,31 +287,31 @@ void audioRouteChangeListenerCallback (
     NSLog(@"levelTimerCallback: lowPassResults: %f",(lowPassResults*100.0f));
     
     float dB = 10 * log10(abs([recorder peakPowerForChannel:0]));
-     NSLog(@"levelTimerCallback: db: %f",(dB));
+     //NSLog(@"levelTimerCallback: db: %f",(dB));
     
     
     NSString *colorHex = @"FFFFFF";
     
-//    int redInt = abs((int) (([recorder averagePowerForChannel:0] + 120) * 2));
-//    int greenInt = abs((int) ([recorder averagePowerForChannel:0]));
-//    int blueInt = abs((int) (([recorder averagePowerForChannel:0] + 120) / 2));
+//*    int redInt = abs((int) (([recorder averagePowerForChannel:0] + 120) * 2));
+//*    int greenInt = abs((int) ([recorder averagePowerForChannel:0]));
+//*    int blueInt = abs((int) (([recorder averagePowerForChannel:0] + 120) / 2));
     
     int redInt = 255; //abs((int) (([recorder averagePowerForChannel:0] + 120) * 2));
     int greenInt = abs((int) dB * 10);
     int blueInt = abs((int) dB * 10);
     
     
-    NSLog(@"levelTimerCallback: redInt: %i, greenInt: %i, blueInt %i", redInt, greenInt, blueInt);
+    //NSLog(@"levelTimerCallback: redInt: %i, greenInt: %i, blueInt %i", redInt, greenInt, blueInt);
     
-    colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
+    //colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
     
-    NSLog(@"accelerometer: colorHex: %@", colorHex);
+    //NSLog(@"accelerometer: colorHex: %@", colorHex);
 
-    colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
-    NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
+    //colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
+    //NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
     
-    NSLog(@"levelTimerCallback: lwdpPacket: %@", lwdpPacket);
-    [conn sendPacket:lwdpPacket];
+    //NSLog(@"levelTimerCallback: lwdpPacket: %@", lwdpPacket);
+    //[conn sendPacket:lwdpPacket];
     
 }
 
@@ -317,6 +323,72 @@ void audioRouteChangeListenerCallback (
     // your actions here
     
 }
+
+
+////////////////////////////
+
+//static OSStatus	AudioUnitRenderCallback (void *inRefCon,
+//                                         AudioUnitRenderActionFlags *ioActionFlags,
+//                                         const AudioTimeStamp *inTimeStamp,
+//                                         UInt32 inBusNumber,
+//                                         UInt32 inNumberFrames,
+//                                         AudioBufferList *ioData) {
+//    
+//    OSStatus err = AudioUnitRender(audioUnitWrapper->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);
+//    
+//    if(err != 0) NSLog(@"AudioUnitRender status is %d", err);
+//    // These values should be in a more conventional location for a bunch of preprocessor defines in your real code
+//#define DBOFFSET -74.0
+//    // DBOFFSET is An offset that will be used to normalize the decibels to a maximum of zero.
+//    // This is an estimate, you can do your own or construct an experiment to find the right value
+//#define LOWPASSFILTERTIMESLICE .001
+//    // LOWPASSFILTERTIMESLICE is part of the low pass filter and should be a small positive value
+//    
+//    SInt16* samples = (SInt16*)(ioData->mBuffers[0].mData); // Step 1: get an array of your samples that you can loop through. Each sample contains the amplitude.
+//    
+//    Float32 decibels = DBOFFSET; // When we have no signal we'll leave this on the lowest setting
+//    Float32 currentFilteredValueOfSampleAmplitude, previousFilteredValueOfSampleAmplitude; // We'll need these in the low-pass filter
+//    Float32 peakValue = DBOFFSET; // We'll end up storing the peak value here
+//    
+//    for (int i=0; i < inNumberFrames; i++) {
+//        
+//        Float32 absoluteValueOfSampleAmplitude = abs(samples[i]); //Step 2: for each sample, get its amplitude's absolute value.
+//        
+//        // Step 3: for each sample's absolute value, run it through a simple low-pass filter
+//        // Begin low-pass filter
+//        currentFilteredValueOfSampleAmplitude = LOWPASSFILTERTIMESLICE * absoluteValueOfSampleAmplitude + (1.0 - LOWPASSFILTERTIMESLICE) * previousFilteredValueOfSampleAmplitude;
+//        previousFilteredValueOfSampleAmplitude = currentFilteredValueOfSampleAmplitude;
+//        Float32 amplitudeToConvertToDB = currentFilteredValueOfSampleAmplitude;
+//        // End low-pass filter
+//        
+//        Float32 sampleDB = 20.0*log10(amplitudeToConvertToDB) + DBOFFSET;
+//        // Step 4: for each sample's filtered absolute value, convert it into decibels
+//        // Step 5: for each sample's filtered absolute value in decibels, add an offset value that normalizes the clipping point of the device to zero.
+//        
+//        if((sampleDB == sampleDB) && (sampleDB != -DBL_MAX)) { // if it's a rational number and isn't infinite
+//            
+//            if(sampleDB > peakValue) peakValue = sampleDB; // Step 6: keep the highest value you find.
+//            decibels = peakValue; // final value
+//        }
+//    }
+//    
+//    NSLog(@"decibel level is %f", decibels);
+//    
+//    for (UInt32 i=0; i < ioData->mNumberBuffers; i++) { // This is only if you need to silence the output of the audio unit
+//        memset(ioData->mBuffers[i].mData, 0, ioData->mBuffers[i].mDataByteSize); // Delete if you need audio output as well as input
+//    }
+//    
+//    return err;
+//}
+
+
+/////////////////////////
+
+
+
+
+
+
 
 
 //////////////////////////////////////////////
@@ -621,7 +693,11 @@ void audioRouteChangeListenerCallback (
 }
 
 
-#pragma mark Application setup____________________________
+#pragma mark Audio Unit Setup and Methods____________________________
+////////////////////////////////////////////////////////
+// AUDIO UNIT SETUP AND METHODS
+////////////////////////////////////////////////////////
+
 
 #if TARGET_IPHONE_SIMULATOR
 //#warning *** Simulator mode: iPod library access works only when running on a device.
@@ -743,29 +819,71 @@ void audioRouteChangeListenerCallback (
 //    [playerTimer invalidate];
 //    playerTimer = nil;
 //}
--(void)tap:(UITapGestureRecognizer *)gr
-{
-    [self.view endEditing:YES];
+
+
+static OSStatus	AudioUnitRenderCallback (void *inRefCon,
+                                         AudioUnitRenderActionFlags *ioActionFlags,
+                                         const AudioTimeStamp *inTimeStamp,
+                                         UInt32 inBusNumber,
+                                         UInt32 inNumberFrames,
+                                         AudioBufferList *ioData) {
+    
+    //OSStatus err = AudioUnitRender(audioUnitWrapper->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);
+    
+    
+    OSStatus err = AudioUnitRender(audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);
+    
+    if(err != 0) NSLog(@"AudioUnitRender status is %ld", err);
+    
+    // These values should be in a more conventional location for a bunch of preprocessor defines in your real code
+#define DBOFFSET -74.0
+    // DBOFFSET is An offset that will be used to normalize the decibels to a maximum of zero.
+    // This is an estimate, you can do your own or construct an experiment to find the right value
+#define LOWPASSFILTERTIMESLICE .001
+    // LOWPASSFILTERTIMESLICE is part of the low pass filter and should be a small positive value
+    
+    SInt16* samples = (SInt16*)(ioData->mBuffers[0].mData); // Step 1: get an array of your samples that you can loop through. Each sample contains the amplitude.
+    //UInt32* samples = (UInt32*)(ioData->mBuffers[0].mData);
+    
+    Float32 decibels = DBOFFSET; // When we have no signal we'll leave this on the lowest setting
+    Float32 currentFilteredValueOfSampleAmplitude, previousFilteredValueOfSampleAmplitude; // We'll need these in the low-pass filter
+    Float32 peakValue = DBOFFSET; // We'll end up storing the peak value here
+    
+    for (int i=0; i < inNumberFrames; i++)
+    {
+        
+        Float32 absoluteValueOfSampleAmplitude = abs(samples[i]); //Step 2: for each sample, get its amplitude's absolute value.
+        
+        // Step 3: for each sample's absolute value, run it through a simple low-pass filter
+        // Begin low-pass filter
+        currentFilteredValueOfSampleAmplitude = LOWPASSFILTERTIMESLICE * absoluteValueOfSampleAmplitude + (1.0 - LOWPASSFILTERTIMESLICE) * previousFilteredValueOfSampleAmplitude;
+        previousFilteredValueOfSampleAmplitude = currentFilteredValueOfSampleAmplitude;
+        Float32 amplitudeToConvertToDB = currentFilteredValueOfSampleAmplitude;
+        // End low-pass filter
+        
+        Float32 sampleDB = 20.0*log10(amplitudeToConvertToDB) + DBOFFSET;
+        // Step 4: for each sample's filtered absolute value, convert it into decibels
+        // Step 5: for each sample's filtered absolute value in decibels, add an offset value that normalizes the clipping point of the device to zero.
+        
+        if((sampleDB == sampleDB) && (sampleDB != -DBL_MAX))  // if it's a rational number and isn't infinite
+        {
+            
+            if(sampleDB > peakValue) peakValue = sampleDB; // Step 6: keep the highest value you find.
+            decibels = peakValue; // final value
+        }
+    }
+    
+    //NSLog(@"decibel level is %f", decibels);
+    
+    for (UInt32 i=0; i < ioData->mNumberBuffers; i++) { // This is only if you need to silence the output of the audio unit
+        memset(ioData->mBuffers[i].mData, 0, ioData->mBuffers[i].mDataByteSize); // Delete if you need audio output as well as input
+    }
+    
+    return err;
 }
 
--(void)viewDidDisappear:(BOOL)animated
-{
-    //Changing views so turn off everything that is currentoy running.
-    [musicPlayer stop];
-    
-    
-    [recorder stop];
-    recorder = nil;
-    if(levelTimer)
-    {
-        [levelTimer invalidate];
-        levelTimer = nil;
-    }
-    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
-    
-    self.featureDescription.text = @"";
-    
-}
+
+#pragma mark View, Config and UI Methods____________________________
 
 
 - (void)viewDidLoad
@@ -1033,7 +1151,29 @@ void audioRouteChangeListenerCallback (
 }
 
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    //Changing views so turn off everything that is currentoy running.
+    [musicPlayer stop];
+    
+    
+    [recorder stop];
+    recorder = nil;
+    if(levelTimer)
+    {
+        [levelTimer invalidate];
+        levelTimer = nil;
+    }
+    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+    
+    self.featureDescription.text = @"";
+    
+}
 
+-(void)tap:(UITapGestureRecognizer *)gr
+{
+    [self.view endEditing:YES];
+}
 
 - (void)sendSingleColor:(NSString*)singleColor
 {
@@ -1059,72 +1199,6 @@ void audioRouteChangeListenerCallback (
     
     [asyncSocket writeData:requestData withTimeout:-1 tag:1];
     [asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:0];
-}
-
-
-
-////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////
-
-static OSStatus	AudioUnitRenderCallback (void *inRefCon,
-                                         AudioUnitRenderActionFlags *ioActionFlags,
-                                         const AudioTimeStamp *inTimeStamp,
-                                         UInt32 inBusNumber,
-                                         UInt32 inNumberFrames,
-                                         AudioBufferList *ioData) {
-    
-    //OSStatus err = AudioUnitRender(audioUnitWrapper->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);
-    
-   
-    OSStatus err = AudioUnitRender(audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);
-    
-    if(err != 0) NSLog(@"AudioUnitRender status is %ld", err);
-    
-    // These values should be in a more conventional location for a bunch of preprocessor defines in your real code
-    #define DBOFFSET -74.0
-    // DBOFFSET is An offset that will be used to normalize the decibels to a maximum of zero.
-    // This is an estimate, you can do your own or construct an experiment to find the right value
-    #define LOWPASSFILTERTIMESLICE .001
-    // LOWPASSFILTERTIMESLICE is part of the low pass filter and should be a small positive value
-    
-    SInt16* samples = (SInt16*)(ioData->mBuffers[0].mData); // Step 1: get an array of your samples that you can loop through. Each sample contains the amplitude.
-    //UInt32* samples = (UInt32*)(ioData->mBuffers[0].mData);
-    
-    Float32 decibels = DBOFFSET; // When we have no signal we'll leave this on the lowest setting
-    Float32 currentFilteredValueOfSampleAmplitude, previousFilteredValueOfSampleAmplitude; // We'll need these in the low-pass filter
-    Float32 peakValue = DBOFFSET; // We'll end up storing the peak value here
-    
-    for (int i=0; i < inNumberFrames; i++)
-    {
-        
-        Float32 absoluteValueOfSampleAmplitude = abs(samples[i]); //Step 2: for each sample, get its amplitude's absolute value.
-        
-        // Step 3: for each sample's absolute value, run it through a simple low-pass filter
-        // Begin low-pass filter
-        currentFilteredValueOfSampleAmplitude = LOWPASSFILTERTIMESLICE * absoluteValueOfSampleAmplitude + (1.0 - LOWPASSFILTERTIMESLICE) * previousFilteredValueOfSampleAmplitude;
-        previousFilteredValueOfSampleAmplitude = currentFilteredValueOfSampleAmplitude;
-        Float32 amplitudeToConvertToDB = currentFilteredValueOfSampleAmplitude;
-        // End low-pass filter
-        
-        Float32 sampleDB = 20.0*log10(amplitudeToConvertToDB) + DBOFFSET;
-        // Step 4: for each sample's filtered absolute value, convert it into decibels
-        // Step 5: for each sample's filtered absolute value in decibels, add an offset value that normalizes the clipping point of the device to zero.
-        
-        if((sampleDB == sampleDB) && (sampleDB != -DBL_MAX))  // if it's a rational number and isn't infinite
-        {
-            
-            if(sampleDB > peakValue) peakValue = sampleDB; // Step 6: keep the highest value you find.
-            decibels = peakValue; // final value
-        }
-    }
-    
-    //NSLog(@"decibel level is %f", decibels);
-    
-    for (UInt32 i=0; i < ioData->mNumberBuffers; i++) { // This is only if you need to silence the output of the audio unit
-        memset(ioData->mBuffers[i].mData, 0, ioData->mBuffers[i].mDataByteSize); // Delete if you need audio output as well as input
-    }
-    
-    return err;
 }
 
 @end
