@@ -11,7 +11,29 @@
 
 \f0\fs22 \cf2 \CocoaLigature0 \
 \
+\
+#pragma mark AV Foundation delegate methods____________\
 \pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //- (void) audioPlayerDidFinishPlaying: (AVAudioPlayer *) appSoundPlayer successfully: (BOOL) flag\cf0 \
+\cf3 //\{\cf0 \
+\cf3 //	//playing = NO;\cf0 \
+\cf3 //	//[appSoundButton setEnabled: YES];\cf0 \
+\cf3 //\}\cf0 \
+\cf3 //\cf0 \
+\cf3 //- (void) audioPlayerBeginInterruption: player\cf0 \
+\cf3 //\{\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	NSLog (@"Interrupted. The system has paused audio playback.");\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	if (playing) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		playing = NO;\cf0 \
+\cf3 //		interruptedOnPlayback = YES;\cf0 \
+\cf3 //	\}\cf0 \
+\cf3 //\}\cf2 \
+\
 \cf3 //    [recorder updateMeters];\cf0 \
 \cf3 //	NSLog(@"recordTimerCallback: Average input: %f Peak input: %f", [recorder averagePowerForChannel:0], [recorder peakPowerForChannel:0]);\cf0 \
 \cf3 //    \cf0 \

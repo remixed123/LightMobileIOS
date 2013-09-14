@@ -32,14 +32,17 @@
 }
 
 NSString *switchEffect = @"3";
+int micSensitityState = 2;
 int totalItemCount;
 int itemPosition = 0;
+int effectTypeSpecial = 1;
 
 @synthesize acceleratorButton;          //
 @synthesize userMediaItemCollection;	// the media item collection created by the user, using the media item picker
 @synthesize musicPlayButton;            // the button for invoking Play on the music player
 @synthesize musicNextButton;
 @synthesize microphoneButton;			// the button for invoking the microphone feature
+@synthesize microphoneSensitivityButton;
 @synthesize musicPlayer;				// the music player, which plays media items from the iPod library
 @synthesize addMusicButton;		// the button for invoking the media item picker. if the user has already
 @synthesize interruptedOnPlayback;		// A flag indicating whether or not the application was interrupted during
@@ -69,6 +72,33 @@ int itemPosition = 0;
     }
 }
 
+#pragma Button Manager Methods________________________________
+//////////////////////////////////////////////
+// Effect Segment Methods
+//////////////////////////////////////////////
+-(IBAction)selectEffect:(id)sender
+{
+	if(effectsSegment.selectedSegmentIndex == 0)
+    {
+        effectTypeSpecial = 1;
+	}
+    
+	if(effectsSegment.selectedSegmentIndex == 1)
+    {
+        effectTypeSpecial = 2;
+	}
+    
+    if(effectsSegment.selectedSegmentIndex == 2)
+    {
+        effectTypeSpecial = 3;
+	}
+    
+    if(effectsSegment.selectedSegmentIndex == 3)
+    {
+        effectTypeSpecial = 4;
+	}
+    
+}
 
 #pragma mark accelerometer Methods________________________________
 //////////////////////////////////////////////
@@ -167,6 +197,18 @@ int itemPosition = 0;
     }
 }
 
+- (IBAction)microphoneSensitivity:(id)sender
+{
+    if (micSensitityState == 1) // if it is currently set to soft
+    {
+        micSensitityState = 2;
+    }
+    else if (micSensitityState == 2) //if it is currently set to loud
+    {
+        micSensitityState = 1;
+    }
+}
+
 -(void)recorderStop
 {
     [recorder stop];
@@ -197,18 +239,19 @@ int itemPosition = 0;
         [recorder updateMeters];
         
         float power = 0.0f;
-        //for (int i = 0; i < [recorder numberOfChannels]; i++) {
-            power += [recorder averagePowerForChannel:0];
-        //}
-        //power /= [_audioPlayer numberOfChannels];
+        power += [recorder averagePowerForChannel:0];
         
         float level = meterTable.ValueAt(power);
-        scale = level * 5;
+        scale = level * 5 * micSensitityState; //adjust to whether we are using soft or loud sensitivity
+        if (scale > 5) //make sure we do not have a number that evenuatually calculates about 255.
+        {
+            scale = 5;
+        }
     }
     
     NSLog(@"musicTimerCallback: scale: %f", scale);
     
-    [self sendSoundEffect:@"3" :scale];
+    [self sendSoundEffect:scale:effectTypeSpecial];
 
 }
 
@@ -400,26 +443,6 @@ int itemPosition = 0;
 	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque animated: YES];
 }
 
-#pragma mark AV Foundation delegate methods____________
-
-//- (void) audioPlayerDidFinishPlaying: (AVAudioPlayer *) appSoundPlayer successfully: (BOOL) flag
-//{
-//	//playing = NO;
-//	//[appSoundButton setEnabled: YES];
-//}
-//
-//- (void) audioPlayerBeginInterruption: player
-//{
-//    
-//	NSLog (@"Interrupted. The system has paused audio playback.");
-//	
-//	if (playing) {
-//        
-//		playing = NO;
-//		interruptedOnPlayback = YES;
-//	}
-//}
-
 #pragma mark Music Table view delegate methods________________
 
 // Invoked when the user taps the Done button in the table view.
@@ -449,10 +472,10 @@ int itemPosition = 0;
     
     NSLog(@"musicTimerCallback: scale: %f", scale);
     
-    [self sendSoundEffect:@"3" :scale];
+    [self sendSoundEffect:scale:effectTypeSpecial];
 }
 
--(void)sendSoundEffect:(NSString*) switchEffect :(float) scale
+-(void)sendSoundEffect: (float) scale :(int) effectTypeSelected
 {
     int redInt;
     int greenInt;
@@ -461,7 +484,7 @@ int itemPosition = 0;
     NSString *lwdpPacket;
 
         
-    if ([switchEffect isEqual: @"1"])  // Black to Red for intensity
+    if (effectTypeSelected == 2)  // Black to Red for intensity
     {
         redInt = abs((int) (scale * 50));
         greenInt = 0;
@@ -470,7 +493,7 @@ int itemPosition = 0;
         //  NSLog(@"recordTimerCallback: colorHex: %@", colorHex);
         lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
     }
-    else if ([switchEffect isEqual: @"2"]) // Blue to Red for intensity
+    else if (effectTypeSelected == 3) // Blue to Red for intensity
     {
         redInt = abs((int) (scale * 50));
         greenInt = 0;
@@ -479,17 +502,37 @@ int itemPosition = 0;
         //  NSLog(@"recordTimerCallback: colorHex: %@", colorHex);
         lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
     }
-    else if ([switchEffect isEqual: @"3"]) // Candy cane blue and green to red for intensity
+     else if (effectTypeSelected == 4)  // Candy cane blue and red to green for intensity
+     {
+         redInt = 0;
+         greenInt = abs((int) (scale * 50));
+         blueInt = abs((int) (255 - (scale * 60)));
+         NSString *colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
+         
+         redInt = abs((int) (255 - (scale * 60)));
+         greenInt = abs((int) (scale * 50)); 
+         blueInt = 0;
+
+         NSString *colorHex2 =  [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
+         
+         NSString *hexEffectType = @"0000";
+         NSString *hexTimeSeperation = @"0000";
+         
+         NSString *payLoad = [NSString stringWithFormat:@"%@%@%@%@%@",hexEffectType,hexTimeSeperation,@"02",colorHex, colorHex2];
+         //  NSLog(@"recordTimerCallback: colorHex: %@", colorHex);
+         lwdpPacket = [utils createLwdpPacket:@"20" :payLoad];
+     }
+    else // Candy cane blue and green to red for intensity
     {
-        
         redInt = abs((int) (scale * 50));
         greenInt = 0;
         blueInt = abs((int) (255 - (scale * 60)));
         NSString *colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
         
         redInt = abs((int) (scale * 50));
-        blueInt = 0;
         greenInt = abs((int) (255 - (scale * 60)));
+        blueInt = 0;
+
         NSString *colorHex2 =  [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
         
         NSString *hexEffectType = @"0000";
@@ -499,21 +542,7 @@ int itemPosition = 0;
         //  NSLog(@"recordTimerCallback: colorHex: %@", colorHex);
         lwdpPacket = [utils createLwdpPacket:@"20" :payLoad];
     }
-    else // Random effect.....doesn't really work, need to look at doing something different or removing
-    {
-        int strengthInt = abs((int) (scale * 50));
-        
-        NSString *hexEffectType = @"0001";
-        NSString *hexTimeSeperation = @"0000";
-        NSString *hexStripeCount = @"01";
-        
-        NSString *strengthHex = [utils intToHex2Byte:strengthInt];
-        //NSString *colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
-        
-        NSString *payLoad = [NSString stringWithFormat:@"%@%@%@%@",hexEffectType,hexTimeSeperation,hexStripeCount,strengthHex];
-        lwdpPacket = [utils createLwdpPacket:@"50" :payLoad];
-    }
-    
+
     //  NSLog(@"recordTimerCallback: lwdpPacket: %@", lwdpPacket);
     
     [conn sendPacket:lwdpPacket];
@@ -546,6 +575,7 @@ int itemPosition = 0;
 
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [self.view addGestureRecognizer:tapRecognizer];
+    [microphoneSensitivityButton setTitle: @"soft" forState: UIControlStateNormal];
 
 }
 

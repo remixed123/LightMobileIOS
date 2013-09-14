@@ -41,10 +41,12 @@
     
     IBOutlet UIButton			*addOrShowMusicButton;
     IBOutlet UIButton*          microphoneButton;
+    IBOutlet UIButton*          microphoneSensitivityButton;
     IBOutlet UIButton*          acceleromterButton;
-    
+
 	IBOutlet UIButton*			musicPlayButton;
     IBOutlet UIButton*          musicNextButton;
+    IBOutlet UISegmentedControl *effectsSegment;
     
 	MPMusicPlayerController		*musicPlayer;
 	MPMediaItemCollection		*userMediaItemCollection;
@@ -63,6 +65,7 @@
 @property (nonatomic, retain)	IBOutlet UIButton		*addMusicButton;
 @property (nonatomic, retain)	IBOutlet UIButton		*musicPlayButton;
 @property (nonatomic, retain)	IBOutlet UIButton		*musicNextButton;
+@property (nonatomic, retain)   IBOutlet UIButton       *microphoneSensitivityButton;
 
 @property (nonatomic, retain)	MPMediaItemCollection	*userMediaItemCollection;
 @property (nonatomic, retain)	MPMusicPlayerController	*musicPlayer;
@@ -76,6 +79,8 @@
 - (IBAction)addMusic:(id) sender;
 - (IBAction)accelerometerToggle:(id)sender;
 - (IBAction)microphoneToggle:(id)sender;
+- (IBAction)microphoneSensitivity:(id)sender;
+-(IBAction)selectEffect:(id)sender;
 - (IBAction)startRecording;
 
 - (BOOL) useiPodPlayer;
@@ -83,7 +88,8 @@
 - (void)recordTimerCallback:(NSTimer *)timer;
 - (void)stateManager :(NSString*) selectedFeature;
 - (void)musicTimerCallback:(NSTimer *)timer;
-- (void) registerForMediaPlayerNotifications;
+- (void)registerForMediaPlayerNotifications;
+
 
 @end
 
