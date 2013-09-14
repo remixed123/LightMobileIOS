@@ -1,8 +1,8 @@
 /*
-    File: MusicTableViewController.h
-Abstract: Table view controller class for AddMusic. Shows the list
-of music chosen by the user.
- Version: 1.1
+
+    File: MeterTable.h
+Abstract: Class for handling conversion from linear scale to dB
+ Version: 2.4
 
 Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
 Inc. ("Apple") in consideration of your agreement to the following
@@ -44,42 +44,36 @@ POSSIBILITY OF SUCH DAMAGE.
 
 Copyright (C) 2009 Apple Inc. All Rights Reserved.
 
+ 
 */
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
 
-
-@protocol MusicTableViewControllerDelegate; // forward declaration
-
-
-#import <MediaPlayer/MediaPlayer.h>
-#import "SSSpecialViewController.h"
-
-
-@interface MusicTableViewController : UIViewController <MPMediaPickerControllerDelegate, UITableViewDelegate>
+class MeterTable
 {
+public:
+// MeterTable constructor arguments: 
+// inNumUISteps - the number of steps in the UI element that will be drawn. 
+//					This could be a height in pixels or number of bars in an LED style display.
+// inTableSize - The size of the table. The table needs to be large enough that there are no large gaps in the response.
+// inMinDecibels - the decibel value of the minimum displayed amplitude.
+// inRoot - this controls the curvature of the response. 2.0 is square root, 3.0 is cube root. But inRoot doesn't have to be integer valued, it could be 1.8 or 2.5, etc.
 
-	__weak id <MusicTableViewControllerDelegate>	delegateMP;
-	IBOutlet UITableView					*mediaItemCollectionTable;
-	IBOutlet UIBarButtonItem				*addMusicButton;
-}
-
-@property (nonatomic, weak) id <MusicTableViewControllerDelegate>	delegateMP;
-@property (nonatomic, retain) UITableView							*mediaItemCollectionTable;
-//@property (nonatomic, strong) NSMutableArray *mediaItemCollectionTable;
-
-@property (nonatomic, retain) UIBarButtonItem						*addMusicButton;
-
-- (IBAction) showMediaPicker: (id) sender;
-- (IBAction) doneShowingMusicList: (id) sender;
-
-@end
-
-
-
-//@protocol MusicTableViewControllerDelegate
-//
-//// implemented in MainViewController.m
-//- (void) musicTableViewControllerDidFinish: (MusicTableViewController *) controller;
-//- (void) updatePlayerQueueWithMediaCollection: (MPMediaItemCollection *) mediaItemCollection;
-//
-//@end
-
+MeterTable(float inMinDecibels = -80., size_t inTableSize = 800, float inRoot = 1.5);
+~MeterTable();
+	
+	float ValueAt(float inDecibels)
+	{
+		if (inDecibels < mMinDecibels) return  0.;
+		if (inDecibels >= 0.) return 1.;
+		int index = (int)(inDecibels * mScaleFactor);
+		return mTable[index];
+	}
+private:
+	float	mMinDecibels;
+	float	mDecibelResolution;
+	float	mScaleFactor;
+	float	*mTable;
+};

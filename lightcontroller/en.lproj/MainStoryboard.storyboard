@@ -24,7 +24,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="AddMusicOrShowMusic:" destination="2" eventType="touchUpInside" id="ZL5-yE-aYc"/>
+                                    <action selector="addMusic:" destination="2" eventType="touchUpInside" id="dgd-Sk-bpf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="990" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eRk-rC-nS8">
@@ -39,7 +39,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playOrPauseMusic:" destination="2" eventType="touchUpInside" id="I12-Br-MKU"/>
+                                    <action selector="musicToggle:" destination="2" eventType="touchUpInside" id="7y6-5R-7B5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xig-ls-HTp">
@@ -88,6 +88,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextSong:" destination="2" eventType="touchUpInside" id="tI5-B6-8NL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="990" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jK8-Am-pta">
                                 <rect key="frame" x="175" y="119" width="60" height="60"/>
@@ -101,7 +104,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="microphoneToggle:" destination="2" eventType="touchUpInside" id="wJT-i1-2bh"/>
+                                    <action selector="microphoneToggle:" destination="2" eventType="touchUpInside" id="zNS-O6-y3i"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="990" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wUg-Jf-yBv">
@@ -1322,6 +1325,124 @@
         <image name="sport-shirt-white.png" width="30" height="30"/>
         <image name="volleyball@2x.png" width="60" height="60"/>
     </resources>
+    <classes>
+        <class className="SSChasesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSChasesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="adjustSpeed:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="addDataButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="sequenceText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="speedSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SSColorSelectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSColorSelectViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="blueValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="greenValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSConfigViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSConfigViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="connectNow:"/>
+                <relationship kind="outlet" name="connectNowButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="ipAddressText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="portNumberText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="statusDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSPatternViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSPatternViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="adjustSpeed:"/>
+                <relationship kind="action" name="selectEffect:"/>
+                <relationship kind="action" name="sendPacket:"/>
+                <relationship kind="outlet" name="cell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="effectsSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sendPacketButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sequenceText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="speedSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SSSequenceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSequenceViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="aflButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cbaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cflButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="chasesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cslButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cvaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="fifaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mlbButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mlsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nationsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nbaButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nflButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nhlButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nrlButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="plButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="srButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uefaButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SSSingleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSingleViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="allOn:"/>
+                <relationship kind="action" name="off:"/>
+                <relationship kind="outlet" name="allOnButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="blueValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="greenValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="redValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SSSpecialViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSSpecialViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="accelerometerToggle:"/>
+                <relationship kind="action" name="addMusic:"/>
+                <relationship kind="action" name="microphoneToggle:"/>
+                <relationship kind="action" name="musicToggle:"/>
+                <relationship kind="action" name="nextSong:"/>
+                <relationship kind="action" name="startRecording"/>
+                <relationship kind="outlet" name="acceleratorButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="acceleromterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addMusicButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addOrShowMusicButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="featureDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="microphoneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="musicNextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="musicPlayButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SSTabBarViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTabBarViewController.h"/>
+        </class>
+        <class className="SSTeamViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTeamViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="adjustSpeed:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="selectEffect:"/>
+                <relationship kind="outlet" name="addDataButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="effectsSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sequenceText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="speedSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

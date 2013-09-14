@@ -54,7 +54,7 @@ Copyright (C) 2009 Apple Inc. All Rights Reserved.
 
 static NSString *kCellIdentifier = @"Cell";
 
-//@synthesize delegateMP;					// The main view controller is the delegate for this class.
+@synthesize delegateMP;					// The main view controller is the delegate for this class.
 @synthesize mediaItemCollectionTable;	// The table shown in this class's view.
 @synthesize addMusicButton;				// The button for invoking the media item picker. Setting the title
 										//		programmatically supports localization.
@@ -81,12 +81,11 @@ static NSString *kCellIdentifier = @"Cell";
 // Configures and displays the media item picker.
 - (IBAction) showMediaPicker: (id) sender {
 
-	MPMediaPickerController *picker =
-		[[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeAnyAudio];
+	MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeAnyAudio];
 	
-	picker.delegate						= self;
-	picker.allowsPickingMultipleItems	= YES;
-	picker.prompt						= NSLocalizedString (@"AddSongsPrompt", @"Prompt to user to choose some songs to play");
+    [picker setDelegate:self];
+    [picker setAllowsPickingMultipleItems:YES];
+	picker.prompt = NSLocalizedString (@"AddSongsPrompt", @"Prompt to user to choose some songs to play");
 	
 	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleDefault animated:YES];
 

@@ -1,8 +1,8 @@
 /*
-    File: MusicTableViewController.h
-Abstract: Table view controller class for AddMusic. Shows the list
-of music chosen by the user.
- Version: 1.1
+
+    File: MeterTable.cpp
+Abstract: Class for handling conversion from linear scale to dB
+ Version: 2.4
 
 Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
 Inc. ("Apple") in consideration of your agreement to the following
@@ -44,42 +44,43 @@ POSSIBILITY OF SUCH DAMAGE.
 
 Copyright (C) 2009 Apple Inc. All Rights Reserved.
 
+ 
 */
 
+#include "MeterTable.h"
 
-@protocol MusicTableViewControllerDelegate; // forward declaration
-
-
-#import <MediaPlayer/MediaPlayer.h>
-#import "SSSpecialViewController.h"
-
-
-@interface MusicTableViewController : UIViewController <MPMediaPickerControllerDelegate, UITableViewDelegate>
+inline double DbToAmp(double inDb)
 {
-
-	__weak id <MusicTableViewControllerDelegate>	delegateMP;
-	IBOutlet UITableView					*mediaItemCollectionTable;
-	IBOutlet UIBarButtonItem				*addMusicButton;
+	return pow(10., 0.05 * inDb);
 }
 
-@property (nonatomic, weak) id <MusicTableViewControllerDelegate>	delegateMP;
-@property (nonatomic, retain) UITableView							*mediaItemCollectionTable;
-//@property (nonatomic, strong) NSMutableArray *mediaItemCollectionTable;
+MeterTable::MeterTable(float inMinDecibels, size_t inTableSize, float inRoot)
+	: mMinDecibels(inMinDecibels),
+	mDecibelResolution(mMinDecibels / (inTableSize - 1)), 
+	mScaleFactor(1. / mDecibelResolution)
+{
+	if (inMinDecibels >= 0.)
+	{
+		printf("MeterTable inMinDecibels must be negative");
+		return;
+	}
 
-@property (nonatomic, retain) UIBarButtonItem						*addMusicButton;
+	mTable = (float*)malloc(inTableSize*sizeof(float));
 
-- (IBAction) showMediaPicker: (id) sender;
-- (IBAction) doneShowingMusicList: (id) sender;
+	double minAmp = DbToAmp(inMinDecibels);
+	double ampRange = 1. - minAmp;
+	double invAmpRange = 1. / ampRange;
+	
+	double rroot = 1. / inRoot;
+	for (size_t i = 0; i < inTableSize; ++i) {
+		double decibels = i * mDecibelResolution;
+		double amp = DbToAmp(decibels);
+		double adjAmp = (amp - minAmp) * invAmpRange;
+		mTable[i] = pow(adjAmp, rroot);
+	}
+}
 
-@end
-
-
-
-//@protocol MusicTableViewControllerDelegate
-//
-//// implemented in MainViewController.m
-//- (void) musicTableViewControllerDidFinish: (MusicTableViewController *) controller;
-//- (void) updatePlayerQueueWithMediaCollection: (MPMediaItemCollection *) mediaItemCollection;
-//
-//@end
-
+MeterTable::~MeterTable()
+{
+	free(mTable);
+}

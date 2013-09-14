@@ -1,15 +1,210 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf390
 {\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red10\green0\blue109;\red92\green38\blue153;\red46\green13\blue110;
-\red170\green13\blue145;\red63\green110\blue116;\red28\green0\blue207;\red0\green116\blue0;\red196\green26\blue22;
-\red100\green56\blue32;}
+{\colortbl;\red255\green255\blue255;\red100\green56\blue32;\red0\green116\blue0;\red170\green13\blue145;
+\red10\green0\blue109;\red92\green38\blue153;\red46\green13\blue110;\red63\green110\blue116;\red28\green0\blue207;
+\red196\green26\blue22;\red38\green71\blue75;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
 \paperw12240\paperh15840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
 \deftab529
 \pard\tx529\pardeftab529\pardirnatural
 
-\f0\fs22 \cf0 \CocoaLigature0 Strobe Effect\
+\f0\fs22 \cf2 \CocoaLigature0 \
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //    [recorder updateMeters];\cf0 \
+\cf3 //	NSLog(@"recordTimerCallback: Average input: %f Peak input: %f", [recorder averagePowerForChannel:0], [recorder peakPowerForChannel:0]);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    \cf0 \
+\cf3 //    const double ALPHA = 0.05;\cf0 \
+\cf3 //    double peakPowerForChannel = pow(10, (0.05 * [recorder peakPowerForChannel:0]));\cf0 \
+\cf3 //    float lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA); // * lowPassResults;\cf0 \
+\cf3 //    NSLog(@"recordTimerCallback: lowPassResults: %f",(lowPassResults*100.0f));\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    float dB = 10 * log10(abs([recorder peakPowerForChannel:0]));\cf0 \
+\cf3 //     //NSLog(@"recordTimerCallback: db: %f",(dB));\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    NSString *colorHex = @"FFFFFF";\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    int redInt = 255; //abs((int) (([recorder averagePowerForChannel:0] + 120) * 2));\cf0 \
+\cf3 //    int greenInt = abs((int) dB * 10);\cf0 \
+\cf3 //    int blueInt = abs((int) dB * 10);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    \cf0 \
+\cf3 //    NSLog(@"recordTimerCallback: redInt: %i, greenInt: %i, blueInt %i", redInt, greenInt, blueInt);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    //NSLog(@"accelerometer: colorHex: %@", colorHex);\cf0 \
+\cf3 //\cf0 \
+\cf3 //    colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];\cf0 \
+\cf3 //    NSString *lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    NSLog(@"recordTimerCallback: lwdpPacket: %@", lwdpPacket);\cf0 \
+\cf3 //    [conn sendPacket:lwdpPacket];\cf0 \
+\cf3 //  \cf2 \
+\
+\cf3 // Returns whether or not to use the iPod music player instead of the application music player.\cf0 \
+- (\cf4 BOOL\cf0 ) useiPodPlayer \{\
+    \
+\cf3 //	if ([[NSUserDefaults standardUserDefaults] boolForKey: PLAYER_TYPE_PREF_KEY]) \{\cf0 \
+\cf3 //		return YES;\cf0 \
+\cf3 //	\} else \{\cf0 \
+\cf3 //		return NO;\cf0 \
+\cf3 //	\}\cf0 \
+\}\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 \
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 // If the music player was paused, leave it paused. If it was playing, it will continue to\cf0 \
+\cf3 //		play on its own. The music player state is "stopped" only if the previous list of songs\cf0 \
+\cf3 //		had finished or if this is the first time the user has chosen songs after app\cf0 \
+\cf3 //		launch--in which case, invoke play.\cf0 \
+\cf3 //- (void) restorePlaybackState\cf0 \
+\cf3 //\{\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	if (musicPlayer.playbackState == MPMusicPlaybackStateStopped && userMediaItemCollection) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		[addOrShowMusicButton	setTitle: NSLocalizedString (@"Show Music", @"Alternate title for 'Add Music' button, after user has chosen some music")\cf0 \
+\cf3 //                              forState: UIControlStateNormal];\cf0 \
+\cf3 //		\cf0 \
+\cf3 //		if (playedMusicOnce == NO) \{\cf0 \
+\cf3 //            \cf0 \
+\cf3 //            [self stateManager:@"music"];\cf0 \
+\cf3 //            self.featureDescription.text = @"Music Paused";\cf0 \
+\cf3 //			//[_audioPlayer play];\cf0 \
+\cf3 //		\}\cf0 \
+\cf3 //	\}\cf0 \
+\cf3 //    \cf0 \
+\cf3 //\}\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 \
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //- (void) audioPlayerEndInterruption: player\cf0 \
+\cf3 //\{\cf0 \
+\cf3 //	NSLog (@"Interruption ended. Resuming audio playback.");\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	// Reactivates the audio session, whether or not audio was playing\cf0 \
+\cf3 //	//		when the interruption arrived.\cf0 \
+\cf3 //	[[AVAudioSession sharedInstance] setActive: YES error: nil];\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	if (interruptedOnPlayback) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		//[appSoundPlayer prepareToPlay];\cf0 \
+\cf3 //		//[appSoundPlayer play];\cf0 \
+\cf3 //		//playing = YES;\cf0 \
+\cf3 //		//interruptedOnPlayback = NO;\cf0 \
+\cf3 //	\}\cf0 \
+\cf3 //\}\cf2 \
+#pragma mark Music Player Config__________________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\
+- (\cf4 void\cf0 )configureAudioSession \{\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //    NSError *error;\cf0 \
+\cf3 //    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    if (error) \{\cf0 \
+\cf3 //        NSLog(@"Error setting category: %@", [error description]);\cf0 \
+\cf3 //    \}\cf0 \
+\}\
+\
+\cf3 // To learn about notifications, see "Notifications" in Cocoa Fundamentals Guide.\cf0 \
+- (\cf4 void\cf0 ) registerForMediaPlayerNotifications\
+\{\
+\cf3 //	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];\cf0 \
+\cf3 //\cf0 \
+\cf3 //	[notificationCenter addObserver: self\cf0 \
+\cf3 //						   selector: @selector (handle_NowPlayingItemChanged:)\cf0 \
+\cf3 //							   name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification\cf0 \
+\cf3 //							 object: musicPlayer];\cf0 \
+\cf3 //\cf0 \
+\cf3 //	[notificationCenter addObserver: self\cf0 \
+\cf3 //						   selector: @selector (handle_PlaybackStateChanged:)\cf0 \
+\cf3 //							   name: MPMusicPlayerControllerPlaybackStateDidChangeNotification\cf0 \
+\cf3 //							 object: musicPlayer];\cf0 \
+\cf3 //\cf0 \
+\cf3 //    /*\cf0 \
+\cf3 //     // This sample doesn't use libray change notifications; this code is here to show how\cf0 \
+\cf3 //     //		it's done if you need it.\cf0 \
+\cf3 //     [notificationCenter addObserver: self\cf0 \
+\cf3 //     selector: @selector (handle_iPodLibraryChanged:)\cf0 \
+\cf3 //     name: MPMediaLibraryDidChangeNotification\cf0 \
+\cf3 //     object: musicPlayer];\cf0 \
+\cf3 //\cf0 \
+\cf3 //     [[MPMediaLibrary defaultMediaLibrary] beginGeneratingLibraryChangeNotifications];\cf0 \
+\cf3 //     */\cf0 \
+\cf3 //\cf0 \
+\cf3 //	[musicPlayer beginGeneratingPlaybackNotifications];\cf0 \
+\}\
+\
+\
+- (\cf4 void\cf0 )configureAudioPlayer\
+\{\
+    \cf3 //NSURL *audioFileURL = [[NSBundle mainBundle] URLForResource:@"DemoSong" withExtension:@"m4a"];\cf0 \
+    \cf3 //NSError *error;\cf0 \
+    \cf3 //self.audioPlayer = [[AVAudioPlayer alloc] ini initWithContentsOfURL:audioFileURL error:&error];\cf0 \
+    \cf3 ///if (error) \{\cf0 \
+    \cf3 //    NSLog(@"%@", [error localizedDescription]);\cf0 \
+    \cf3 //\}\cf0 \
+    \cf3 //[_audioPlayer setNumberOfLoops:-1];\cf0 \
+    \cf3 //[_audioPlayer setMeteringEnabled:YES];\cf0 \
+    \cf3 // [_visualizer setAudioPlayer:_audioPlayer];\cf0 \
+\}\
+\
+\cf3 //-(void)createAppMusicPlayer\cf0 \
+\cf3 //\{\cf0 \
+\cf3 //    MPMusicPlayerController* appMusicPlayer = [MPMusicPlayerController applicationMusicPlayer];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    [appMusicPlayer setShuffleMode: MPMusicShuffleModeOff];\cf0 \
+\cf3 //    [appMusicPlayer setRepeatMode: MPMusicRepeatModeNone];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Creates an iPod Music Player\cf0 \
+\cf3 //    MPMusicPlayerController* iPodMusicPlayer = [MPMusicPlayerController iPodMusicPlayer];\cf0 \
+\cf3 //\}\cf0 \
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Music notification handlers__________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 // When the playback state changes, set the play/pause button in the Navigation bar	appropriately.\cf0 \
+\cf3 //- (void) handle_PlaybackStateChanged: (id) notification\cf0 \
+\cf3 //\{    \cf0 \
+\cf3 //	MPMusicPlaybackState playbackState = [musicPlayer playbackState];\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	if (playbackState == MPMusicPlaybackStatePaused) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		//navigationBar.topItem.leftBarButtonItem = playBarButton;\cf0 \
+\cf3 //		\cf0 \
+\cf3 //	\} else if (playbackState == MPMusicPlaybackStatePlaying) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		//navigationBar.topItem.leftBarButtonItem = pauseBarButton;\cf0 \
+\cf3 //        \cf0 \
+\cf3 //	\} else if (playbackState == MPMusicPlaybackStateStopped) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		//navigationBar.topItem.leftBarButtonItem = playBarButton;\cf0 \
+\cf3 //		\cf0 \
+\cf3 //		// Even though stopped, invoking 'stop' ensures that the music player will play its queue from the start.\cf0 \
+\cf3 //		[self musicStop];\cf0 \
+\cf3 //        \cf0 \
+\cf3 //	\}\cf0 \
+\cf3 //\}\cf0 \
+\
+- (\cf4 void\cf0 ) handle_iPodLibraryChanged: (\cf4 id\cf0 ) notification\
+\{\
+	\cf3 // Implement this method to update cached collections of media items when the \cf0 \
+	\cf3 // user performs a sync while your application is running. This sample performs \cf0 \
+	\cf3 // no explicit media queries, so there is nothing to update.\cf0 \
+\}\
+\
+\
+Strobe Effect\
 Sequences\
 Nations\
 Special Events\
@@ -17,24 +212,25 @@ Special Events\
 - Sports\
 \pard\tx529\pardeftab529\pardirnatural
 {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Major_professional_sports_teams_of_the_United_States_and_Canada"}}{\fldrslt \cf0 http://en.wikipedia.org/wiki/Major_professional_sports_teams_of_the_United_States_and_Canada}}\
+\pard\tx529\pardeftab529\pardirnatural
 
-\f1\fs26 \cf2 \CocoaLigature1    \'95	{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Canadian_Football_League"}}{\fldrslt Canadian Football League}}\cf0 \'a0\'96 (
+\f1\fs26 \cf5 \CocoaLigature1    \'95	{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Canadian_Football_League"}}{\fldrslt Canadian Football League}}\cf0 \'a0\'96 (
 \b CFL
 \b0 )\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl380\sa20
-\ls1\ilvl0\cf2 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Major_League_Baseball"}}{\fldrslt Major League Baseball}}\cf0 \'a0\'96 (
+\ls1\ilvl0\cf5 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Major_League_Baseball"}}{\fldrslt Major League Baseball}}\cf0 \'a0\'96 (
 \b MLB
 \b0 )\
-\ls1\ilvl0\cf2 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Major_League_Soccer"}}{\fldrslt \ul Major League Soccer}}\cf0 \'a0\'96 (
+\ls1\ilvl0\cf5 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Major_League_Soccer"}}{\fldrslt \ul Major League Soccer}}\cf0 \'a0\'96 (
 \b MLS
 \b0 )\
-\ls1\ilvl0\cf2 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/National_Basketball_Association"}}{\fldrslt National Basketball Association}}\cf0 \'a0\'96 (
+\ls1\ilvl0\cf5 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/National_Basketball_Association"}}{\fldrslt National Basketball Association}}\cf0 \'a0\'96 (
 \b NBA
 \b0 )\
-\ls1\ilvl0\cf2 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/National_Football_League"}}{\fldrslt National Football League}} \cf0 \'96 (
+\ls1\ilvl0\cf5 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/National_Football_League"}}{\fldrslt National Football League}} \cf0 \'96 (
 \b NFL
 \b0 )\
-\ls1\ilvl0\cf2 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/National_Hockey_League"}}{\fldrslt National Hockey League}}\cf0 \'a0\'96 (
+\ls1\ilvl0\cf5 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/National_Hockey_League"}}{\fldrslt National Hockey League}}\cf0 \'a0\'96 (
 \b NHL
 \b0 )\
 {\listtext	\'95	}Australian Football League  - (AFL)\
@@ -49,140 +245,1540 @@ Special Events\
 
 \f0\fs22 \cf0 \CocoaLigature0 \
 \
-    [\cf3 UIView\cf0  \cf4 beginAnimations\cf0 :\cf5 nil\cf0  \cf4 context\cf0 :\cf5 nil\cf0 ];\
-    [\cf3 UIView\cf0  \cf4 setAnimationTransition\cf0 :\cf4 UIViewAnimationTransitionFlipFromRight\cf0  \cf4 forView\cf0 :\cf6 detailViewController\cf0 .\cf6 mainView\cf0  \cf4 cache\cf0 :\cf5 YES\cf0 ];\
-    [\cf3 UIView\cf0  \cf4 setAnimationCurve\cf0 :\cf4 UIViewAnimationCurveEaseInOut\cf0 ];\
-    [\cf3 UIView\cf0  \cf4 setAnimationDuration\cf0 :\cf7 1\cf0 ];\
-    [\cf3 UIView\cf0  \cf4 commitAnimations\cf0 ];\
+    [\cf6 UIView\cf0  \cf7 beginAnimations\cf0 :\cf4 nil\cf0  \cf7 context\cf0 :\cf4 nil\cf0 ];\
+    [\cf6 UIView\cf0  \cf7 setAnimationTransition\cf0 :\cf7 UIViewAnimationTransitionFlipFromRight\cf0  \cf7 forView\cf0 :\cf8 detailViewController\cf0 .\cf8 mainView\cf0  \cf7 cache\cf0 :\cf4 YES\cf0 ];\
+    [\cf6 UIView\cf0  \cf7 setAnimationCurve\cf0 :\cf7 UIViewAnimationCurveEaseInOut\cf0 ];\
+    [\cf6 UIView\cf0  \cf7 setAnimationDuration\cf0 :\cf9 1\cf0 ];\
+    [\cf6 UIView\cf0  \cf7 commitAnimations\cf0 ];\
 \
 \
-\
-\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //static OSStatus	AudioUnitRenderCallback (void *inRefCon,\cf0 \
+\cf3 //                                         AudioUnitRenderActionFlags *ioActionFlags,\cf0 \
+\cf3 //                                         const AudioTimeStamp *inTimeStamp,\cf0 \
+\cf3 //                                         UInt32 inBusNumber,\cf0 \
+\cf3 //                                         UInt32 inNumberFrames,\cf0 \
+\cf3 //                                         AudioBufferList *ioData) \{\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    OSStatus err = AudioUnitRender(audioUnitWrapper->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    if(err != 0) NSLog(@"AudioUnitRender status is %d", err);\cf0 \
+\cf3 //    // These values should be in a more conventional location for a bunch of preprocessor defines in your real code\cf0 \
+\cf3 //#define DBOFFSET -74.0\cf0 \
+\cf3 //    // DBOFFSET is An offset that will be used to normalize the decibels to a maximum of zero.\cf0 \
+\cf3 //    // This is an estimate, you can do your own or construct an experiment to find the right value\cf0 \
+\cf3 //#define LOWPASSFILTERTIMESLICE .001\cf0 \
+\cf3 //    // LOWPASSFILTERTIMESLICE is part of the low pass filter and should be a small positive value\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    SInt16* samples = (SInt16*)(ioData->mBuffers[0].mData); // Step 1: get an array of your samples that you can loop through. Each sample contains the amplitude.\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    Float32 decibels = DBOFFSET; // When we have no signal we'll leave this on the lowest setting\cf0 \
+\cf3 //    Float32 currentFilteredValueOfSampleAmplitude, previousFilteredValueOfSampleAmplitude; // We'll need these in the low-pass filter\cf0 \
+\cf3 //    Float32 peakValue = DBOFFSET; // We'll end up storing the peak value here\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    for (int i=0; i < inNumberFrames; i++) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //        Float32 absoluteValueOfSampleAmplitude = abs(samples[i]); //Step 2: for each sample, get its amplitude's absolute value.\cf0 \
+\cf3 //        \cf0 \
+\cf3 //        // Step 3: for each sample's absolute value, run it through a simple low-pass filter\cf0 \
+\cf3 //        // Begin low-pass filter\cf0 \
+\cf3 //        currentFilteredValueOfSampleAmplitude = LOWPASSFILTERTIMESLICE * absoluteValueOfSampleAmplitude + (1.0 - LOWPASSFILTERTIMESLICE) * previousFilteredValueOfSampleAmplitude;\cf0 \
+\cf3 //        previousFilteredValueOfSampleAmplitude = currentFilteredValueOfSampleAmplitude;\cf0 \
+\cf3 //        Float32 amplitudeToConvertToDB = currentFilteredValueOfSampleAmplitude;\cf0 \
+\cf3 //        // End low-pass filter\cf0 \
+\cf3 //        \cf0 \
+\cf3 //        Float32 sampleDB = 20.0*log10(amplitudeToConvertToDB) + DBOFFSET;\cf0 \
+\cf3 //        // Step 4: for each sample's filtered absolute value, convert it into decibels\cf0 \
+\cf3 //        // Step 5: for each sample's filtered absolute value in decibels, add an offset value that normalizes the clipping point of the device to zero.\cf0 \
+\cf3 //        \cf0 \
+\cf3 //        if((sampleDB == sampleDB) && (sampleDB != -DBL_MAX)) \{ // if it's a rational number and isn't infinite\cf0 \
+\cf3 //            \cf0 \
+\cf3 //            if(sampleDB > peakValue) peakValue = sampleDB; // Step 6: keep the highest value you find.\cf0 \
+\cf3 //            decibels = peakValue; // final value\cf0 \
+\cf3 //        \}\cf0 \
+\cf3 //    \}\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    NSLog(@"decibel level is %f", decibels);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    for (UInt32 i=0; i < ioData->mNumberBuffers; i++) \{ // This is only if you need to silence the output of the audio unit\cf0 \
+\cf3 //        memset(ioData->mBuffers[i].mData, 0, ioData->mBuffers[i].mDataByteSize); // Delete if you need audio output as well as input\cf0 \
+\cf3 //    \}\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    return err;\cf0 \
+\cf3 //\}\cf0 \
 \
 \
 To message with buttons \
 \
-   \cf6 _redButton\cf0 .\cf3 layer\cf0 .\cf3 borderColor\cf0  = [\cf3 UIColor\cf0  \cf4 blackColor\cf0 ].\cf3 CGColor\cf0 ;\
-    \cf6 _redButton\cf0 .\cf3 layer\cf0 .\cf3 borderWidth\cf0  = \cf7 1.5\cf0 ;\
-    \cf6 _redButton\cf0 .\cf3 tag\cf0  = \cf7 1\cf0  ;\
-    [\cf6 _redButton\cf0  \cf4 addTarget\cf0 :\cf5 self\cf0  \cf4 action\cf0 :\cf5 @selector\cf0 (redColor:) \cf4 forControlEvents\cf0 :\cf4 UIControlEventTouchUpInside\cf0 ];\
+   \cf8 _redButton\cf0 .\cf6 layer\cf0 .\cf6 borderColor\cf0  = [\cf6 UIColor\cf0  \cf7 blackColor\cf0 ].\cf6 CGColor\cf0 ;\
+    \cf8 _redButton\cf0 .\cf6 layer\cf0 .\cf6 borderWidth\cf0  = \cf9 1.5\cf0 ;\
+    \cf8 _redButton\cf0 .\cf6 tag\cf0  = \cf9 1\cf0  ;\
+    [\cf8 _redButton\cf0  \cf7 addTarget\cf0 :\cf4 self\cf0  \cf7 action\cf0 :\cf4 @selector\cf0 (redColor:) \cf7 forControlEvents\cf0 :\cf7 UIControlEventTouchUpInside\cf0 ];\
     \
-    \cf6 _greenButton\cf0 .\cf3 layer\cf0 .\cf3 borderColor\cf0  = [\cf3 UIColor\cf0  \cf4 blackColor\cf0 ].\cf3 CGColor\cf0 ;\
-    \cf6 _greenButton\cf0 .\cf3 layer\cf0 .\cf3 borderWidth\cf0  = \cf7 1.5\cf0 ;\
-    \cf6 _greenButton\cf0 .\cf3 tag\cf0  = \cf7 2\cf0  ;\
-    [\cf6 _greenButton\cf0  \cf4 addTarget\cf0 :\cf5 self\cf0  \cf4 action\cf0 :\cf5 @selector\cf0 (greenColor:) \cf4 forControlEvents\cf0 :\cf4 UIControlEventTouchUpInside\cf0 ];\
+    \cf8 _greenButton\cf0 .\cf6 layer\cf0 .\cf6 borderColor\cf0  = [\cf6 UIColor\cf0  \cf7 blackColor\cf0 ].\cf6 CGColor\cf0 ;\
+    \cf8 _greenButton\cf0 .\cf6 layer\cf0 .\cf6 borderWidth\cf0  = \cf9 1.5\cf0 ;\
+    \cf8 _greenButton\cf0 .\cf6 tag\cf0  = \cf9 2\cf0  ;\
+    [\cf8 _greenButton\cf0  \cf7 addTarget\cf0 :\cf4 self\cf0  \cf7 action\cf0 :\cf4 @selector\cf0 (greenColor:) \cf7 forControlEvents\cf0 :\cf7 UIControlEventTouchUpInside\cf0 ];\
     \
     \
-\pard\tx529\pardeftab529\pardirnatural
-\cf8 //    _blueButton.layer.borderColor = [UIColor blackColor].CGColor;\cf0 \
-\cf8 //    _blueButton.layer.borderWidth = 1.5;\cf0 \
-\cf8 //    _blueButton.tag = 2 ;\cf0 \
-\cf8 //    [_blueButton addTarget:self action:@selector(greenColor:) forControlEvents:UIControlEventTouchUpInside];\cf0 \
-\cf8 //\
+\cf3 //    _blueButton.layer.borderColor = [UIColor blackColor].CGColor;\cf0 \
+\cf3 //    _blueButton.layer.borderWidth = 1.5;\cf0 \
+\cf3 //    _blueButton.tag = 2 ;\cf0 \
+\cf3 //    [_blueButton addTarget:self action:@selector(greenColor:) forControlEvents:UIControlEventTouchUpInside];\cf0 \
+\cf3 //\
 \
 \
 \pard\tx529\pardeftab529\pardirnatural
-\cf0 - (\cf5 void\cf0 )doHighlight:(\cf3 UIButton\cf0 *)b\
-\{\
-    [b \cf4 setHighlighted\cf0 :\cf5 YES\cf0 ];\
-\}\cf8 \
+\cf0 	\cf3 //MPMusicPlaybackState playbackState = [_audioPlayer playbackState];\cf0 \
+    \
 \pard\tx529\pardeftab529\pardirnatural
-\cf5 \
+\cf3 //    MPMediaItem *item = [[ items] objectAtIndex:0];\cf0 \
+\cf3 //    NSURL *url = [item valueForProperty:MPMediaItemPropertyAssetURL];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Play the item using AVPlayer\cf0 \
+\cf3 //    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];\cf0 \
+\cf3 //    [self.audioPlayer play];\
+\
 \pard\tx529\pardeftab529\pardirnatural
-\cf0 - (\cf5 void\cf0 )redColor:(\cf6 SSColorSetting\cf0  *)colorSetting\
+\cf0 - (\cf4 void\cf0 )doHighlight:(\cf6 UIButton\cf0 *)b\
 \{\
-    \cf8 //_colorSetting.\cf0 \
+    [b \cf7 setHighlighted\cf0 :\cf4 YES\cf0 ];\
+\}\cf3 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 - (\cf4 void\cf0 )redColor:(\cf8 SSColorSetting\cf0  *)colorSetting\
+\{\
+    \cf3 //_colorSetting.\cf0 \
 \}\
 \
-    \cf3 UIView\cf0 * _redView;\
-    \cf3 UIView\cf0 * _greenView;\
-    \cf3 UIView\cf0 * _blueView;\
-    \cf3 UIView\cf0 * _yellowView;\
+    \cf6 UIView\cf0 * _redView;\
+    \cf6 UIView\cf0 * _greenView;\
+    \cf6 UIView\cf0 * _blueView;\
+    \cf6 UIView\cf0 * _yellowView;\
 \
     \
 \pard\tx529\pardeftab529\pardirnatural
-\cf8 //    _colorSetting = [[SSColorSetting alloc] init];\cf0 \
-\cf8 //    \cf0 \
-\cf8 //    [_colorSetting setRedAmount:255];\cf0 \
-\cf8 //    [_colorSetting setGreenAmount:255];\cf0 \
-\cf8 //    [_colorSetting setBlueAmount:255];\
+\cf3 //    _colorSetting = [[SSColorSetting alloc] init];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    [_colorSetting setRedAmount:255];\cf0 \
+\cf3 //    [_colorSetting setGreenAmount:255];\cf0 \
+\cf3 //    [_colorSetting setBlueAmount:255];\
 \
 \pard\tx529\pardeftab529\pardirnatural
 \cf0 \
 \pard\tx529\pardeftab529\pardirnatural
-\cf5 \
-\cf8 //\cf0 \
-\cf8 //- (IBAction)changeColor:(SSColorSetting*)sender\cf0 \
-\cf8 //\{\cf0 \
-\cf8 //    UIButton *buttonClicked = (UIButton *)sender;\cf0 \
-\cf8 //    \cf0 \
-\cf8 //    if (buttonClicked.tag == 1)\cf0 \
-\cf8 //    \{\cf0 \
-\cf8 //        _redValue.text = @"255";\cf0 \
-\cf8 //        _greenValue.text = @"0";\cf0 \
-\cf8 //        _blueValue.text = @"0";\cf0 \
-\cf8 //    \}\cf0 \
-\cf8 //    \cf0 \
-\cf8 //    _redValue.text = [NSString stringWithFormat:@"%i", buttonClicked.tag];\cf0 \
-\cf8 //    \cf0 \
-\cf8 //    [self performSelector:@selector(doHighlight:) withObject:sender afterDelay:0];\cf0 \
-\cf8 //    \cf0 \
-\cf8 //\}\cf5 \
-static\cf0  \cf3 OSStatus\cf0 	AudioUnitRenderCallback (\cf5 void\cf0  *inRefCon,\
+\cf4 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //\cf0 \
+\cf3 //- (IBAction)changeColor:(SSColorSetting*)sender\cf0 \
+\cf3 //\{\cf0 \
+\cf3 //    UIButton *buttonClicked = (UIButton *)sender;\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    if (buttonClicked.tag == 1)\cf0 \
+\cf3 //    \{\cf0 \
+\cf3 //        _redValue.text = @"255";\cf0 \
+\cf3 //        _greenValue.text = @"0";\cf0 \
+\cf3 //        _blueValue.text = @"0";\cf0 \
+\cf3 //    \}\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    _redValue.text = [NSString stringWithFormat:@"%i", buttonClicked.tag];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    [self performSelector:@selector(doHighlight:) withObject:sender afterDelay:0];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //\}\cf4 \
+static\cf0  \cf6 OSStatus\cf0 	AudioUnitRenderCallback (\cf4 void\cf0  *inRefCon,\
                                          AudioUnitRenderActionFlags *ioActionFlags,\
-                                         \cf5 const\cf0  AudioTimeStamp *inTimeStamp,\
-                                         \cf3 UInt32\cf0  inBusNumber,\
-                                         \cf3 UInt32\cf0  inNumberFrames,\
+                                         \cf4 const\cf0  AudioTimeStamp *inTimeStamp,\
+                                         \cf6 UInt32\cf0  inBusNumber,\
+                                         \cf6 UInt32\cf0  inNumberFrames,\
                                          AudioBufferList *ioData) \{\
     \
-    \cf3 OSStatus\cf0  err = AudioUnitRender(audioUnitWrapper->audioUnit, ioActionFlags, inTimeStamp, \cf7 1\cf0 , inNumberFrames, ioData);\
+    \cf6 OSStatus\cf0  err = AudioUnitRender(audioUnitWrapper->audioUnit, ioActionFlags, inTimeStamp, \cf9 1\cf0 , inNumberFrames, ioData);\
     \
-    \cf5 if\cf0 (err != \cf7 0\cf0 ) \cf4 NSLog\cf0 (\cf9 @"AudioUnitRender status is %d"\cf0 , err);\
-    \cf8 // These values should be in a more conventional location for a bunch of preprocessor defines in your real code\cf0 \
+    \cf4 if\cf0 (err != \cf9 0\cf0 ) \cf7 NSLog\cf0 (\cf10 @"AudioUnitRender status is %d"\cf0 , err);\
+    \cf3 // These values should be in a more conventional location for a bunch of preprocessor defines in your real code\cf0 \
 \pard\tx529\pardeftab529\pardirnatural
-\cf10 #define DBOFFSET -\cf7 74.0\cf10 \
+\cf2 #define DBOFFSET -\cf9 74.0\cf2 \
 \pard\tx529\pardeftab529\pardirnatural
-\cf0     \cf8 // DBOFFSET is An offset that will be used to normalize the decibels to a maximum of zero.\cf0 \
-    \cf8 // This is an estimate, you can do your own or construct an experiment to find the right value\cf0 \
+\cf0     \cf3 // DBOFFSET is An offset that will be used to normalize the decibels to a maximum of zero.\cf0 \
+    \cf3 // This is an estimate, you can do your own or construct an experiment to find the right value\cf0 \
 \pard\tx529\pardeftab529\pardirnatural
-\cf10 #define LOWPASSFILTERTIMESLICE \cf7 .001\cf10 \
+\cf2 #define LOWPASSFILTERTIMESLICE \cf9 .001\cf2 \
 \pard\tx529\pardeftab529\pardirnatural
-\cf0     \cf8 // LOWPASSFILTERTIMESLICE is part of the low pass filter and should be a small positive value\cf0 \
+\cf0     \cf3 // LOWPASSFILTERTIMESLICE is part of the low pass filter and should be a small positive value\cf0 \
     \
-    \cf3 SInt16\cf0 * samples = (SInt16*)(ioData->mBuffers[\cf7 0\cf0 ].mData); \cf8 // Step 1: get an array of your samples that you can loop through. Each sample contains the amplitude.\cf0 \
+    \cf6 SInt16\cf0 * samples = (SInt16*)(ioData->mBuffers[\cf9 0\cf0 ].mData); \cf3 // Step 1: get an array of your samples that you can loop through. Each sample contains the amplitude.\cf0 \
     \
-    \cf3 Float32\cf0  decibels = \cf10 DBOFFSET\cf0 ; \cf8 // When we have no signal we'll leave this on the lowest setting\cf0 \
-    \cf3 Float32\cf0  currentFilteredValueOfSampleAmplitude, previousFilteredValueOfSampleAmplitude; \cf8 // We'll need these in the low-pass filter\cf0 \
-    \cf3 Float32\cf0  peakValue = \cf10 DBOFFSET\cf0 ; \cf8 // We'll end up storing the peak value here\cf0 \
+    \cf6 Float32\cf0  decibels = \cf2 DBOFFSET\cf0 ; \cf3 // When we have no signal we'll leave this on the lowest setting\cf0 \
+    \cf6 Float32\cf0  currentFilteredValueOfSampleAmplitude, previousFilteredValueOfSampleAmplitude; \cf3 // We'll need these in the low-pass filter\cf0 \
+    \cf6 Float32\cf0  peakValue = \cf2 DBOFFSET\cf0 ; \cf3 // We'll end up storing the peak value here\cf0 \
     \
-    \cf5 for\cf0  (\cf5 int\cf0  i=\cf7 0\cf0 ; i < inNumberFrames; i++) \{\
+    \cf4 for\cf0  (\cf4 int\cf0  i=\cf9 0\cf0 ; i < inNumberFrames; i++) \{\
         \
-        \cf3 Float32\cf0  absoluteValueOfSampleAmplitude = \cf4 abs\cf0 (samples[i]); \cf8 //Step 2: for each sample, get its amplitude's absolute value.\cf0 \
+        \cf6 Float32\cf0  absoluteValueOfSampleAmplitude = \cf7 abs\cf0 (samples[i]); \cf3 //Step 2: for each sample, get its amplitude's absolute value.\cf0 \
         \
-        \cf8 // Step 3: for each sample's absolute value, run it through a simple low-pass filter\cf0 \
-        \cf8 // Begin low-pass filter\cf0 \
-        currentFilteredValueOfSampleAmplitude = \cf10 LOWPASSFILTERTIMESLICE\cf0  * absoluteValueOfSampleAmplitude + (\cf7 1.0\cf0  - \cf10 LOWPASSFILTERTIMESLICE\cf0 ) * previousFilteredValueOfSampleAmplitude;\
+        \cf3 // Step 3: for each sample's absolute value, run it through a simple low-pass filter\cf0 \
+        \cf3 // Begin low-pass filter\cf0 \
+        currentFilteredValueOfSampleAmplitude = \cf2 LOWPASSFILTERTIMESLICE\cf0  * absoluteValueOfSampleAmplitude + (\cf9 1.0\cf0  - \cf2 LOWPASSFILTERTIMESLICE\cf0 ) * previousFilteredValueOfSampleAmplitude;\
         previousFilteredValueOfSampleAmplitude = currentFilteredValueOfSampleAmplitude;\
-        \cf3 Float32\cf0  amplitudeToConvertToDB = currentFilteredValueOfSampleAmplitude;\
-        \cf8 // End low-pass filter\cf0 \
+        \cf6 Float32\cf0  amplitudeToConvertToDB = currentFilteredValueOfSampleAmplitude;\
+        \cf3 // End low-pass filter\cf0 \
         \
-        \cf3 Float32\cf0  sampleDB = \cf7 20.0\cf0 *\cf4 log10\cf0 (amplitudeToConvertToDB) + \cf10 DBOFFSET\cf0 ;\
-        \cf8 // Step 4: for each sample's filtered absolute value, convert it into decibels\cf0 \
-        \cf8 // Step 5: for each sample's filtered absolute value in decibels, add an offset value that normalizes the clipping point of the device to zero.\cf0 \
+        \cf6 Float32\cf0  sampleDB = \cf9 20.0\cf0 *\cf7 log10\cf0 (amplitudeToConvertToDB) + \cf2 DBOFFSET\cf0 ;\
+        \cf3 // Step 4: for each sample's filtered absolute value, convert it into decibels\cf0 \
+        \cf3 // Step 5: for each sample's filtered absolute value in decibels, add an offset value that normalizes the clipping point of the device to zero.\cf0 \
         \
-        \cf5 if\cf0 ((sampleDB == sampleDB) && (sampleDB != -\cf10 DBL_MAX\cf0 )) \{ \cf8 // if it's a rational number and isn't infinite\cf0 \
+        \cf4 if\cf0 ((sampleDB == sampleDB) && (sampleDB != -\cf2 DBL_MAX\cf0 )) \{ \cf3 // if it's a rational number and isn't infinite\cf0 \
             \
-            \cf5 if\cf0 (sampleDB > peakValue) peakValue = sampleDB; \cf8 // Step 6: keep the highest value you find.\cf0 \
-            decibels = peakValue; \cf8 // final value\cf0 \
+            \cf4 if\cf0 (sampleDB > peakValue) peakValue = sampleDB; \cf3 // Step 6: keep the highest value you find.\cf0 \
+            decibels = peakValue; \cf3 // final value\cf0 \
         \}\
     \}\
     \
-    \cf4 NSLog\cf0 (\cf9 @"decibel level is %f"\cf0 , decibels);\
+    \cf7 NSLog\cf0 (\cf10 @"decibel level is %f"\cf0 , decibels);\
     \
-    \cf5 for\cf0  (\cf3 UInt32\cf0  i=\cf7 0\cf0 ; i < ioData->mNumberBuffers; i++) \{ \cf8 // This is only if you need to silence the output of the audio unit\cf0 \
-        \cf10 memset\cf0 (ioData->mBuffers[i].mData, \cf7 0\cf0 , ioData->mBuffers[i].mDataByteSize); \cf8 // Delete if you need audio output as well as input\cf0 \
+    \cf4 for\cf0  (\cf6 UInt32\cf0  i=\cf9 0\cf0 ; i < ioData->mNumberBuffers; i++) \{ \cf3 // This is only if you need to silence the output of the audio unit\cf0 \
+        \cf2 memset\cf0 (ioData->mBuffers[i].mData, \cf9 0\cf0 , ioData->mBuffers[i].mDataByteSize); \cf3 // Delete if you need audio output as well as input\cf0 \
     \}\
     \
-    \cf5 return\cf0  err;\
+    \cf4 return\cf0  err;\
 \}\
-\}}
+\}\
+\
+\
+\
+============\
+SSSpecialViewController Backup\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //\cf0 \
+\cf3 //  SSSpecialViewController.m\cf0 \
+\cf3 //  lightcontroller\cf0 \
+\cf3 //\cf0 \
+\cf3 //  Created by Glenn Vassallo on 24/08/13.\cf0 \
+\cf3 //  Copyright (c) 2013 Swift Software. All rights reserved.\cf0 \
+\cf3 //\cf0 \
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #import \cf10 "SSSpecialViewController.h"\cf2 \
+#import \cf10 <Foundation/Foundation.h>\cf2 \
+#import \cf10 <CoreAudio/CoreAudioTypes.h>\cf2 \
+#import \cf10 <AudioToolbox/AUGraph.h>\cf2 \
+#import \cf10 <QuartzCore/QuartzCore.h>\cf2 \
+#import \cf10 <AVFoundation/AVAudioRecorder.h>\cf2 \
+#import \cf10 <MediaPlayer/MediaPlayer.h>\cf2 \
+#import \cf10 "SSColorSetting.h"\cf2 \
+#import \cf10 "SSUtilities.h"\cf2 \
+#import \cf10 "SSGlobalSettings.h"\cf2 \
+#import \cf10 "GCDAsyncSocket.h"\cf2 \
+#import \cf10 "MeterTable.h"\cf2 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 @interface\cf0  \cf8 SSSpecialViewController\cf0  ()\
+\
+\cf4 @end\cf0 \
+\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //AudioComponentInstance audioUnit = NULL;\cf0 \
+\
+\cf3 //#define kOutputBus 0\cf0 \
+\cf3 //#define kInputBus 1\cf0 \
+\
+\
+\cf3 //#pragma mark Audio session callbacks_______________________\cf0 \
+\cf3 //\cf0 \
+\cf3 //// Audio session callback function for responding to audio route changes. If playing\cf0 \
+\cf3 ////		back application audio when the headset is unplugged, this callback pauses\cf0 \
+\cf3 ////		playback and displays an alert that allows the user to resume or stop playback.\cf0 \
+\cf3 ////\cf0 \
+\cf3 ////		The system takes care of iPod audio pausing during route changes--this callback\cf0 \
+\cf3 ////		is not involved with pausing playback of iPod audio.\cf0 \
+\cf3 //void audioRouteChangeListenerCallback (\cf0 \
+\cf3 //                                       void                      *inUserData,\cf0 \
+\cf3 //                                       AudioSessionPropertyID    inPropertyID,\cf0 \
+\cf3 //                                       UInt32                    inPropertyValueSize,\cf0 \
+\cf3 //                                       const void                *inPropertyValue\cf0 \
+\cf3 //                                       ) \{\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	// ensure that this callback was invoked for a route change\cf0 \
+\cf3 //	if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return;\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	// This callback, being outside the implementation block, needs a reference to the\cf0 \
+\cf3 //	//		MainViewController object, which it receives in the inUserData parameter.\cf0 \
+\cf3 //	//		You provide this reference when registering this callback (see the call to\cf0 \
+\cf3 //	//		AudioSessionAddPropertyListener).\cf0 \
+\cf3 //	SSSpecialViewController *controller = (__bridge SSSpecialViewController *) inUserData;\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	// if application sound is not playing, there's nothing to do, so return.\cf0 \
+\cf3 //	if (controller.appSoundPlayer.playing == 0 ) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		NSLog (@"Audio route change while application audio is stopped.");\cf0 \
+\cf3 //		return;\cf0 \
+\cf3 //		\cf0 \
+\cf3 //	\} else \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		// Determines the reason for the route change, to ensure that it is not\cf0 \
+\cf3 //		//		because of a category change.\cf0 \
+\cf3 ////		CFDictionaryRef	routeChangeDictionary = inPropertyValue;\cf0 \
+\cf3 ////		\cf0 \
+\cf3 ////		CFNumberRef routeChangeReasonRef =\cf0 \
+\cf3 ////        CFDictionaryGetValue (\cf0 \
+\cf3 ////                              routeChangeDictionary,\cf0 \
+\cf3 ////                              CFSTR (kAudioSession_AudioRouteChangeKey_Reason)\cf0 \
+\cf3 ////                              );\cf0 \
+\cf3 ////        \cf0 \
+\cf3 ////		SInt32 routeChangeReason;\cf0 \
+\cf3 ////		\cf0 \
+\cf3 ////		CFNumberGetValue (\cf0 \
+\cf3 ////                          routeChangeReasonRef,\cf0 \
+\cf3 ////                          kCFNumberSInt32Type,\cf0 \
+\cf3 ////                          &routeChangeReason\cf0 \
+\cf3 ////                          );\cf0 \
+\cf3 //		\cf0 \
+\cf3 //		// "Old device unavailable" indicates that a headset was unplugged, or that the\cf0 \
+\cf3 //		//	device was removed from a dock connector that supports audio output. This is\cf0 \
+\cf3 //		//	the recommended test for when to pause audio.\cf0 \
+\cf3 ////		if (routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) \{\cf0 \
+\cf3 ////            \cf0 \
+\cf3 ////			[controller.appSoundPlayer pause];\cf0 \
+\cf3 ////			NSLog (@"Output device removed, so application audio was paused.");\cf0 \
+\cf3 ////            \cf0 \
+\cf3 ////			UIAlertView *routeChangeAlertView =\cf0 \
+\cf3 ////            [[UIAlertView alloc]	initWithTitle: NSLocalizedString (@"Playback Paused", @"Title for audio hardware route-changed alert view")\cf0 \
+\cf3 ////                                       message: NSLocalizedString (@"Audio output was changed", @"Explanation for route-changed alert view")\cf0 \
+\cf3 ////                                      delegate: controller\cf0 \
+\cf3 ////                             cancelButtonTitle: NSLocalizedString (@"StopPlaybackAfterRouteChange", @"Stop button title")\cf0 \
+\cf3 ////                             otherButtonTitles: NSLocalizedString (@"ResumePlaybackAfterRouteChange", @"Play button title"), nil];\cf0 \
+\cf3 ////			[routeChangeAlertView show];\cf0 \
+\cf3 ////			// release takes place in alertView:clickedButtonAtIndex: method\cf0 \
+\cf3 ////            \cf0 \
+\cf3 ////		\} else \{\cf0 \
+\cf3 ////            \cf0 \
+\cf3 ////			NSLog (@"A route change occurred that does not require pausing of application audio.");\cf0 \
+\cf3 ////		\}\cf0 \
+\cf3 //	\}\cf0 \
+\cf3 //\}\cf0 \
+\
+\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 @implementation\cf0  SSSpecialViewController\
+\{\
+    \cf8 MeterTable\cf0  meterTable;\
+    \cf4 BOOL\cf0  _isPlaying;\
+\}\
+\
+\cf6 NSString\cf0  *switchEffect = \cf10 @"3"\cf0 ;\
+\cf4 int\cf0  counter = \cf9 0\cf0 ;\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //@synthesize connectNowButton;           // the button to connect to the dmx server\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 @synthesize\cf0  acceleratorButton;          \cf3 //\cf0 \
+\cf4 @synthesize\cf0  artworkItem;				\cf3 // the now-playing media item's artwork image, displayed in the Navigation bar\cf0 \
+\cf4 @synthesize\cf0  userMediaItemCollection;	\cf3 // the media item collection created by the user, using the media item picker\cf0 \
+\cf4 @synthesize\cf0  playBarButton;				\cf3 // the button for invoking Play on the music player\cf0 \
+\cf4 @synthesize\cf0  pauseBarButton;				\cf3 // the button for invoking Pause on the music player\cf0 \
+\cf4 @synthesize\cf0  musicPlayer;				\cf3 // the music player, which plays media items from the iPod library\cf0 \
+\cf4 @synthesize\cf0  navigationBar;				\cf3 // the application's Navigation bar\cf0 \
+\cf4 @synthesize\cf0  noArtworkImage;				\cf3 // an image to display when a media item has no associated artwork\cf0 \
+\cf4 @synthesize\cf0  backgroundColorTimer;		\cf3 // a timer for changing the background color -- represents an application that is\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //		doing something else while iPod music is playing\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 @synthesize\cf0  nowPlayingLabel;			\cf3 // descriptive text shown on the main screen about the now-playing media item\cf0 \
+\cf4 @synthesize\cf0  appSoundButton;				\cf3 // the button to invoke playback for the application sound\cf0 \
+\cf4 @synthesize\cf0  addOrShowMusicButton;		\cf3 // the button for invoking the media item picker. if the user has already\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //		specified a media item collection, the title changes to "Show Music" and\cf0 \
+\cf3 //		the button invokes a table view that shows the specified collection\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 @synthesize\cf0  appSoundPlayer;				\cf3 // An AVAudioPlayer object for playing application sound\cf0 \
+\cf4 @synthesize\cf0  soundFileURL;				\cf3 // The path to the application sound\cf0 \
+\cf4 @synthesize\cf0  interruptedOnPlayback;		\cf3 // A flag indicating whether or not the application was interrupted during\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //		application audio playback\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 @synthesize\cf0  playedMusicOnce;			\cf3 // A flag indicating if the user has played iPod library music at least one time\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //		since application launch.\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf4 @synthesize\cf0  playing;					\cf3 // An application that responds to interruptions must keep track of its playing/\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //		not-playing state.\cf0 \
+\
+\
+\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma Button Manager Methods________________________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //////////////////////////////////////////////\cf0 \
+\cf3 // Button Manager Methods.,\cf0 \
+\cf3 //////////////////////////////////////////////\cf0 \
+- (\cf4 void\cf0 )stateManager :(\cf6 NSString\cf0 *) selectedFeature\
+\{\
+    \cf4 if\cf0  (![selectedFeature \cf7 isEqual\cf0 : \cf10 @"tilt"\cf0 ])\
+    \{\
+        [[\cf6 UIAccelerometer\cf0  \cf7 sharedAccelerometer\cf0 ] \cf7 setDelegate\cf0 :\cf4 nil\cf0 ];\
+    \}\
+    \cf4 if\cf0  (!([selectedFeature \cf7 isEqual\cf0 : \cf10 @"mic"\cf0 ]))\
+    \{\
+        [\cf8 recorder\cf0  \cf7 stop\cf0 ];\
+        \cf8 recorder\cf0  = \cf4 nil\cf0 ;\
+        \cf4 if\cf0 (\cf8 levelTimer\cf0 )\
+        \{\
+            [\cf8 levelTimer\cf0  \cf7 invalidate\cf0 ];\
+            \cf8 levelTimer\cf0  = \cf4 nil\cf0 ;\
+        \}\
+    \}\
+    \cf4 if\cf0  (!([selectedFeature \cf7 isEqual\cf0 : \cf10 @"music"\cf0 ]))\
+    \{\
+        [\cf8 _audioPlayer\cf0  \cf7 stop\cf0 ];\
+    \}\
+    \cf4 if\cf0  (!([selectedFeature \cf7 isEqual\cf0 : \cf10 @"photo"\cf0 ]))\
+    \{\
+        \cf3 //stop photo feature\cf0 \
+    \}\
+\}\
+\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark accelerometer Methods________________________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //////////////////////////////////////////////\cf0 \
+\cf3 // Accelerometer Methods\cf0 \
+\cf3 //////////////////////////////////////////////\cf0 \
+\
+- (\cf4 IBAction\cf0 )accelerometerToggle:(\cf4 id\cf0 )sender\
+\{\
+\
+    \
+    \cf4 if\cf0  ([\cf6 UIAccelerometer\cf0  \cf7 sharedAccelerometer\cf0 ].\cf6 delegate\cf0  == \cf4 nil\cf0 )\
+    \{\
+        [\cf4 self\cf0  \cf11 stateManager\cf0  :\cf10 @"tilt"\cf0 ];\
+    \
+        [[\cf6 UIAccelerometer\cf0  \cf7 sharedAccelerometer\cf0 ] \cf7 setUpdateInterval\cf0 :\cf9 0.2\cf0 ];\
+        [[\cf6 UIAccelerometer\cf0  \cf7 sharedAccelerometer\cf0 ] \cf7 setDelegate\cf0 :\cf4 self\cf0 ];\
+        \
+        \cf4 self\cf0 .\cf8 featureDescription\cf0 .\cf6 text\cf0  = \cf10 @"Tilt Adjust"\cf0 ;\
+    \}\
+    \cf4 else\cf0 \
+    \{\
+        [[\cf6 UIAccelerometer\cf0  \cf7 sharedAccelerometer\cf0 ] \cf7 setDelegate\cf0 :\cf4 nil\cf0 ];\
+        \
+        \cf4 self\cf0 .\cf8 featureDescription\cf0 .\cf6 text\cf0  = \cf10 @"Tilt Adjust Off"\cf0 ;\
+    \}\
+\}\
+\
+- (\cf4 void\cf0 )accelerometer:(\cf6 UIAccelerometer\cf0  *)accelerometer didAccelerate:(\cf6 UIAcceleration\cf0  *)acceleration\{\
+   \
+    \cf8 accelerationValue\cf0 [\cf9 0\cf0 ] = acceleration.\cf6 x\cf0 ;\
+    \cf8 accelerationValue\cf0 [\cf9 1\cf0 ] = acceleration.\cf6 y\cf0 ;\
+    \cf8 accelerationValue\cf0 [\cf9 2\cf0 ] = acceleration.\cf6 z\cf0 ;\
+    \cf7 NSLog\cf0 (\cf10 @"accelerometer: X-axis: %1.1f, Y-axis: %1.1f, Z-axis: %1.1f"\cf0 , acceleration.\cf6 x\cf0 , acceleration.\cf6 y\cf0 , acceleration.\cf6 z\cf0 );\
+    \
+    \cf6 NSString\cf0  *colorHex = \cf10 @"FFFFFF"\cf0 ;\
+    \
+    \cf4 int\cf0  redInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (\cf8 accelerationValue\cf0 [\cf9 0\cf0 ] * \cf9 127\cf0 ));\
+    \cf4 int\cf0  greenInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (\cf8 accelerationValue\cf0 [\cf9 1\cf0 ] * \cf9 127\cf0 ));\
+    \cf4 int\cf0  blueInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (\cf8 accelerationValue\cf0 [\cf9 2\cf0 ] * \cf9 127\cf0 ));\
+    \
+    \cf7 NSLog\cf0 (\cf10 @"accelerometer: redInt: %i"\cf0 , redInt);\
+    \cf7 NSLog\cf0 (\cf10 @"accelerometer: greenInt: %i"\cf0 , greenInt);\
+    \cf7 NSLog\cf0 (\cf10 @"accelerometer: blueInt: %i"\cf0 , blueInt);\
+    \
+    colorHex = [\cf8 utils\cf0  \cf11 createHexColorFromIntColors\cf0 :redInt :greenInt :blueInt];\
+    \cf6 NSString\cf0  *lwdpPacket = [\cf8 utils\cf0  \cf11 createLwdpPacket\cf0 :\cf10 @"11"\cf0  :colorHex];\
+\
+    \cf7 NSLog\cf0 (\cf10 @"accelerometer: lwdpPacket: %@"\cf0 , lwdpPacket);   \
+    [\cf8 conn\cf0  \cf11 sendPacket\cf0 :lwdpPacket];\
+\
+\}\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Microphone Methods________________________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //////////////////////////////////////////////\cf0 \
+\cf3 // Microphone Methods\cf0 \
+\cf3 //////////////////////////////////////////////\cf0 \
+\
+- (\cf4 IBAction\cf0 )microphoneToggle:(\cf4 id\cf0 )sender\
+\{\
+    \
+    \cf6 NSURL\cf0  *url = [\cf6 NSURL\cf0  \cf7 fileURLWithPath\cf0 :\cf10 @"/dev/null"\cf0 ];\
+    \
+  	\cf6 NSDictionary\cf0  *settings = [\cf6 NSDictionary\cf0  \cf7 dictionaryWithObjectsAndKeys\cf0 :\
+                              [\cf6 NSNumber\cf0  \cf7 numberWithFloat\cf0 : \cf9 44100.0\cf0 ],                 \cf6 AVSampleRateKey\cf0 ,\
+                              [\cf6 NSNumber\cf0  \cf7 numberWithInt\cf0 : \cf7 kAudioFormatAppleLossless\cf0 ], \cf6 AVFormatIDKey\cf0 ,\
+                              [\cf6 NSNumber\cf0  \cf7 numberWithInt\cf0 : \cf9 1\cf0 ],                         \cf6 AVNumberOfChannelsKey\cf0 ,\
+                              [\cf6 NSNumber\cf0  \cf7 numberWithInt\cf0 : \cf7 AVAudioQualityMax\cf0 ],         \cf6 AVEncoderAudioQualityKey\cf0 ,\
+                              \cf4 nil\cf0 ];\
+    \
+  	\cf6 NSError\cf0  *error;\
+    \
+    \
+    \cf4 if\cf0  (\cf8 levelTimer\cf0  == \cf4 nil\cf0 )\
+    \{\
+        \cf8 recorder\cf0  = [[\cf6 AVAudioRecorder\cf0  \cf7 alloc\cf0 ] \cf7 initWithURL\cf0 :url \cf7 settings\cf0 :settings \cf7 error\cf0 :&error];\
+    \
+        \cf4 if\cf0  (\cf8 recorder\cf0 )\
+        \{\
+            [\cf4 self\cf0  \cf11 stateManager\cf0 :\cf10 @"mic"\cf0 ];\
+            \
+            [\cf8 recorder\cf0  \cf7 prepareToRecord\cf0 ];\
+            \cf8 recorder\cf0 .\cf6 meteringEnabled\cf0  = \cf4 YES\cf0 ;\
+            [\cf8 recorder\cf0  \cf7 record\cf0 ];\
+            \cf8 levelTimer\cf0  = [\cf6 NSTimer\cf0  \cf7 scheduledTimerWithTimeInterval\cf0 : \cf9 0.1\cf0  \cf7 target\cf0 : \cf4 self\cf0  \cf7 selector\cf0 : \cf4 @selector\cf0 (levelTimerCallback:) \cf7 userInfo\cf0 : \cf4 nil\cf0  \cf7 repeats\cf0 : \cf4 YES\cf0 ];\
+            \
+            \cf3 // This is where we do our sampling\cf0 \
+            \
+            \
+            \
+             \cf4 self\cf0 .\cf8 featureDescription\cf0 .\cf6 text\cf0  = \cf10 @"Microphone"\cf0 ;\
+        \}\
+        \cf4 else\cf0 \
+        \{\
+           \cf3 // NSLog([@"error description: %@",error]);\cf0 \
+        \}\
+    \}\
+    \cf4 else\cf0 \
+    \{\
+        \cf4 if\cf0 (\cf8 levelTimer\cf0 )\
+        \{\
+            [\cf8 levelTimer\cf0  \cf7 invalidate\cf0 ];\
+            \cf8 levelTimer\cf0  = \cf4 nil\cf0 ;\
+        \}\
+        [\cf8 recorder\cf0  \cf7 stop\cf0 ];\
+        \cf8 recorder\cf0  = \cf4 nil\cf0 ;\
+        \cf4 self\cf0 .\cf8 featureDescription\cf0 .\cf6 text\cf0  = \cf10 @"Mic Off"\cf0 ;\
+    \}\
+\}\
+\
+\
+- (\cf4 void\cf0 )levelTimerCallback:(\cf6 NSTimer\cf0  *)timer\
+\{\
+    [\cf8 recorder\cf0  \cf7 updateMeters\cf0 ];\
+	\cf7 NSLog\cf0 (\cf10 @"levelTimerCallback: Average input: %f Peak input: %f"\cf0 , [\cf8 recorder\cf0  \cf7 averagePowerForChannel\cf0 :\cf9 0\cf0 ], [\cf8 recorder\cf0  \cf7 peakPowerForChannel\cf0 :\cf9 0\cf0 ]);\
+    \
+    \
+    \cf4 const\cf0  \cf4 double\cf0  ALPHA = \cf9 0.05\cf0 ;\
+    \cf4 double\cf0  peakPowerForChannel = \cf7 pow\cf0 (\cf9 10\cf0 , (\cf9 0.05\cf0  * [\cf8 recorder\cf0  \cf7 peakPowerForChannel\cf0 :\cf9 0\cf0 ]));\
+    \cf4 float\cf0  lowPassResults = ALPHA * peakPowerForChannel + (\cf9 1.0\cf0  - ALPHA); \cf3 // * lowPassResults;\cf0 \
+    \cf7 NSLog\cf0 (\cf10 @"levelTimerCallback: lowPassResults: %f"\cf0 ,(lowPassResults*\cf9 100.0f\cf0 ));\
+    \
+    \cf4 float\cf0  dB = \cf9 10\cf0  * \cf7 log10\cf0 (\cf7 abs\cf0 ([\cf8 recorder\cf0  \cf7 peakPowerForChannel\cf0 :\cf9 0\cf0 ]));\
+     \cf3 //NSLog(@"levelTimerCallback: db: %f",(dB));\cf0 \
+    \
+    \
+    \cf6 NSString\cf0  *colorHex = \cf10 @"FFFFFF"\cf0 ;\
+    \
+\
+    \
+    \cf4 int\cf0  redInt = \cf9 255\cf0 ; \cf3 //abs((int) (([recorder averagePowerForChannel:0] + 120) * 2));\cf0 \
+    \cf4 int\cf0  greenInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) dB * \cf9 10\cf0 );\
+    \cf4 int\cf0  blueInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) dB * \cf9 10\cf0 );\
+    \
+    \
+    \cf7 NSLog\cf0 (\cf10 @"levelTimerCallback: redInt: %i, greenInt: %i, blueInt %i"\cf0 , redInt, greenInt, blueInt);\
+    \
+    colorHex = [\cf8 utils\cf0  \cf11 createHexColorFromIntColors\cf0 :redInt :greenInt :blueInt];\
+    \
+    \cf3 //NSLog(@"accelerometer: colorHex: %@", colorHex);\cf0 \
+\
+    colorHex = [\cf8 utils\cf0  \cf11 createHexColorFromIntColors\cf0 :redInt :greenInt :blueInt];\
+    \cf6 NSString\cf0  *lwdpPacket = [\cf8 utils\cf0  \cf11 createLwdpPacket\cf0 :\cf10 @"11"\cf0  :colorHex];\
+    \
+    \cf7 NSLog\cf0 (\cf10 @"levelTimerCallback: lwdpPacket: %@"\cf0 , lwdpPacket);\
+    [\cf8 conn\cf0  \cf11 sendPacket\cf0 :lwdpPacket];\
+    \
+\}\
+\
+\
+- (\cf4 void\cf0 )audioRecorderDidFinishRecording:(\cf6 AVAudioRecorder\cf0  *) aRecorder successfully:(\cf4 BOOL\cf0 )flag\
+\{\
+    \
+    \cf7 NSLog\cf0  (\cf10 @"audioRecorderDidFinishRecording:successfully:"\cf0 );\
+    \cf3 // your actions here\cf0 \
+    \
+\}\
+\
+\cf3 //////////////////////////////////////////////\cf0 \
+\cf3 // Music Player Methods\cf0 \
+\cf3 //////////////////////////////////////////////\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Music Player Config__________________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+- (\cf4 void\cf0 )configureAudioPlayer \{\
+    \cf6 NSURL\cf0  *audioFileURL = [[\cf6 NSBundle\cf0  \cf7 mainBundle\cf0 ] \cf7 URLForResource\cf0 :\cf10 @"DemoSong"\cf0  \cf7 withExtension\cf0 :\cf10 @"m4a"\cf0 ];\
+    \cf6 NSError\cf0  *error;\
+    \cf4 self\cf0 .\cf8 audioPlayer\cf0  = [[\cf6 AVAudioPlayer\cf0  \cf7 alloc\cf0 ] \cf7 initWithContentsOfURL\cf0 :audioFileURL \cf7 error\cf0 :&error];\
+    \cf4 if\cf0  (error) \{\
+        \cf7 NSLog\cf0 (\cf10 @"%@"\cf0 , [error \cf7 localizedDescription\cf0 ]);\
+    \}\
+    [\cf8 _audioPlayer\cf0  \cf7 setNumberOfLoops\cf0 :-\cf9 1\cf0 ];\
+    [\cf8 _audioPlayer\cf0  \cf7 setMeteringEnabled\cf0 :\cf4 YES\cf0 ];\
+    \cf3 // [_visualizer setAudioPlayer:_audioPlayer];\cf0 \
+\}\
+\
+- (\cf4 void\cf0 )configureAudioSession \{\
+    \cf6 NSError\cf0  *error;\
+    [[\cf6 AVAudioSession\cf0  \cf7 sharedInstance\cf0 ] \cf7 setCategory\cf0 :\cf6 AVAudioSessionCategoryPlayback\cf0  \cf7 error\cf0 :&error];\
+    \
+    \cf4 if\cf0  (error) \{\
+        \cf7 NSLog\cf0 (\cf10 @"Error setting category: %@"\cf0 , [error \cf7 description\cf0 ]);\
+    \}\
+\}\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Music control________________________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 // A toggle control for playing or pausing iPod library music playback, invoked\cf0 \
+\cf3 //		when the user taps the 'playBarButton' in the Navigation bar.\cf0 \
+- (\cf4 IBAction\cf0 ) playOrPauseMusic: (\cf4 id\cf0 )sender \{\
+    \
+	\cf3 //MPMusicPlaybackState playbackState = [_audioPlayer playbackState];\cf0 \
+    \
+    \cf4 if\cf0  (\cf8 _isPlaying\cf0 ) \{\
+        \cf3 // Pause audio here\cf0 \
+        [\cf8 _audioPlayer\cf0  \cf7 pause\cf0 ];\
+        \cf4 self\cf0 .\cf8 featureDescription\cf0 .\cf6 text\cf0  = \cf10 @"Music Paused"\cf0 ;\
+        \cf3 //[_toolBar setItems:_playItems];  // toggle play/pause button\cf0 \
+    \}\
+    \cf4 else\cf0  \{\
+        \cf3 // Play audio here\cf0 \
+        [\cf8 _audioPlayer\cf0  \cf7 play\cf0 ];\
+        [\cf4 self\cf0  \cf11 stateManager\cf0 :\cf10 @"music"\cf0 ];\
+        \cf4 self\cf0 .\cf8 featureDescription\cf0 .\cf6 text\cf0  = \cf10 @"Music"\cf0 ;\
+        \
+        \cf3 //[_toolBar setItems:_pauseItems]; // toggle play/pause button\cf0 \
+    \}\
+    \cf8 _isPlaying\cf0  = !\cf8 _isPlaying\cf0 ;\
+    \
+    \
+    \cf3 //OSStatus status = AudioOutputUnitStart(audioUnit);\cf0 \
+    \cf3 //AudioOutputUnitStart(audioUnit);\cf0 \
+\}\
+\
+\cf3 // If there is no selected media item collection, display the media item picker. If there's\cf0 \
+\cf3 // already a selected collection, display the list of selected songs.\cf0 \
+- (\cf4 IBAction\cf0 ) AddMusicOrShowMusic: (\cf4 id\cf0 ) sender \{\
+    \
+	\cf3 // if the user has already chosen some music, display that list\cf0 \
+	\cf4 if\cf0  (\cf8 userMediaItemCollection\cf0 ) \{\
+        \
+		\cf8 MusicTableViewController\cf0  *controller = [[\cf8 MusicTableViewController\cf0  \cf7 alloc\cf0 ] \cf7 initWithNibName\cf0 : \cf10 @"MusicTableView"\cf0  \cf7 bundle\cf0 : \cf4 nil\cf0 ];\
+		\
+        \cf3 //controller.delegateMP = self;\cf0 \
+        \
+        \cf3 //controller.delegateMP = self; //  MusicTableViewController;\cf0 \
+        \
+       \cf3 // [controller delegateMP:self];\cf0 \
+        \
+		controller.\cf6 modalTransitionStyle\cf0  = \cf7 UIModalTransitionStyleCoverVertical\cf0 ;\
+		\
+		[\cf4 self\cf0  \cf7 presentModalViewController\cf0 : controller \cf7 animated\cf0 : \cf4 YES\cf0 ];\
+		\cf3 //[controller release];\cf0 \
+        \
+        \cf3 // else, if no music is chosen yet, display the media item picker\cf0 \
+	\} \cf4 else\cf0  \{\
+        \
+		\cf6 MPMediaPickerController\cf0  *picker =\
+        [[\cf6 MPMediaPickerController\cf0  \cf7 alloc\cf0 ] \cf7 initWithMediaTypes\cf0 : \cf7 MPMediaTypeMusic\cf0 ];\
+		\
+		picker.\cf6 delegate\cf0 						= \cf4 self\cf0 ;\
+		picker.\cf6 allowsPickingMultipleItems\cf0 	= \cf4 YES\cf0 ;\
+		picker.\cf6 prompt\cf0 						= \cf2 NSLocalizedString\cf0  (\cf10 @"Add songs to play"\cf0 , \cf10 "Prompt in media item picker"\cf0 );\
+		\
+		\cf3 // The media item picker uses the default UI style, so it needs a default-style\cf0 \
+		\cf3 //		status bar to match it visually\cf0 \
+		[[\cf6 UIApplication\cf0  \cf7 sharedApplication\cf0 ] \cf7 setStatusBarStyle\cf0 : \cf7 UIStatusBarStyleDefault\cf0  \cf7 animated\cf0 : \cf4 YES\cf0 ];\
+		\
+		[\cf4 self\cf0  \cf7 presentModalViewController\cf0 : picker \cf7 animated\cf0 : \cf4 YES\cf0 ];\
+		\cf3 //[picker release];\cf0 \
+	\}\
+\}\
+\
+\
+\cf3 // Invoked by the delegate of the media item picker when the user is finished picking music.\cf0 \
+\cf3 //		The delegate is either this class or the table view controller, depending on the\cf0 \
+\cf3 //		state of the application.\cf0 \
+- (\cf4 void\cf0 ) updatePlayerQueueWithMediaCollection: (\cf6 MPMediaItemCollection\cf0  *) mediaItemCollection\
+\{    \
+	\cf3 // Configure the music player, but only if the user chose at least one song to play\cf0 \
+	\cf4 if\cf0  (mediaItemCollection) \{\
+        \
+		\cf3 // If there's no playback queue yet...\cf0 \
+		\cf4 if\cf0  (\cf8 userMediaItemCollection\cf0  == \cf4 nil\cf0 ) \{\
+            \
+			\cf3 // apply the new media item collection as a playback queue for the music player\cf0 \
+			[\cf4 self\cf0  \cf11 setUserMediaItemCollection\cf0 : mediaItemCollection];\
+			[\cf8 musicPlayer\cf0  \cf7 setQueueWithItemCollection\cf0 : \cf8 userMediaItemCollection\cf0 ];\
+			[\cf4 self\cf0  \cf11 setPlayedMusicOnce\cf0 : \cf4 YES\cf0 ];\
+			[\cf8 musicPlayer\cf0  \cf7 play\cf0 ];\
+            \
+            \cf3 // Obtain the music player's state so it can then be\cf0 \
+            \cf3 //		restored after updating the playback queue.\cf0 \
+		\} \cf4 else\cf0  \{\
+            \
+			\cf3 // Take note of whether or not the music player is playing. If it is\cf0 \
+			\cf3 //		it needs to be started again at the end of this method.\cf0 \
+			\cf4 BOOL\cf0  wasPlaying = \cf4 NO\cf0 ;\
+			\cf4 if\cf0  (\cf8 musicPlayer\cf0 .\cf6 playbackState\cf0  == \cf7 MPMusicPlaybackStatePlaying\cf0 ) \{\
+				wasPlaying = \cf4 YES\cf0 ;\
+			\}\
+			\
+			\cf3 // Save the now-playing item and its current playback time.\cf0 \
+			\cf6 MPMediaItem\cf0  *nowPlayingItem			= \cf8 musicPlayer\cf0 .\cf6 nowPlayingItem\cf0 ;\
+			\cf6 NSTimeInterval\cf0  currentPlaybackTime	= \cf8 musicPlayer\cf0 .\cf6 currentPlaybackTime\cf0 ;\
+            \
+			\cf3 // Combine the previously-existing media item collection with the new one\cf0 \
+			\cf6 NSMutableArray\cf0  *combinedMediaItems	= [[\cf8 userMediaItemCollection\cf0  \cf7 items\cf0 ] \cf7 mutableCopy\cf0 ];\
+			\cf6 NSArray\cf0  *newMediaItems				= [mediaItemCollection \cf7 items\cf0 ];\
+			[combinedMediaItems \cf7 addObjectsFromArray\cf0 : newMediaItems];\
+			\
+			[\cf4 self\cf0  \cf11 setUserMediaItemCollection\cf0 : [\cf6 MPMediaItemCollection\cf0  \cf7 collectionWithItems\cf0 : (\cf6 NSArray\cf0  *) combinedMediaItems]];\
+			\cf3 //[combinedMediaItems release];\cf0 \
+            \
+			\cf3 // Apply the new media item collection as a playback queue for the music player.\cf0 \
+			[\cf8 musicPlayer\cf0  \cf7 setQueueWithItemCollection\cf0 : \cf8 userMediaItemCollection\cf0 ];\
+			\
+			\cf3 // Restore the now-playing item and its current playback time.\cf0 \
+			\cf8 musicPlayer\cf0 .\cf6 nowPlayingItem\cf0 			= nowPlayingItem;\
+			\cf8 musicPlayer\cf0 .\cf6 currentPlaybackTime\cf0 		= currentPlaybackTime;\
+			\
+			\cf3 // If the music player was playing, get it playing again.\cf0 \
+			\cf4 if\cf0  (wasPlaying) \{\
+				[\cf8 musicPlayer\cf0  \cf7 play\cf0 ];\
+			\}\
+		\}\
+        \
+		\cf3 // Finally, because the music player now has a playback queue, ensure that\cf0 \
+		\cf3 //		the music play/pause button in the Navigation bar is enabled.\cf0 \
+		\cf8 navigationBar\cf0 .\cf6 topItem\cf0 .\cf6 leftBarButtonItem\cf0 .\cf6 enabled\cf0  = \cf4 YES\cf0 ;\
+        \
+		[\cf8 addOrShowMusicButton\cf0 	\cf7 setTitle\cf0 : \cf2 NSLocalizedString\cf0  (\cf10 @"Show Music"\cf0 , \cf10 @"Alternate title for 'Add Music' button, after user has chosen some music"\cf0 )\
+                              \cf7 forState\cf0 : \cf7 UIControlStateNormal\cf0 ];\
+	\}\
+\}\
+\
+\cf3 // If the music player was paused, leave it paused. If it was playing, it will continue to\cf0 \
+\cf3 //		play on its own. The music player state is "stopped" only if the previous list of songs\cf0 \
+\cf3 //		had finished or if this is the first time the user has chosen songs after app\cf0 \
+\cf3 //		launch--in which case, invoke play.\cf0 \
+- (\cf4 void\cf0 ) restorePlaybackState \{\
+    \
+	\cf4 if\cf0  (\cf8 musicPlayer\cf0 .\cf6 playbackState\cf0  == \cf7 MPMusicPlaybackStateStopped\cf0  && \cf8 userMediaItemCollection\cf0 ) \{\
+        \
+		[\cf8 addOrShowMusicButton\cf0 	\cf7 setTitle\cf0 : \cf2 NSLocalizedString\cf0  (\cf10 @"Show Music"\cf0 , \cf10 @"Alternate title for 'Add Music' button, after user has chosen some music"\cf0 )\
+                              \cf7 forState\cf0 : \cf7 UIControlStateNormal\cf0 ];\
+		\
+		\cf4 if\cf0  (\cf8 playedMusicOnce\cf0  == \cf4 NO\cf0 ) \{\
+            \
+			[\cf4 self\cf0  \cf11 setPlayedMusicOnce\cf0 : \cf4 YES\cf0 ];\
+			[\cf8 musicPlayer\cf0  \cf7 play\cf0 ];\
+		\}\
+	\}\
+    \
+\}\
+\
+\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Media item picker delegate methods________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 // Invoked when the user taps the Done button in the media item picker after having chosen\cf0 \
+\cf3 //		one or more media items to play.\cf0 \
+- (\cf4 void\cf0 ) mediaPicker: (\cf6 MPMediaPickerController\cf0  *) mediaPicker didPickMediaItems: (\cf6 MPMediaItemCollection\cf0  *) mediaItemCollection\
+\{\
+	\cf3 // Dismiss the media item picker.\cf0 \
+	[\cf4 self\cf0  \cf7 dismissModalViewControllerAnimated\cf0 : \cf4 YES\cf0 ];\
+	\
+	\cf3 // Apply the chosen songs to the music player's queue.\cf0 \
+	[\cf4 self\cf0  \cf11 updatePlayerQueueWithMediaCollection\cf0 : mediaItemCollection];\
+    \
+	[[\cf6 UIApplication\cf0  \cf7 sharedApplication\cf0 ] \cf7 setStatusBarStyle\cf0 : \cf7 UIStatusBarStyleBlackOpaque\cf0  \cf7 animated\cf0 : \cf4 YES\cf0 ];\
+    \
+\}\
+\
+\cf3 // Invoked when the user taps the Done button in the media item picker having chosen zero\cf0 \
+\cf3 //		media items to play\cf0 \
+- (\cf4 void\cf0 ) mediaPickerDidCancel: (\cf6 MPMediaPickerController\cf0  *) mediaPicker\
+\{    \
+	[\cf4 self\cf0  \cf7 dismissModalViewControllerAnimated\cf0 : \cf4 YES\cf0 ];\
+	\
+	[[\cf6 UIApplication\cf0  \cf7 sharedApplication\cf0 ] \cf7 setStatusBarStyle\cf0 : \cf7 UIStatusBarStyleBlackOpaque\cf0  \cf7 animated\cf0 : \cf4 YES\cf0 ];\
+\}\
+\
+\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Music notification handlers__________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 // When the now-playing item changes, update the media item artwork and the now-playing label.\cf0 \
+- (\cf4 void\cf0 ) handle_NowPlayingItemChanged: (\cf4 id\cf0 ) notification\
+\{    \
+	\cf6 MPMediaItem\cf0  *currentItem = [\cf8 musicPlayer\cf0  \cf7 nowPlayingItem\cf0 ];\
+	\
+	\cf3 // Assume that there is no artwork for the media item.\cf0 \
+	\cf6 UIImage\cf0  *artworkImage = \cf8 noArtworkImage\cf0 ;\
+	\
+	\cf3 // Get the artwork from the current media item, if it has artwork.\cf0 \
+	\cf6 MPMediaItemArtwork\cf0  *artwork = [currentItem \cf7 valueForProperty\cf0 : \cf6 MPMediaItemPropertyArtwork\cf0 ];\
+	\
+	\cf3 // Obtain a UIImage object from the MPMediaItemArtwork object\cf0 \
+	\cf4 if\cf0  (artwork) \{\
+		artworkImage = [artwork \cf7 imageWithSize\cf0 : \cf7 CGSizeMake\cf0  (\cf9 30\cf0 , \cf9 30\cf0 )];\
+	\}\
+	\
+	\cf3 // Obtain a UIButton object and set its background to the UIImage object\cf0 \
+	\cf6 UIButton\cf0  *artworkView = [[\cf6 UIButton\cf0  \cf7 alloc\cf0 ] \cf7 initWithFrame\cf0 : \cf7 CGRectMake\cf0  (\cf9 0\cf0 , \cf9 0\cf0 , \cf9 30\cf0 , \cf9 30\cf0 )];\
+	[artworkView \cf7 setBackgroundImage\cf0 : artworkImage \cf7 forState\cf0 : \cf7 UIControlStateNormal\cf0 ];\
+    \
+	\cf3 // Obtain a UIBarButtonItem object and initialize it with the UIButton object\cf0 \
+	\cf6 UIBarButtonItem\cf0  *newArtworkItem = [[\cf6 UIBarButtonItem\cf0  \cf7 alloc\cf0 ] \cf7 initWithCustomView\cf0 : artworkView];\
+	[\cf4 self\cf0  \cf11 setArtworkItem\cf0 : newArtworkItem];\
+	\cf3 //[newArtworkItem release];\cf0 \
+	\
+	[\cf8 artworkItem\cf0  \cf7 setEnabled\cf0 : \cf4 NO\cf0 ];\
+	\
+	\cf3 // Display the new media item artwork\cf0 \
+	[\cf8 navigationBar\cf0 .\cf6 topItem\cf0  \cf7 setRightBarButtonItem\cf0 : \cf8 artworkItem\cf0  \cf7 animated\cf0 : \cf4 YES\cf0 ];\
+	\
+	\cf3 // Display the artist and song name for the now-playing media item\cf0 \
+	[\cf8 nowPlayingLabel\cf0  \cf7 setText\cf0 : [\
+                               \cf6 NSString\cf0  \cf7 stringWithFormat\cf0 : \cf10 @"%@ %@ %@ %@"\cf0 ,\
+                               \cf2 NSLocalizedString\cf0  (\cf10 @"Now Playing:"\cf0 , \cf10 @"Label for introducing the now-playing song title and artist"\cf0 ),\
+                               [currentItem \cf7 valueForProperty\cf0 : \cf6 MPMediaItemPropertyTitle\cf0 ],\
+                               \cf2 NSLocalizedString\cf0  (\cf10 @"by"\cf0 , \cf10 @"Article between song name and artist name"\cf0 ),\
+                               [currentItem \cf7 valueForProperty\cf0 : \cf6 MPMediaItemPropertyArtist\cf0 ]]];\
+    \
+	\cf4 if\cf0  (\cf8 musicPlayer\cf0 .\cf6 playbackState\cf0  == \cf7 MPMusicPlaybackStateStopped\cf0 ) \{\
+		\cf3 // Provide a suitable prompt to the user now that their chosen music has\cf0 \
+		\cf3 //		finished playing.\cf0 \
+		[\cf8 nowPlayingLabel\cf0  \cf7 setText\cf0 : [\
+                                   \cf6 NSString\cf0  \cf7 stringWithFormat\cf0 : \cf10 @"%@"\cf0 ,\
+                                   \cf2 NSLocalizedString\cf0  (\cf10 @"Music-ended Instructions"\cf0 , \cf10 @"Label for prompting user to play music again after it has stopped"\cf0 )]];\
+        \
+	\}\
+\}\
+\
+\cf3 // When the playback state changes, set the play/pause button in the Navigation bar\cf0 \
+\cf3 //		appropriately.\cf0 \
+- (\cf4 void\cf0 ) handle_PlaybackStateChanged: (\cf4 id\cf0 ) notification\
+\{    \
+	\cf6 MPMusicPlaybackState\cf0  playbackState = [\cf8 musicPlayer\cf0  \cf7 playbackState\cf0 ];\
+	\
+	\cf4 if\cf0  (playbackState == \cf7 MPMusicPlaybackStatePaused\cf0 ) \{\
+        \
+		\cf8 navigationBar\cf0 .\cf6 topItem\cf0 .\cf6 leftBarButtonItem\cf0  = \cf8 playBarButton\cf0 ;\
+		\
+	\} \cf4 else\cf0  \cf4 if\cf0  (playbackState == \cf7 MPMusicPlaybackStatePlaying\cf0 ) \{\
+        \
+		\cf8 navigationBar\cf0 .\cf6 topItem\cf0 .\cf6 leftBarButtonItem\cf0  = \cf8 pauseBarButton\cf0 ;\
+        \
+	\} \cf4 else\cf0  \cf4 if\cf0  (playbackState == \cf7 MPMusicPlaybackStateStopped\cf0 ) \{\
+        \
+		\cf8 navigationBar\cf0 .\cf6 topItem\cf0 .\cf6 leftBarButtonItem\cf0  = \cf8 playBarButton\cf0 ;\
+		\
+		\cf3 // Even though stopped, invoking 'stop' ensures that the music player will play  \cf0 \
+		\cf3 //		its queue from the start.\cf0 \
+		[\cf8 musicPlayer\cf0  \cf7 stop\cf0 ];\
+        \
+	\}\
+\}\
+\
+- (\cf4 void\cf0 ) handle_iPodLibraryChanged: (\cf4 id\cf0 ) notification\
+\{\
+	\cf3 // Implement this method to update cached collections of media items when the \cf0 \
+	\cf3 // user performs a sync while your application is running. This sample performs \cf0 \
+	\cf3 // no explicit media queries, so there is nothing to update.\cf0 \
+\}\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark AV Foundation delegate methods____________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+- (\cf4 void\cf0 ) audioPlayerDidFinishPlaying: (\cf6 AVAudioPlayer\cf0  *) appSoundPlayer successfully: (\cf4 BOOL\cf0 ) flag\
+\{\
+    \
+	\cf8 playing\cf0  = \cf4 NO\cf0 ;\
+	[\cf8 appSoundButton\cf0  \cf7 setEnabled\cf0 : \cf4 YES\cf0 ];\
+\}\
+\
+- (\cf4 void\cf0 ) audioPlayerBeginInterruption: player\
+\{\
+    \
+	\cf7 NSLog\cf0  (\cf10 @"Interrupted. The system has paused audio playback."\cf0 );\
+	\
+	\cf4 if\cf0  (\cf8 playing\cf0 ) \{\
+        \
+		\cf8 playing\cf0  = \cf4 NO\cf0 ;\
+		\cf8 interruptedOnPlayback\cf0  = \cf4 YES\cf0 ;\
+	\}\
+\}\
+\
+- (\cf4 void\cf0 ) audioPlayerEndInterruption: player\
+\{\
+	\cf7 NSLog\cf0  (\cf10 @"Interruption ended. Resuming audio playback."\cf0 );\
+	\
+	\cf3 // Reactivates the audio session, whether or not audio was playing\cf0 \
+	\cf3 //		when the interruption arrived.\cf0 \
+	[[\cf6 AVAudioSession\cf0  \cf7 sharedInstance\cf0 ] \cf7 setActive\cf0 : \cf4 YES\cf0  \cf7 error\cf0 : \cf4 nil\cf0 ];\
+	\
+	\cf4 if\cf0  (\cf8 interruptedOnPlayback\cf0 ) \{\
+        \
+		[\cf8 appSoundPlayer\cf0  \cf7 prepareToPlay\cf0 ];\
+		[\cf8 appSoundPlayer\cf0  \cf7 play\cf0 ];\
+		\cf8 playing\cf0  = \cf4 YES\cf0 ;\
+		\cf8 interruptedOnPlayback\cf0  = \cf4 NO\cf0 ;\
+	\}\
+\}\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Music Table view delegate methods________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 // Invoked when the user taps the Done button in the table view.\cf0 \
+- (\cf4 void\cf0 ) musicTableViewControllerDidFinish: (\cf8 MusicTableViewController\cf0  *) controller\
+\{	\
+	[\cf4 self\cf0  \cf7 dismissModalViewControllerAnimated\cf0 : \cf4 YES\cf0 ];\
+	[\cf4 self\cf0  \cf11 restorePlaybackState\cf0 ];\
+\}\
+\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Music Send Packet Update methods________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+- (\cf4 void\cf0 )update\
+\{\
+    \cf4 float\cf0  scale = \cf9 0.1\cf0 ; \cf3 //0.5\cf0 \
+    \cf4 if\cf0  (\cf8 _audioPlayer\cf0 .\cf6 playing\cf0  )\
+    \{\
+        [\cf8 _audioPlayer\cf0  \cf7 updateMeters\cf0 ];\
+        \
+        \cf4 float\cf0  power = \cf9 0.0f\cf0 ;\
+        \cf4 for\cf0  (\cf4 int\cf0  i = \cf9 0\cf0 ; i < [\cf8 _audioPlayer\cf0  \cf7 numberOfChannels\cf0 ]; i++) \{\
+            power += [\cf8 _audioPlayer\cf0  \cf7 averagePowerForChannel\cf0 :i];\
+        \}\
+        power /= [\cf8 _audioPlayer\cf0  \cf7 numberOfChannels\cf0 ];\
+        \
+        \cf4 float\cf0  level = \cf8 meterTable\cf0 .\cf11 ValueAt\cf0 (power);\
+        scale = level * \cf9 5\cf0 ;\
+    \}\
+    \
+    \cf3 //[emitterLayer setValue:@(scale) forKeyPath:@"emitterCells.cell.emitterCells.childCell.scale"];\cf0 \
+    \
+    \
+    \cf4 int\cf0  redInt;\
+    \cf4 int\cf0  greenInt;\
+    \cf4 int\cf0  blueInt;\
+    \
+    \cf3 //NSLog(@"levelTimerCallback: redInt: %i, greenInt: %i, blueInt %i", redInt, greenInt, blueInt);\cf0 \
+    \
+    \cf3 //colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];\cf0 \
+    \cf3 //NSLog(@"accelerometer: colorHex: %@", colorHex);\cf0 \
+    \cf6 NSString\cf0  *lwdpPacket;\
+    \
+    \cf8 counter\cf0  = \cf8 counter\cf0  + \cf9 1\cf0 ;\
+    \cf4 if\cf0  (\cf8 counter\cf0  == \cf9 5\cf0 )\
+    \{\
+        \
+        \cf4 if\cf0  ([\cf8 switchEffect\cf0  \cf7 isEqual\cf0 : \cf10 @"1"\cf0 ])\
+        \{\
+            redInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (scale * \cf9 50\cf0 ));\
+            greenInt = \cf9 0\cf0 ;\
+            blueInt = \cf9 0\cf0 ;\
+            \cf6 NSString\cf0  *colorHex = [\cf8 utils\cf0  \cf11 createHexColorFromIntColors\cf0 :redInt :greenInt :blueInt];\
+            \cf3 //  NSLog(@"levelTimerCallback: colorHex: %@", colorHex);\cf0 \
+            lwdpPacket = [\cf8 utils\cf0  \cf11 createLwdpPacket\cf0 :\cf10 @"11"\cf0  :colorHex];\
+            \cf3 //  NSLog(@"levelTimerCallback: lwdpPacket: %@", lwdpPacket);\cf0 \
+            \
+        \}\
+        \cf4 else\cf0  \cf4 if\cf0  ([\cf8 switchEffect\cf0  \cf7 isEqual\cf0 : \cf10 @"2"\cf0 ])\
+        \{\
+            redInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (scale * \cf9 50\cf0 ));\
+            greenInt = \cf9 0\cf0 ;\
+            blueInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (\cf9 255\cf0  - (scale * \cf9 60\cf0 )));\
+            \cf6 NSString\cf0  *colorHex = [\cf8 utils\cf0  \cf11 createHexColorFromIntColors\cf0 :redInt :greenInt :blueInt];\
+            \cf3 //  NSLog(@"levelTimerCallback: colorHex: %@", colorHex);\cf0 \
+            lwdpPacket = [\cf8 utils\cf0  \cf11 createLwdpPacket\cf0 :\cf10 @"11"\cf0  :colorHex];\
+        \}\
+        \cf4 else\cf0  \cf4 if\cf0  ([\cf8 switchEffect\cf0  \cf7 isEqual\cf0 : \cf10 @"3"\cf0 ])\
+        \{\
+            \
+            redInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (scale * \cf9 50\cf0 ));\
+            greenInt = \cf9 0\cf0 ;\
+            blueInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (\cf9 255\cf0  - (scale * \cf9 60\cf0 )));\
+            \cf6 NSString\cf0  *colorHex = [\cf8 utils\cf0  \cf11 createHexColorFromIntColors\cf0 :redInt :greenInt :blueInt];\
+            \
+            redInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (scale * \cf9 50\cf0 ));\
+            blueInt = \cf9 0\cf0 ;\
+            greenInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (\cf9 255\cf0  - (scale * \cf9 60\cf0 )));\
+            \cf6 NSString\cf0  *colorHex2 =  [\cf8 utils\cf0  \cf11 createHexColorFromIntColors\cf0 :redInt :greenInt :blueInt];\
+            \
+            \cf6 NSString\cf0  *hexEffectType = \cf10 @"0000"\cf0 ;\
+            \cf6 NSString\cf0  *hexTimeSeperation = \cf10 @"0000"\cf0 ;\
+            \
+            \cf6 NSString\cf0  *payLoad = [\cf6 NSString\cf0  \cf7 stringWithFormat\cf0 :\cf10 @"%@%@%@%@%@"\cf0 ,hexEffectType,hexTimeSeperation,\cf10 @"02"\cf0 ,colorHex, colorHex2];\
+            \cf3 //  NSLog(@"levelTimerCallback: colorHex: %@", colorHex);\cf0 \
+            lwdpPacket = [\cf8 utils\cf0  \cf11 createLwdpPacket\cf0 :\cf10 @"20"\cf0  :payLoad];\
+        \}\
+        \cf4 else\cf0 \
+        \{\
+            \cf4 int\cf0  strengthInt = \cf7 abs\cf0 ((\cf4 int\cf0 ) (scale * \cf9 50\cf0 ));\
+            \
+            \cf6 NSString\cf0  *hexEffectType = \cf10 @"0001"\cf0 ;\
+            \cf6 NSString\cf0  *hexTimeSeperation = \cf10 @"0000"\cf0 ;\
+            \cf6 NSString\cf0  *hexStripeCount = \cf10 @"01"\cf0 ;\
+            \
+            \cf6 NSString\cf0  *strengthHex = [\cf8 utils\cf0  \cf11 intToHex2Byte\cf0 :strengthInt];\
+            \cf3 //NSString *colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];\cf0 \
+            \cf3 //  NSLog(@"levelTimerCallback: colorHex: %@", colorHex);\cf0 \
+            \
+            \cf6 NSString\cf0  *payLoad = [\cf6 NSString\cf0  \cf7 stringWithFormat\cf0 :\cf10 @"%@%@%@%@"\cf0 ,hexEffectType,hexTimeSeperation,hexStripeCount,strengthHex];\
+            lwdpPacket = [\cf8 utils\cf0  \cf11 createLwdpPacket\cf0 :\cf10 @"50"\cf0  :payLoad];\
+            \
+        \}\
+        \
+        [\cf8 conn\cf0  \cf11 sendPacket\cf0 :lwdpPacket];\
+        \cf7 NSLog\cf0 (\cf10 @"counter %i"\cf0 , \cf8 counter\cf0 );\
+        \cf8 counter\cf0  = \cf9 0\cf0 ;\
+    \}\
+\
+\}\
+\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark Audio Unit Setup and Methods____________________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 ////////////////////////////////////////////////////////\cf0 \
+\cf3 // AUDIO UNIT SETUP AND METHODS\cf0 \
+\cf3 ////////////////////////////////////////////////////////\cf0 \
+\
+\cf3 //- (void) setupApplicationAudio \{\cf0 \
+	\
+\cf3 //	// Gets the file system path to the sound to play.\cf0 \
+\cf3 //	NSString *soundFilePath = [[NSBundle mainBundle]	pathForResource:	@"sound"\cf0 \
+\cf3 //                                                              ofType:				@"caf"];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	// Converts the sound's file path to an NSURL object\cf0 \
+\cf3 //	//NSURL *newURL = [[NSURL alloc] initFileURLWithPath: soundFilePath];\cf0 \
+\cf3 //	//self.soundFileURL = newURL;\cf0 \
+\cf3 //	//[newURL release];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	// Registers this class as the delegate of the audio session.\cf0 \
+\cf3 //	[[AVAudioSession sharedInstance] setDelegate: self];\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	// The AmbientSound category allows application audio to mix with Media Player\cf0 \
+\cf3 //	// audio. The category also indicates that application audio should stop playing\cf0 \
+\cf3 //	// if the Ring/Siilent switch is set to "silent" or the screen locks.\cf0 \
+\cf3 //	[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient error: nil];\cf0 \
+\cf3 //    /*\cf0 \
+\cf3 //     // Use this code instead to allow the app sound to continue to play when the screen is locked.\cf0 \
+\cf3 //     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];\cf0 \
+\cf3 //     \cf0 \
+\cf3 //     UInt32 doSetProperty = 0;\cf0 \
+\cf3 //     AudioSessionSetProperty (\cf0 \
+\cf3 //     kAudioSessionProperty_OverrideCategoryMixWithOthers,\cf0 \
+\cf3 //     sizeof (doSetProperty),\cf0 \
+\cf3 //     &doSetProperty\cf0 \
+\cf3 //     );\cf0 \
+\cf3 //     */\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	// Registers the audio route change listener callback function\cf0 \
+\cf3 //	AudioSessionAddPropertyListener (\cf0 \
+\cf3 //                                     kAudioSessionProperty_AudioRouteChange,\cf0 \
+\cf3 //                                     audioRouteChangeListenerCallback,\cf0 \
+\cf3 //                                     (__bridge void *)(self)\cf0 \
+\cf3 //                                     );\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	// Activates the audio session.\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	NSError *activationError = nil;\cf0 \
+\cf3 //	[[AVAudioSession sharedInstance] setActive: YES error: &activationError];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	// Instantiates the AVAudioPlayer object, initializing it with the sound\cf0 \
+\cf3 //	AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: soundFileURL error: nil];\cf0 \
+\cf3 //	self.appSoundPlayer = newPlayer;\cf0 \
+\cf3 //	//[newPlayer release];\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	// "Preparing to play" attaches to the audio hardware and ensures that playback\cf0 \
+\cf3 //	//		starts quickly when the user taps Play\cf0 \
+\cf3 //	[appSoundPlayer prepareToPlay];\cf0 \
+\cf3 //	[appSoundPlayer setVolume: 1.0];\cf0 \
+\cf3 //	[appSoundPlayer setDelegate: self];\cf0 \
+\cf3 //\}\cf0 \
+\
+\
+\cf3 // To learn about notifications, see "Notifications" in Cocoa Fundamentals Guide.\cf0 \
+\cf3 //- (void) registerForMediaPlayerNotifications \{\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[notificationCenter addObserver: self\cf0 \
+\cf3 //						   selector: @selector (handle_NowPlayingItemChanged:)\cf0 \
+\cf3 //							   name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification\cf0 \
+\cf3 //							 object: musicPlayer];\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	[notificationCenter addObserver: self\cf0 \
+\cf3 //						   selector: @selector (handle_PlaybackStateChanged:)\cf0 \
+\cf3 //							   name: MPMusicPlayerControllerPlaybackStateDidChangeNotification\cf0 \
+\cf3 //							 object: musicPlayer];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    /*\cf0 \
+\cf3 //     // This sample doesn't use libray change notifications; this code is here to show how\cf0 \
+\cf3 //     //		it's done if you need it.\cf0 \
+\cf3 //     [notificationCenter addObserver: self\cf0 \
+\cf3 //     selector: @selector (handle_iPodLibraryChanged:)\cf0 \
+\cf3 //     name: MPMediaLibraryDidChangeNotification\cf0 \
+\cf3 //     object: musicPlayer];\cf0 \
+\cf3 //     \cf0 \
+\cf3 //     [[MPMediaLibrary defaultMediaLibrary] beginGeneratingLibraryChangeNotifications];\cf0 \
+\cf3 //     */\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[musicPlayer beginGeneratingPlaybackNotifications];\cf0 \
+\cf3 //\}\cf0 \
+\
+\
+\cf3 // To learn about the Settings bundle and user preferences, see User Defaults Programming Topics\cf0 \
+\cf3 //		for Cocoa and "The Settings Bundle" in iPhone Application Programming Guide\cf0 \
+\
+\cf3 // Returns whether or not to use the iPod music player instead of the application music player.\cf0 \
+- (\cf4 BOOL\cf0 ) useiPodPlayer \{\
+    \
+	\cf4 if\cf0  ([[NSUserDefaults standardUserDefaults] boolForKey: PLAYER_TYPE_PREF_KEY]) \{\
+		\cf4 return\cf0  \cf4 YES\cf0 ;		\
+	\} \cf4 else\cf0  \{\
+		\cf4 return\cf0  \cf4 NO\cf0 ;\
+	\}		\
+\}\
+\
+\
+\cf3 //-(void) monitorAudioPlayer\cf0 \
+\cf3 //\{\cf0 \
+\cf3 //    [musicPlayer updateMeters];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    for (int i=0; i<musicPlayer. numberOfChannels; i++)\cf0 \
+\cf3 //    \{\cf0 \
+\cf3 //        //Log the peak and average power\cf0 \
+\cf3 //        NSLog(@"%d %0.2f %0.2f", i, [musicPlayer peakPowerForChannel:i],[musicPlayer averagePowerForChannel:i]);\cf0 \
+\cf3 //    \}\cf0 \
+\cf3 //\}\cf0 \
+\cf3 //\cf0 \
+\cf3 //- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag\cf0 \
+\cf3 //\{\cf0 \
+\cf3 //    NSLog (@"audioPlayerDidFinishPlaying:");\cf0 \
+\cf3 //    [playerTimer invalidate];\cf0 \
+\cf3 //    playerTimer = nil;\cf0 \
+\cf3 //\}\cf0 \
+\
+\
+\cf3 //static OSStatus	AudioUnitRenderCallback (void *inRefCon,\cf0 \
+\cf3 //                                         AudioUnitRenderActionFlags *ioActionFlags,\cf0 \
+\cf3 //                                         const AudioTimeStamp *inTimeStamp,\cf0 \
+\cf3 //                                         UInt32 inBusNumber,\cf0 \
+\cf3 //                                         UInt32 inNumberFrames,\cf0 \
+\cf3 //                                         AudioBufferList *ioData) \{\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    //OSStatus err = AudioUnitRender(audioUnitWrapper->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    \cf0 \
+\cf3 //    OSStatus err = AudioUnitRender(audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    if(err != 0) NSLog(@"AudioUnitRender status is %ld", err);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // These values should be in a more conventional location for a bunch of preprocessor defines in your real code\cf0 \
+\cf3 //#define DBOFFSET -74.0\cf0 \
+\cf3 //    // DBOFFSET is An offset that will be used to normalize the decibels to a maximum of zero.\cf0 \
+\cf3 //    // This is an estimate, you can do your own or construct an experiment to find the right value\cf0 \
+\cf3 //#define LOWPASSFILTERTIMESLICE .001\cf0 \
+\cf3 //    // LOWPASSFILTERTIMESLICE is part of the low pass filter and should be a small positive value\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    SInt16* samples = (SInt16*)(ioData->mBuffers[0].mData); // Step 1: get an array of your samples that you can loop through. Each sample contains the amplitude.\cf0 \
+\cf3 //    //UInt32* samples = (UInt32*)(ioData->mBuffers[0].mData);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    Float32 decibels = DBOFFSET; // When we have no signal we'll leave this on the lowest setting\cf0 \
+\cf3 //    Float32 currentFilteredValueOfSampleAmplitude, previousFilteredValueOfSampleAmplitude; // We'll need these in the low-pass filter\cf0 \
+\cf3 //    Float32 peakValue = DBOFFSET; // We'll end up storing the peak value here\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    for (int i=0; i < inNumberFrames; i++)\cf0 \
+\cf3 //    \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //        Float32 absoluteValueOfSampleAmplitude = abs(samples[i]); //Step 2: for each sample, get its amplitude's absolute value.\cf0 \
+\cf3 //        \cf0 \
+\cf3 //        // Step 3: for each sample's absolute value, run it through a simple low-pass filter\cf0 \
+\cf3 //        // Begin low-pass filter\cf0 \
+\cf3 //        currentFilteredValueOfSampleAmplitude = LOWPASSFILTERTIMESLICE * absoluteValueOfSampleAmplitude + (1.0 - LOWPASSFILTERTIMESLICE) * previousFilteredValueOfSampleAmplitude;\cf0 \
+\cf3 //        previousFilteredValueOfSampleAmplitude = currentFilteredValueOfSampleAmplitude;\cf0 \
+\cf3 //        Float32 amplitudeToConvertToDB = currentFilteredValueOfSampleAmplitude;\cf0 \
+\cf3 //        // End low-pass filter\cf0 \
+\cf3 //        \cf0 \
+\cf3 //        Float32 sampleDB = 20.0*log10(amplitudeToConvertToDB) + DBOFFSET;\cf0 \
+\cf3 //        // Step 4: for each sample's filtered absolute value, convert it into decibels\cf0 \
+\cf3 //        // Step 5: for each sample's filtered absolute value in decibels, add an offset value that normalizes the clipping point of the device to zero.\cf0 \
+\cf3 //        \cf0 \
+\cf3 //        if((sampleDB == sampleDB) && (sampleDB != -DBL_MAX))  // if it's a rational number and isn't infinite\cf0 \
+\cf3 //        \{\cf0 \
+\cf3 //            \cf0 \
+\cf3 //            if(sampleDB > peakValue) peakValue = sampleDB; // Step 6: keep the highest value you find.\cf0 \
+\cf3 //            decibels = peakValue; // final value\cf0 \
+\cf3 //        \}\cf0 \
+\cf3 //    \}\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    //NSLog(@"decibel level is %f", decibels);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    for (UInt32 i=0; i < ioData->mNumberBuffers; i++) \{ // This is only if you need to silence the output of the audio unit\cf0 \
+\cf3 //        memset(ioData->mBuffers[i].mData, 0, ioData->mBuffers[i].mDataByteSize); // Delete if you need audio output as well as input\cf0 \
+\cf3 //    \}\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    return err;\cf0 \
+\cf3 //\}\cf0 \
+\cf3 //\cf0 \
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 #pragma mark View, Config and UI Methods____________________________\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0 \
+\
+- (\cf4 void\cf0 )viewDidLoad\
+\{\
+    [\cf4 super\cf0  viewDidLoad];\
+	\cf3 // Do any additional setup after loading the view, typically from a nib.\cf0 \
+    \
+    \cf3 //////////////////////////////////////////////\cf0 \
+    \cf3 // Connection Configuration\cf0 \
+    \cf3 //////////////////////////////////////////////\cf0 \
+\
+    \cf3 //self.ipAddressText.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"ipAddress"];\cf0 \
+    \cf3 //self.portNumberText.text =  [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"portNumber"]];\cf0 \
+    \
+    conn = [[SSConnection alloc] init];\
+    utils = [[SSUtilities alloc] init];\
+    \
+    \cf3 //////////////////////////////////////////////\cf0 \
+    \cf3 // UI Configuration\cf0 \
+    \cf3 //////////////////////////////////////////////\cf0 \
+    \
+    \cf4 self\cf0 .featureDescription.text = \cf10 @""\cf0 ;\
+    \cf4 self\cf0 .view.backgroundColor = [UIColor darkGrayColor];\
+    \
+    \cf3 //_statusDescription.layer.borderColor = [UIColor lightGrayColor].CGColor;\cf0 \
+    \cf3 //_statusDescription.layer.borderWidth = 1.5;\cf0 \
+    \cf3 //_statusDescription.layer.cornerRadius = 8;\cf0 \
+    \
+    _featureDescription.layer.borderColor = [UIColor lightGrayColor].CGColor;\
+    _featureDescription.layer.borderWidth = \cf9 1.5\cf0 ;\
+    _featureDescription.layer.cornerRadius = \cf9 8\cf0 ;\
+    \
+    \cf3 //_colorDescription.layer.borderColor = [UIColor lightGrayColor].CGColor;\cf0 \
+    \cf3 //_colorDescription.layer.borderWidth = 1.5;\cf0 \
+    \cf3 //_colorDescription.layer.cornerRadius = 8;\cf0 \
+    \
+    _configViewContainer.layer.borderColor = [UIColor lightGrayColor].CGColor;\
+    _configViewContainer.layer.borderWidth = \cf9 1.5\cf0 ;\
+    _configViewContainer.layer.cornerRadius = \cf9 8\cf0 ;\
+    _configViewContainer.layer.masksToBounds = \cf4 YES\cf0 ;\
+    \
+    \
+    _redButton.layer.borderColor = [UIColor blackColor].CGColor;\
+    _redButton.layer.borderWidth = \cf9 1.5\cf0 ;\
+    _redButton.tag = \cf9 1\cf0  ;\
+    [_redButton addTarget:\cf4 self\cf0  action:\cf4 @selector\cf0 (redColor:) forControlEvents:UIControlEventTouchUpInside];\
+    \
+    _greenButton.layer.borderColor = [UIColor blackColor].CGColor;\
+    _greenButton.layer.borderWidth = \cf9 1.5\cf0 ;\
+    _greenButton.tag = \cf9 2\cf0  ;\
+    [_greenButton addTarget:\cf4 self\cf0  action:\cf4 @selector\cf0 (greenColor:) forControlEvents:UIControlEventTouchUpInside];\
+\
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:\cf4 self\cf0  action:\cf4 @selector\cf0 (tap:)];\
+    [\cf4 self\cf0 .view addGestureRecognizer:tapRecognizer];\
+\
+\
+    \
+    \cf3 //////////////////////////////////////////////\cf0 \
+    \cf3 // Audio Configuration\cf0 \
+    \cf3 //////////////////////////////////////////////\cf0 \
+    \
+    [\cf4 self\cf0  configureAudioSession];\
+    [\cf4 self\cf0  configureAudioPlayer];\
+    \
+    \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 //    \cf0 \
+\cf3 //    [self setupApplicationAudio];\cf0 \
+\cf3 //	\cf0 \
+\cf3 //	[self setPlayedMusicOnce: NO];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[self setNoArtworkImage:	[UIImage imageNamed: @"no_artwork.png"]];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[self setPlayBarButton:		[[UIBarButtonItem alloc]	initWithBarButtonSystemItem: UIBarButtonSystemItemPlay\cf0 \
+\cf3 //                                                                           target: self\cf0 \
+\cf3 //                                                                           action: @selector (playOrPauseMusic:)]];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[self setPauseBarButton:	[[UIBarButtonItem alloc]	initWithBarButtonSystemItem: UIBarButtonSystemItemPause\cf0 \
+\cf3 //                                                                           target: self\cf0 \
+\cf3 //                                                                           action: @selector (playOrPauseMusic:)]];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[addOrShowMusicButton	setTitle: NSLocalizedString (@"Add Music", @"Title for 'Add Music' button, before user has chosen some music")\cf0 \
+\cf3 //                          forState: UIControlStateNormal];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[appSoundButton			setTitle: NSLocalizedString (@"Play App Sound", @"Title for 'Play App Sound' button")\cf0 \
+\cf3 //                      forState: UIControlStateNormal];\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[nowPlayingLabel setText: NSLocalizedString (@"Instructions", @"Brief instructions to user, shown at launch")];\cf0 \
+	\
+	\cf3 // Instantiate the music player. If you specied the iPod music player in the Settings app,\cf0 \
+	\cf3 //		honor the current state of the built-in iPod app.\cf0 \
+\cf3 //	if ([self useiPodPlayer]) \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		[self setMusicPlayer: [MPMusicPlayerController iPodMusicPlayer]];\cf0 \
+\cf3 //		\cf0 \
+\cf3 //		if ([musicPlayer nowPlayingItem]) \{\cf0 \
+\cf3 //            \cf0 \
+\cf3 //			navigationBar.topItem.leftBarButtonItem.enabled = YES;\cf0 \
+\cf3 //			\cf0 \
+\cf3 //			// Update the UI to reflect the now-playing item.\cf0 \
+\cf3 //			[self handle_NowPlayingItemChanged: nil];\cf0 \
+\cf3 //			\cf0 \
+\cf3 //			if ([musicPlayer playbackState] == MPMusicPlaybackStatePaused) \{\cf0 \
+\cf3 //				navigationBar.topItem.leftBarButtonItem = playBarButton;\cf0 \
+\cf3 //			\}\cf0 \
+\cf3 //		\}\cf0 \
+\cf3 //		\cf0 \
+\cf3 //	\} else \{\cf0 \
+\cf3 //        \cf0 \
+\cf3 //		[self setMusicPlayer: [MPMusicPlayerController applicationMusicPlayer]];\cf0 \
+\cf3 //		\cf0 \
+\cf3 //		// By default, an application music player takes on the shuffle and repeat modes\cf0 \
+\cf3 //		//		of the built-in iPod app. Here they are both turned off.\cf0 \
+\cf3 //		[musicPlayer setShuffleMode: MPMusicShuffleModeOff];\cf0 \
+\cf3 //		[musicPlayer setRepeatMode: MPMusicRepeatModeNone];\cf0 \
+\cf3 //        //musicPlayer.meteringEnabled = YES;\cf0 \
+\cf3 //        //musicPlayer.delegate = self;\cf0 \
+\cf3 //	\}\cf0 \
+\cf3 //    \cf0 \
+\cf3 //	[self registerForMediaPlayerNotifications];\cf0 \
+\
+    \
+	\cf3 // Configure a timer to change the background color. The changing color represents an\cf0 \
+	\cf3 //		application that is doing something else while iPod music is playing.\cf0 \
+\cf3 //	[self setBackgroundColorTimer: [NSTimer scheduledTimerWithTimeInterval: 3.5\cf0 \
+\cf3 //																	target: self\cf0 \
+\cf3 //																  selector: @selector (updateBackgroundColor)\cf0 \
+\cf3 //																  userInfo: nil\cf0 \
+\cf3 //																   repeats: YES]];\cf0 \
+    \
+    \
+    \cf3 //OSStatus status;\cf0 \
+    \cf3 //AudioComponentInstance audioUnit;\cf0 \
+    \
+\cf3 //    // Describe audio component\cf0 \
+\cf3 //    AudioComponentDescription desc;\cf0 \
+\cf3 //    desc.componentType = kAudioUnitType_Output;\cf0 \
+\cf3 //    desc.componentSubType = kAudioUnitSubType_RemoteIO;\cf0 \
+\cf3 //    desc.componentFlags = 0;\cf0 \
+\cf3 //    desc.componentFlagsMask = 0;\cf0 \
+\cf3 //    desc.componentManufacturer = kAudioUnitManufacturer_Apple;\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Get component\cf0 \
+\cf3 //    AudioComponent inputComponent = AudioComponentFindNext(NULL, &desc);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Get audio units\cf0 \
+\cf3 //    status = AudioComponentInstanceNew(inputComponent, &audioUnit);\cf0 \
+\cf3 //    //checkStatus(status);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Enable IO for recording\cf0 \
+\cf3 //    UInt32 flag = 1;\cf0 \
+\cf3 //    status = AudioUnitSetProperty(audioUnit,\cf0 \
+\cf3 //                                  kAudioOutputUnitProperty_EnableIO,\cf0 \
+\cf3 //                                  kAudioUnitScope_Input,\cf0 \
+\cf3 //                                  kInputBus,\cf0 \
+\cf3 //                                  &flag,\cf0 \
+\cf3 //                                  sizeof(flag));\cf0 \
+\cf3 //    //checkStatus(status);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Enable IO for playback\cf0 \
+\cf3 //    status = AudioUnitSetProperty(audioUnit,\cf0 \
+\cf3 //                                  kAudioOutputUnitProperty_EnableIO,\cf0 \
+\cf3 //                                  kAudioUnitScope_Output,\cf0 \
+\cf3 //                                  kOutputBus,\cf0 \
+\cf3 //                                  &flag,\cf0 \
+\cf3 //                                  sizeof(flag));\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    AudioStreamBasicDescription audioFormat;\cf0 \
+\cf3 //    // Describe format\cf0 \
+\cf3 ////    audioFormat.mSampleRate			= 44100.00;\cf0 \
+\cf3 ////    audioFormat.mFormatID			= kAudioFormatLinearPCM;\cf0 \
+\cf3 ////    audioFormat.mFormatFlags		= kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;\cf0 \
+\cf3 ////    audioFormat.mFramesPerPacket	= 1;\cf0 \
+\cf3 ////    audioFormat.mChannelsPerFrame	= 1;\cf0 \
+\cf3 ////    audioFormat.mBitsPerChannel		= 16;\cf0 \
+\cf3 ////    audioFormat.mBytesPerPacket		= 2;\cf0 \
+\cf3 ////    audioFormat.mBytesPerFrame		= 2;\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Apply format\cf0 \
+\cf3 //    status = AudioUnitSetProperty(audioUnit,\cf0 \
+\cf3 //                                  kAudioUnitProperty_StreamFormat,\cf0 \
+\cf3 //                                  kAudioUnitScope_Output,\cf0 \
+\cf3 //                                  kInputBus,\cf0 \
+\cf3 //                                  &audioFormat,\cf0 \
+\cf3 //                                  sizeof(audioFormat));\cf0 \
+\cf3 //    //checkStatus(status);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Set input callback\cf0 \
+\cf3 //    AURenderCallbackStruct callbackStruct;\cf0 \
+\cf3 //    //callbackStruct.inputProc = recordingCallback;\cf0 \
+\cf3 ////    callbackStruct.inputProc = AudioUnitRenderCallback;\cf0 \
+\cf3 ////    callbackStruct.inputProcRefCon = (__bridge void *)(self);\cf0 \
+\cf3 ////    status = AudioUnitSetProperty(audioUnit,\cf0 \
+\cf3 ////                                  kAudioOutputUnitProperty_SetInputCallback,\cf0 \
+\cf3 ////                                  kAudioUnitScope_Global,\cf0 \
+\cf3 ////                                  kInputBus,\cf0 \
+\cf3 ////                                  &callbackStruct,\cf0 \
+\cf3 ////                                  sizeof(callbackStruct));\cf0 \
+\cf3 //    //checkStatus(status);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    // Set output callback\cf0 \
+\cf3 //    //callbackStruct.inputProc = playbackCallback;\cf0 \
+\cf3 //    callbackStruct.inputProc = AudioUnitRenderCallback;\cf0 \
+\cf3 //    callbackStruct.inputProcRefCon = (__bridge void *)(self);\cf0 \
+\cf3 //    status = AudioUnitSetProperty(audioUnit,\cf0 \
+\cf3 //                                  kAudioUnitProperty_SetRenderCallback,\cf0 \
+\cf3 //                                  kAudioUnitScope_Global,\cf0 \
+\cf3 //                                  kOutputBus,\cf0 \
+\cf3 //                                  &callbackStruct,\cf0 \
+\cf3 //                                  sizeof(callbackStruct));\cf0 \
+\cf3 //    //checkStatus(status);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    \cf0 \
+\cf3 //    status = AudioUnitSetProperty(audioUnit,\cf0 \
+\cf3 //                                  kAudioUnitProperty_StreamFormat,\cf0 \
+\cf3 //                                  kAudioUnitScope_Input,\cf0 \
+\cf3 //                                  kOutputBus,\cf0 \
+\cf3 //                                  &audioFormat,\cf0 \
+\cf3 //                                  sizeof(audioFormat));\cf0 \
+\cf3 //    //checkStatus(status);\cf0 \
+\cf3 //    \cf0 \
+\cf3 //    //status = AudioUnitSetProperty(audioUnit, <#AudioUnitPro\cf0 p\cf3 er\cf0 t\cf3 yID inID#>, <#AudioUnitScope inScope#>, <#AudioUnitElement inElement#>, <#const void *inData#>, <#UInt\cf0 3\cf3 2 inDataSize#>)\cf0 \
+\cf3 //\
+//    // Disable buffer allocation for the \cf0 r\cf3 ecorder (optional - do this if we want to pass in our own)\
+//    flag = 0;\
+/\cf0 /\cf3     status = AudioUnitSetProperty(audioUnit,\
+//            \cf0  \cf3                      kAudioUnitProperty_Should\cf0 A\cf3 llocateBuffer,\
+//                         \cf0  \cf3         kAudioUnitScope_Output,\
+//                \cf0  \cf3       \cf0  \cf3           kInputBus,\
+//                           \cf0  \cf3       \cf0 &\cf3 flag,\
+//           \cf0  \cf3                       sizeof(flag));\
+//    \
+//\cf0  \cf3    // TODO: Allocate our own\cf0  \cf3 buffer\cf0 s\cf3  if we want\
+//    \
+//    \cf0 /\cf3 / Initialise\
+//    status = AudioUnitI\cf0 nitiali\cf4 ze(a\cf0 udioUnit);\
+//    //checkStatus(s\cf4 tatus\cf0 );\
+//    \
+//    //OSStatus stat\cf3 us =\
+//    AudioOutputUnitStart(audioUnit);\
+\}\
+\
+- (\cf0 void)di\cf4 dRec\cf0 eiveMemoryWarning\
+\{\
+\cf3     [super didReceiveMemoryWarning];\
+    // Dispose of any resources that can be recreated.\
+\}\
+\
+- (void)dealloc \{\
+    \
+    /*\
+     // This sample doesn't use libray change notifications; this code is here to show how\
+     //		it's done if you need it.\
+     [[NSNotificationCenter defaultCenter] removeObserver: self\
+     name: MPMediaLibraryDidChangeNotification\
+     obje\cf0 c\cf3 t: musicPlayer];\
+     \
+     [[MPMediaLibrary defaultMediaLibr\cf0 a\cf3 ry] endGeneratingLibraryChangeNotifications];\
+     \
+     */\
+//	[[NSNotification\cf0 C\cf3 enter defaultCenter] removeObserver: \cf0 s\cf3 elf\cf0 \
+\cf3 //													name: MPMusicPlayerControllerNowPlayingItemDid\cf0 C\cf3 hangeNotification\
+//												  object: musicPlayer];\
+//	\
+//	[[NSNotificatio\cf0 n\cf3 Center defaultCenter] removeObserver:\cf0  \cf3 self\
+/\cf0 /\cf3 													name: MPMusicPlayerControllerPlaybackSt\cf0 ateDidCh\cf4 ange\cf0 Notification\
+//				\cf4 				\cf0 				  object: mu\cf3 sicPlayer];\
+//    \
+//	[musicPlayer endGeneratingPlaybackNotificati\cf0 ons];\
+\
+\}\
+\
+\
+-(void)viewDidDisappear:(BOOL)animated\
+\{\
+    //Changing views\cf4  so\cf0  turn \cf4 of\cf0 f everything that is currentoy running.\
+    [_audioPlayer stop];\
+    \
+   \cf4  \
+ \cf0    [recorder stop];\
+    recorder = nil;\
+    if(levelTimer)\
+    \cf4 \{\
+ \cf0        [leve\cf4 lTim\cf0 er invalidate];\
+        lev\cf10 elT\cf0 imer = nil;\
+\pard\tx529\pardeftab529\pardirnatural
+\cf4     \cf0 \}\
+    [[UIAccelerometer sharedAcceleromet\cf4 er] \cf0 setDelegate:nil];\cf4 \
+  \cf0   \
+    se\cf4 lf.f\cf0 eatureDescription.text = @"";\
+    \
+\}\
+\
+-(void)tap:(UITapGestureRecognizer *)gr\
+\{\
+    [self.view endEditing:YES];\
+\}\
+\
+- (void)sendSingleColor:(NSString*)singleColor\
+\{\
+  \cf4   di\cf0 spatch_queue_t mainQueue = dispatch_get_main_queue(\cf4 );\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0     \
+ \cf4   \cf0  asyncSocket = [[GCDAsyncSocke\cf10 t alloc] initW\cf0 ithDeleg\cf9 ate:\cf0 self delegateQ\cf3 ueue:mainQueue];\cf0 \
+    \
+    NSErr\cf3 or *err = nil;\
+    if (![asyncSocket connectToHost:@"192.168.1.8" onPort:8999 error:&err]) //\cf0  Asynchronous!\
+\pard\tx529\pardeftab529\pardirnatural
+\cf10     \{\
+        // If there\cf0  was an error, it'\cf4 s li\cf0 kely something like "\cf10 already conn\cf0 ected" or "no dele\cf3 gate set"\
+   \cf0      NSLog(@"It Broke...perhaps: %@", err);\
+    \}\
+    else\
+ \cf10    \{\
+\pard\tx529\pardeftab529\pardirnatural
+\cf0         NSLog(@"All Good!");\
+    \}\
+    \
+    //IBOutlet HV\
+    \
+    NSString *requestStr = [NSString stringWithFormat:@"%@",singleColor];\
+    NSData *re\cf9 q\cf0 uestD\cf9 a\cf0 ta = [requestStr dataUsingEncoding:NSUTF8StringEncoding];\
+    \
+    [asyncS\cf9 o\cf0 cket \cf9 w\cf0 riteDa\cf4 ta:r\cf0 equestData withTimeout:-1 tag:1];\
+    [asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:0];\
+\}\
+\
+@end\
+\
+=================\
+================}

@@ -140,9 +140,7 @@ int sliderSpeed = 500;
 	if(effectsSegment.selectedSegmentIndex == 0)
     {
         effectType = @"0000";
-		sequenceText.text = @"Stationary";
-        
-        
+		sequenceText.text = @"Stationary";    
 	}
     
 	if(effectsSegment.selectedSegmentIndex == 1)

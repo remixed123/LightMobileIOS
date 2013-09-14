@@ -1,13 +1,13 @@
 //
-//  SSFirstViewController.h
-//  lightcontroller
+//  SSSpecialViewController.h
+//  LightMobile
 //
 //  Created by Glenn Vassallo on 24/08/13.
 //  Copyright (c) 2013 Swift Software. All rights reserved.
 //
 
 #define PLAYER_TYPE_PREF_KEY @"player_type_preference"
-#define AUDIO_TYPE_PREF_KEY @"audio_technology_preference"
+//#define AUDIO_TYPE_PREF_KEY @"audio_technology_preference"
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -22,100 +22,76 @@
 
 @class SSConnection;
 
-@interface SSSpecialViewController : UIViewController <MPMediaPickerControllerDelegate,  UIPageViewControllerDelegate, AVAudioPlayerDelegate, UIAccelerometerDelegate >
-//@interface SSSpecialViewController : UIViewController <MPMediaPickerControllerDelegate, MusicTableViewControllerDelegate,AVAudioPlayerDelegate>
-
+@interface SSSpecialViewController : UIViewController <MPMediaPickerControllerDelegate,  UIPageViewControllerDelegate, AVAudioPlayerDelegate, UIAccelerometerDelegate, MusicTableViewControllerDelegate>
 {
-    UIAccelerationValue         accelerationValue[3];
- 	//SSAppDelegate               *applicationDelegate;
-	IBOutlet UIBarButtonItem	*artworkItem;
-	IBOutlet UINavigationBar	*navigationBar;
-	IBOutlet UILabel			*nowPlayingLabel;
-	BOOL						playedMusicOnce;
+    //SSAppDelegate               *applicationDelegate;
     
-	AVAudioPlayer				*appSoundPlayer;
-	NSURL						*soundFileURL;
-	//IBOutlet UIButton			*appSoundButton;
-	IBOutlet UIButton			*addOrShowMusicButton;
-	BOOL						interruptedOnPlayback;
-	BOOL						playing ;
-    
-	UIBarButtonItem				*playBarButton;
-	UIBarButtonItem				*pauseBarButton;
-	MPMusicPlayerController		*musicPlayer;
-	MPMediaItemCollection		*userMediaItemCollection;
-	UIImage						*noArtworkImage;
-	NSTimer						*backgroundColorTimer;
-    OSStatus                    status;
-    
-    UIView*                     _configViewContainer;
-    UIButton*                   _redButton;
-    UIButton*                   _greenButton;
-    
-//    UIButton*                   connectNowButton;
-    IBOutlet UIButton*          microphoneButton;
-    IBOutlet UIButton*          acceleromterButton;
+    SSConnection                *conn;
+    SSUtilities                 *utils;
     
     NSInputStream               *inputStream;
     NSOutputStream              *outputStream;
     GCDAsyncSocket              *asyncSocket;
     
-    SSConnection                *conn;
-    SSUtilities                *utils;
+    UIAccelerationValue         accelerationValue[3];
+
+    BOOL						playedMusicOnce;
+	BOOL						interruptedOnPlayback;
+	BOOL						playing ;
     
+    IBOutlet UIButton			*addOrShowMusicButton;
+    IBOutlet UIButton*          microphoneButton;
+    IBOutlet UIButton*          acceleromterButton;
+    
+	IBOutlet UIButton*			musicPlayButton;
+    IBOutlet UIButton*          musicNextButton;
+    
+	MPMusicPlayerController		*musicPlayer;
+	MPMediaItemCollection		*userMediaItemCollection;
+        
+    //AVAudioPlayer               *audioPlayer;
+    NSTimer                     *musicTimer;
     AVAudioRecorder             *recorder;
-    NSTimer                     *levelTimer;    
+    NSTimer                     *recordTimer;
 
 }
 
-extern AudioComponentInstance audioUnit;
+@property (strong, nonatomic) IBOutlet UILabel          *featureDescription;
 
-//@property (nonatomic, retain)	UIView                  *configViewContainer;
-//@property (nonatomic, retain)	IBOutlet UIButton		*connectNowButton;
 @property (nonatomic, retain)	IBOutlet UIButton		*microphoneButton;
 @property (nonatomic, retain)	IBOutlet UIButton		*acceleratorButton;
+@property (nonatomic, retain)	IBOutlet UIButton		*addMusicButton;
+@property (nonatomic, retain)	IBOutlet UIButton		*musicPlayButton;
+@property (nonatomic, retain)	IBOutlet UIButton		*musicNextButton;
 
-@property (nonatomic, retain)	UIBarButtonItem			*artworkItem;
-@property (nonatomic, retain)	UINavigationBar			*navigationBar;
-@property (nonatomic, retain)	UILabel					*nowPlayingLabel;
-@property (readwrite)			BOOL					playedMusicOnce;
-
-@property (nonatomic, retain)	UIBarButtonItem			*playBarButton;
-@property (nonatomic, retain)	UIBarButtonItem			*pauseBarButton;
 @property (nonatomic, retain)	MPMediaItemCollection	*userMediaItemCollection;
 @property (nonatomic, retain)	MPMusicPlayerController	*musicPlayer;
-@property (nonatomic, retain)	UIImage					*noArtworkImage;
-@property (nonatomic, retain)	NSTimer					*backgroundColorTimer;
+@property (strong, nonatomic)   AVAudioPlayer           *audioPlayer;
 
-@property (nonatomic, retain)	AVAudioPlayer			*appSoundPlayer;
-@property (nonatomic, retain)	NSURL					*soundFileURL;
-@property (nonatomic, retain)	IBOutlet UIButton		*appSoundButton;
-@property (nonatomic, retain)	IBOutlet UIButton		*addOrShowMusicButton;
 @property (readwrite)			BOOL					interruptedOnPlayback;
 @property (readwrite)			BOOL					playing;
 
-//@property (strong, nonatomic) IBOutlet UILabel *statusDescription;
-@property (strong, nonatomic) IBOutlet UILabel *featureDescription;
-//@property (strong, nonatomic) IBOutlet UILabel *colorDescription;
-
-//@property (strong, nonatomic) IBOutlet UITextField *ipAddressText;
-//@property (strong, nonatomic) IBOutlet UITextField *portNumberText;
-
-- (IBAction)playOrPauseMusic:(id)sender;
-- (IBAction)AddMusicOrShowMusic:(id) sender;
-- (IBAction)playAppSound:(id)sender;
-
-//- (IBAction)connectNow:(id)sender;
+- (IBAction)musicToggle:(id)sender;
+- (IBAction)nextSong:(id)sender;
+- (IBAction)addMusic:(id) sender;
 - (IBAction)accelerometerToggle:(id)sender;
 - (IBAction)microphoneToggle:(id)sender;
+- (IBAction)startRecording;
 
 - (BOOL) useiPodPlayer;
 
-- (IBAction)startRecording;
-
-- (void)levelTimerCallback:(NSTimer *)timer;
-
+- (void)recordTimerCallback:(NSTimer *)timer;
 - (void)stateManager :(NSString*) selectedFeature;
+- (void)musicTimerCallback:(NSTimer *)timer;
+- (void) registerForMediaPlayerNotifications;
 
+@end
+
+@protocol MusicTableViewControllerDelegate
+
+// implemented in MainViewController.m
+//- (void) musicTableViewControllerDidFinish: (MusicTableViewController *) controller;
+- (void) musicTableViewControllerDidFinish: (MPMusicPlayerController *) controller;
+- (void) updatePlayerQueueWithMediaCollection: (MPMediaItemCollection *) mediaItemCollection;
 
 @end

@@ -31,7 +31,7 @@
 		2157E5D217C84CBE00729F30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2157E5D117C84CBE00729F30 /* Default@2x.png */; };
 		2157E5D417C84CBE00729F30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2157E5D317C84CBE00729F30 /* Default-568h@2x.png */; };
 		2157E5D717C84CBE00729F30 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2157E5D517C84CBE00729F30 /* MainStoryboard.storyboard */; };
-		2157E5DA17C84CBF00729F30 /* SSSpecialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2157E5D917C84CBF00729F30 /* SSSpecialViewController.m */; };
+		2157E5DA17C84CBF00729F30 /* SSSpecialViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2157E5D917C84CBF00729F30 /* SSSpecialViewController.mm */; };
 		2157E5DC17C84CBF00729F30 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 2157E5DB17C84CBF00729F30 /* first.png */; };
 		2157E5DE17C84CBF00729F30 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2157E5DD17C84CBF00729F30 /* first@2x.png */; };
 		2157E5E117C84CBF00729F30 /* SSSingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2157E5E017C84CBF00729F30 /* SSSingleViewController.m */; };
@@ -46,10 +46,11 @@
 		2157E60817C8DC6500729F30 /* SSColorSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2157E60717C8DC6400729F30 /* SSColorSetting.m */; };
 		2157E60A17C8EC6900729F30 /* SSPatternViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = 2157E60917C8EC6800729F30 /* SSPatternViewController.m */; };
 		2157E60E17C8ED8800729F30 /* SSSequenceViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = 2157E60D17C8ED8800729F30 /* SSSequenceViewController.m */; };
+		216A3E7317E4223E0060C07F /* MeterTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 216A3E7117E4223E0060C07F /* MeterTable.cpp */; };
+		216A3E7617E424E00060C07F /* arrow-back-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 216A3E7417E424E00060C07F /* arrow-back-white.png */; };
+		216A3E7717E424E00060C07F /* arrow-back-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 216A3E7517E424E00060C07F /* arrow-back-white@2x.png */; };
 		2174E3D317E228D6005B52A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2174E3D217E228D6005B52A2 /* Accelerate.framework */; };
 		21C9F1D717DAD511006F773A /* SSTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F1D617DAD511006F773A /* SSTeamViewController.m */; };
-		21C9F1DF17DB3E24006F773A /* arrow-back-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1DD17DB3E24006F773A /* arrow-back-white.png */; };
-		21C9F1E017DB3E24006F773A /* arrow-back-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */; };
 		21C9F1E417DB4B7C006F773A /* LightData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 21C9F1E317DB4B7C006F773A /* LightData.sqlite */; };
 		21C9F1E717DB9EB6006F773A /* SSTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F1E617DB9EB2006F773A /* SSTabBarViewController.m */; };
 		21E4C60A17D0363000C4E6B7 /* PauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C60817D0363000C4E6B7 /* PauseButton.png */; };
@@ -255,7 +256,7 @@
 		2157E5D317C84CBE00729F30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2157E5D617C84CBE00729F30 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		2157E5D817C84CBF00729F30 /* SSSpecialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSSpecialViewController.h; sourceTree = "<group>"; };
-		2157E5D917C84CBF00729F30 /* SSSpecialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSSpecialViewController.m; sourceTree = "<group>"; };
+		2157E5D917C84CBF00729F30 /* SSSpecialViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SSSpecialViewController.mm; sourceTree = "<group>"; };
 		2157E5DB17C84CBF00729F30 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = first.png; path = ../first.png; sourceTree = "<group>"; };
 		2157E5DD17C84CBF00729F30 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "first@2x.png"; path = "../first@2x.png"; sourceTree = "<group>"; };
 		2157E5DF17C84CBF00729F30 /* SSSingleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSSingleViewController.h; sourceTree = "<group>"; };
@@ -276,11 +277,13 @@
 		2157E60B17C8ECA900729F30 /* SSPatternViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPatternViewController.h; sourceTree = "<group>"; };
 		2157E60C17C8ED5500729F30 /* SSSequenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSequenceViewController.h; sourceTree = "<group>"; };
 		2157E60D17C8ED8800729F30 /* SSSequenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSequenceViewController.m; sourceTree = "<group>"; };
+		216A3E7117E4223E0060C07F /* MeterTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeterTable.cpp; path = MeterTable/MeterTable.cpp; sourceTree = "<group>"; };
+		216A3E7217E4223E0060C07F /* MeterTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeterTable.h; path = MeterTable/MeterTable.h; sourceTree = "<group>"; };
+		216A3E7417E424E00060C07F /* arrow-back-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-back-white.png"; sourceTree = "<group>"; };
+		216A3E7517E424E00060C07F /* arrow-back-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-back-white@2x.png"; sourceTree = "<group>"; };
 		2174E3D217E228D6005B52A2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		21C9F1D517DAD511006F773A /* SSTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTeamViewController.h; sourceTree = "<group>"; };
 		21C9F1D617DAD511006F773A /* SSTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTeamViewController.m; sourceTree = "<group>"; };
-		21C9F1DD17DB3E24006F773A /* arrow-back-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-back-white.png"; path = "../../../iconbeast-pro/png/tab-bar/white/arrow-back-white.png"; sourceTree = "<group>"; };
-		21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-back-white@2x.png"; path = "../../../iconbeast-pro/png/tab-bar/white/arrow-back-white@2x.png"; sourceTree = "<group>"; };
 		21C9F1E317DB4B7C006F773A /* LightData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = LightData.sqlite; path = "../../../../Library/Application Support/iPhone Simulator/6.1/Applications/3FE16CE9-0AC2-4531-AA8C-F732551A52D9/Documents/LightData.sqlite"; sourceTree = "<group>"; };
 		21C9F1E517DB9EB0006F773A /* SSTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTabBarViewController.h; sourceTree = "<group>"; };
 		21C9F1E617DB9EB2006F773A /* SSTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTabBarViewController.m; sourceTree = "<group>"; };
@@ -456,12 +459,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2130610A17CF59080060644B /* MediaPlayer.framework in Frameworks */,
 				2174E3D317E228D6005B52A2 /* Accelerate.framework in Frameworks */,
 				21EDB7E517D9E8300019DF14 /* CoreData.framework in Frameworks */,
 				2130611117CF7BC00060644B /* CoreAudio.framework in Frameworks */,
 				2130610817CF59080060644B /* AudioToolbox.framework in Frameworks */,
 				2130610917CF59080060644B /* AVFoundation.framework in Frameworks */,
-				2130610A17CF59080060644B /* MediaPlayer.framework in Frameworks */,
 				2130610217CDD2420060644B /* Security.framework in Frameworks */,
 				2130610017CDD2370060644B /* CFNetwork.framework in Frameworks */,
 				2157E5BE17C84CBE00729F30 /* UIKit.framework in Frameworks */,
@@ -524,6 +527,8 @@
 		2157E5C317C84CBE00729F30 /* lightcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				216A3E7117E4223E0060C07F /* MeterTable.cpp */,
+				216A3E7217E4223E0060C07F /* MeterTable.h */,
 				21C9F1E317DB4B7C006F773A /* LightData.sqlite */,
 				2157E5C417C84CBE00729F30 /* Supporting Files */,
 				21E4C60C17D04A1500C4E6B7 /* images */,
@@ -553,7 +558,7 @@
 				2157E60C17C8ED5500729F30 /* SSSequenceViewController.h */,
 				2157E60D17C8ED8800729F30 /* SSSequenceViewController.m */,
 				2157E5D817C84CBF00729F30 /* SSSpecialViewController.h */,
-				2157E5D917C84CBF00729F30 /* SSSpecialViewController.m */,
+				2157E5D917C84CBF00729F30 /* SSSpecialViewController.mm */,
 				21F3A56F17D566F400241985 /* SSConfigViewController.h */,
 				21F3A57017D566F400241985 /* SSConfigViewController.m */,
 				2130610B17CF59610060644B /* MusicTableViewController.h */,
@@ -611,8 +616,8 @@
 		21E4C60C17D04A1500C4E6B7 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				21C9F1DD17DB3E24006F773A /* arrow-back-white.png */,
-				21C9F1DE17DB3E24006F773A /* arrow-back-white@2x.png */,
+				216A3E7417E424E00060C07F /* arrow-back-white.png */,
+				216A3E7517E424E00060C07F /* arrow-back-white@2x.png */,
 				21EDB7D417D9D04B0019DF14 /* Icon.png */,
 				21EDB7D617D9D0570019DF14 /* Icon@2x.png */,
 				2157E5DB17C84CBF00729F30 /* first.png */,
@@ -1013,9 +1018,9 @@
 				21EDB7D317D98A630019DF14 /* christmas-sock@2x.png in Resources */,
 				21EDB7D517D9D04C0019DF14 /* Icon.png in Resources */,
 				21EDB7D717D9D0570019DF14 /* Icon@2x.png in Resources */,
-				21C9F1DF17DB3E24006F773A /* arrow-back-white.png in Resources */,
-				21C9F1E017DB3E24006F773A /* arrow-back-white@2x.png in Resources */,
 				21C9F1E417DB4B7C006F773A /* LightData.sqlite in Resources */,
+				216A3E7617E424E00060C07F /* arrow-back-white.png in Resources */,
+				216A3E7717E424E00060C07F /* arrow-back-white@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1067,11 +1072,12 @@
 				21237CF417D0ADD200CCD195 /* SSPatternViewController.m in Sources */,
 				21237CF517D0ADD200CCD195 /* SSSequenceViewController.m in Sources */,
 				2157E5E117C84CBF00729F30 /* SSSingleViewController.m in Sources */,
-				2157E5DA17C84CBF00729F30 /* SSSpecialViewController.m in Sources */,
+				2157E5DA17C84CBF00729F30 /* SSSpecialViewController.mm in Sources */,
 				21F3A58817D5D24D00241985 /* SSTableViewController.m in Sources */,
 				21237CF817D0B9E700CCD195 /* SSUtilities.m in Sources */,
 				21EDB81617DA03FD0019DF14 /* SSExtraViewController.m in Sources */,
 				21C9F1E717DB9EB6006F773A /* SSTabBarViewController.m in Sources */,
+				216A3E7317E4223E0060C07F /* MeterTable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
