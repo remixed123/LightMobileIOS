@@ -7,15 +7,37 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuartzCore/QuartzCore.h"
+#import "UIColor-Expanded.h"
+#import "SSUtilities.h"
+#import "SSConnection.h"
 
 @interface SSPhotoScanViewController : UIViewController
 {
-    //UIImage* imageView;
+    __block NSMutableDictionary *colorCodes;
+    
+    IBOutlet UIImageView *imageView;
+    IBOutlet UIView *view;
+    
+    SSConnection                *conn;
+    SSUtilities                 *utils;
 }
 
-@property (nonatomic,strong) UIImageView    *imageView;
-@property (nonatomic,strong) UIImage        *image;
-@property (nonatomic, strong) UIView        *view;
+@property (nonatomic,strong) IBOutlet UIImageView    *imageView;
+@property (nonatomic,strong) IBOutlet UIImage        *image;
+@property (nonatomic, strong) IBOutlet UIView        *view;
+
+@property (strong, nonatomic) IBOutlet UIView *colorView;
+@property (strong, nonatomic) IBOutlet UILabel *R;
+@property (strong, nonatomic) IBOutlet UILabel *G;
+@property (strong, nonatomic) IBOutlet UILabel *B;
+@property (strong, nonatomic) IBOutlet UILabel *hexCode;
+@property (strong, nonatomic) IBOutlet UILabel *c;
+@property (strong, nonatomic) IBOutlet UILabel *m;
+@property (strong, nonatomic) IBOutlet UILabel *y;
+@property (strong, nonatomic) IBOutlet UILabel *k;
+@property (strong, nonatomic) IBOutlet UILabel *hsb;
+
 
 - (IBAction)endPhotoScan:(id)sender;
 

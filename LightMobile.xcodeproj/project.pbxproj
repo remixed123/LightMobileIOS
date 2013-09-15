@@ -132,6 +132,9 @@
 		21E4C68717D09D5200C4E6B7 /* SSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C68617D09D5200C4E6B7 /* SSConnection.m */; };
 		21E9DC6A17E576750098B978 /* SSPhotoScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E9DC6817E576750098B978 /* SSPhotoScanViewController.m */; };
 		21E9DC6B17E576750098B978 /* SSPhotoScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21E9DC6917E576750098B978 /* SSPhotoScanViewController.xib */; };
+		21E9DC6E17E597960098B978 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E9DC6D17E597960098B978 /* UIColor-Expanded.m */; };
+		21E9DC7117E5C1380098B978 /* SSAlarmClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E9DC7017E5C1380098B978 /* SSAlarmClockViewController.m */; };
+		21E9DC7417E5C1680098B978 /* SSAlarmTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E9DC7317E5C1680098B978 /* SSAlarmTimerViewController.m */; };
 		21EDB74217D8E0260019DF14 /* explosion-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB74017D8E0260019DF14 /* explosion-white.png */; };
 		21EDB74317D8E0260019DF14 /* explosion-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB74117D8E0260019DF14 /* explosion-white@2x.png */; };
 		21EDB74617D8E0460019DF14 /* firework-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB74417D8E0460019DF14 /* firework-white.png */; };
@@ -384,6 +387,12 @@
 		21E9DC6717E576750098B978 /* SSPhotoScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoScanViewController.h; sourceTree = "<group>"; };
 		21E9DC6817E576750098B978 /* SSPhotoScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhotoScanViewController.m; sourceTree = "<group>"; };
 		21E9DC6917E576750098B978 /* SSPhotoScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSPhotoScanViewController.xib; sourceTree = "<group>"; };
+		21E9DC6C17E597960098B978 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
+		21E9DC6D17E597960098B978 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
+		21E9DC6F17E5C1380098B978 /* SSAlarmClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlarmClockViewController.h; sourceTree = "<group>"; };
+		21E9DC7017E5C1380098B978 /* SSAlarmClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAlarmClockViewController.m; sourceTree = "<group>"; };
+		21E9DC7217E5C1680098B978 /* SSAlarmTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlarmTimerViewController.h; sourceTree = "<group>"; };
+		21E9DC7317E5C1680098B978 /* SSAlarmTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAlarmTimerViewController.m; sourceTree = "<group>"; };
 		21EDB74017D8E0260019DF14 /* explosion-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explosion-white.png"; sourceTree = "<group>"; };
 		21EDB74117D8E0260019DF14 /* explosion-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explosion-white@2x.png"; sourceTree = "<group>"; };
 		21EDB74417D8E0460019DF14 /* firework-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firework-white.png"; sourceTree = "<group>"; };
@@ -561,6 +570,8 @@
 			isa = PBXGroup;
 			children = (
 				216A3E7117E4223E0060C07F /* MeterTable.cpp */,
+				21E9DC6C17E597960098B978 /* UIColor-Expanded.h */,
+				21E9DC6D17E597960098B978 /* UIColor-Expanded.m */,
 				216A3E7217E4223E0060C07F /* MeterTable.h */,
 				21C9F1E317DB4B7C006F773A /* LightData.sqlite */,
 				2157E5C417C84CBE00729F30 /* Supporting Files */,
@@ -596,6 +607,10 @@
 				21F3A57017D566F400241985 /* SSConfigViewController.m */,
 				2130610B17CF59610060644B /* MusicTableViewController.h */,
 				2130610C17CF59610060644B /* MusicTableViewController.m */,
+				21E9DC6F17E5C1380098B978 /* SSAlarmClockViewController.h */,
+				21E9DC7017E5C1380098B978 /* SSAlarmClockViewController.m */,
+				21E9DC7217E5C1680098B978 /* SSAlarmTimerViewController.h */,
+				21E9DC7317E5C1680098B978 /* SSAlarmTimerViewController.m */,
 				2130610E17CF684E0060644B /* MusicTableView.xib */,
 				21E9DC6717E576750098B978 /* SSPhotoScanViewController.h */,
 				21E9DC6817E576750098B978 /* SSPhotoScanViewController.m */,
@@ -1152,6 +1167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2157E5FA17C84CBF00729F30 /* lightcontrollerTests.m in Sources */,
+				21E9DC6E17E597960098B978 /* UIColor-Expanded.m in Sources */,
+				21E9DC7117E5C1380098B978 /* SSAlarmClockViewController.m in Sources */,
+				21E9DC7417E5C1680098B978 /* SSAlarmTimerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

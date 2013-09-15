@@ -556,12 +556,15 @@ int effectTypeSpecial = 1;
 
 - (IBAction)photoScan:(id)sender
 {
+    [self stateManager :@"photo"];
     
     UIImagePickerController *imagePickController=[[UIImagePickerController alloc]init];
     imagePickController.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
     imagePickController.delegate=self;
     imagePickController.allowsEditing=true;
     [self presentModalViewController:imagePickController animated:YES];
+    
+    self.featureDescription.text = @"Photo Scan";
     
     //if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
 
@@ -571,21 +574,24 @@ int effectTypeSpecial = 1;
 {
 
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-    view = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 280, 280)];
+    view = [[UIView alloc] initWithFrame:screenRect];
 
+    [view setUserInteractionEnabled:YES];
 
-    NSString *mediaType = info[UIImagePickerControllerMediaType];
+   // NSString *mediaType = info[UIImagePickerControllerMediaType];
 
     image = [info valueForKey:UIImagePickerControllerEditedImage];
     
     SSPhotoScanViewController *photoScanView = [[SSPhotoScanViewController alloc] initWithNibName:@"SSPhotoScanViewController" bundle:nil];
 
-    photoScanView.view = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 280, 280)];
-    
+    photoScanView.view = [[UIView alloc] initWithFrame:screenRect];
+    [photoScanView.view setUserInteractionEnabled:YES];
     [picker pushViewController:photoScanView animated:YES];
     
     imageView = [[UIImageView alloc] initWithImage:image];
     imageView.frame = CGRectMake(20, 20, 280, 280);
+    [imageView setUserInteractionEnabled:YES];
+    [photoScanView.imageView setUserInteractionEnabled:YES];
     [photoScanView.view addSubview:imageView];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -655,30 +661,30 @@ int effectTypeSpecial = 1;
     [self.view endEditing:YES];
 }
 
-- (void)sendSingleColor:(NSString*)singleColor
-{
-    dispatch_queue_t mainQueue = dispatch_get_main_queue();
-    
-    asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
-    
-    NSError *err = nil;
-    if (![asyncSocket connectToHost:@"192.168.1.8" onPort:8999 error:&err]) // Asynchronous!
-    {
-        // If there was an error, it's likely something like "already connected" or "no delegate set"
-        NSLog(@"It Broke...perhaps: %@", err);
-    }
-    else
-    {
-        NSLog(@"All Good!");
-    }
-    
-    //IBOutlet HV
-    
-    NSString *requestStr = [NSString stringWithFormat:@"%@",singleColor];
-    NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
-    
-    [asyncSocket writeData:requestData withTimeout:-1 tag:1];
-    [asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:0];
-}
+//- (void)sendSingleColor:(NSString*)singleColor
+//{
+//    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+//    
+//    asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
+//    
+//    NSError *err = nil;
+//    if (![asyncSocket connectToHost:@"192.168.1.8" onPort:8999 error:&err]) // Asynchronous!
+//    {
+//        // If there was an error, it's likely something like "already connected" or "no delegate set"
+//        NSLog(@"It Broke...perhaps: %@", err);
+//    }
+//    else
+//    {
+//        NSLog(@"All Good!");
+//    }
+//    
+//    //IBOutlet HV
+//    
+//    NSString *requestStr = [NSString stringWithFormat:@"%@",singleColor];
+//    NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    [asyncSocket writeData:requestData withTimeout:-1 tag:1];
+//    [asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:0];
+//}
 
 @end
