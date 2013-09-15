@@ -19,6 +19,7 @@
 #import "SSGlobalSettings.h"
 #import "GCDAsyncSocket.h"
 #import "MeterTable.h"
+#import "SSPhotoScanViewController.h"
 
 @interface SSSpecialViewController ()
 
@@ -43,6 +44,7 @@ int effectTypeSpecial = 1;
 @synthesize musicNextButton;
 @synthesize microphoneButton;			// the button for invoking the microphone feature
 @synthesize microphoneSensitivityButton;
+@synthesize photosButton;
 @synthesize musicPlayer;				// the music player, which plays media items from the iPod library
 @synthesize addMusicButton;		// the button for invoking the media item picker. if the user has already
 @synthesize interruptedOnPlayback;		// A flag indicating whether or not the application was interrupted during
@@ -546,6 +548,53 @@ int effectTypeSpecial = 1;
     //  NSLog(@"recordTimerCallback: lwdpPacket: %@", lwdpPacket);
     
     [conn sendPacket:lwdpPacket];
+}
+
+//////////////////////////////////////////////
+// Photo Scan Methods
+//////////////////////////////////////////////
+
+- (IBAction)photoScan:(id)sender
+{
+    
+    UIImagePickerController *imagePickController=[[UIImagePickerController alloc]init];
+    imagePickController.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePickController.delegate=self;
+    imagePickController.allowsEditing=true;
+    [self presentModalViewController:imagePickController animated:YES];
+    
+    //if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    view = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 280, 280)];
+
+
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+
+    image = [info valueForKey:UIImagePickerControllerEditedImage];
+    
+    SSPhotoScanViewController *photoScanView = [[SSPhotoScanViewController alloc] initWithNibName:@"SSPhotoScanViewController" bundle:nil];
+
+    photoScanView.view = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 280, 280)];
+    
+    [picker pushViewController:photoScanView animated:YES];
+    
+    imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(20, 20, 280, 280);
+    [photoScanView.view addSubview:imageView];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:photoScanView action:@selector(endPhotoScan:) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"done" forState:UIControlStateNormal];
+    button.frame = CGRectMake(140.0, 330.0, 80.0, 25.0);
+    [photoScanView.view addSubview:button];
+      
+    
 }
 
 

@@ -130,6 +130,8 @@
 		21E4C68317D0564F00C4E6B7 /* iphone-cpu-connect-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C68117D0564F00C4E6B7 /* iphone-cpu-connect-white.png */; };
 		21E4C68417D0564F00C4E6B7 /* iphone-cpu-connect-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21E4C68217D0564F00C4E6B7 /* iphone-cpu-connect-white@2x.png */; };
 		21E4C68717D09D5200C4E6B7 /* SSConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C68617D09D5200C4E6B7 /* SSConnection.m */; };
+		21E9DC6A17E576750098B978 /* SSPhotoScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E9DC6817E576750098B978 /* SSPhotoScanViewController.m */; };
+		21E9DC6B17E576750098B978 /* SSPhotoScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21E9DC6917E576750098B978 /* SSPhotoScanViewController.xib */; };
 		21EDB74217D8E0260019DF14 /* explosion-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB74017D8E0260019DF14 /* explosion-white.png */; };
 		21EDB74317D8E0260019DF14 /* explosion-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB74117D8E0260019DF14 /* explosion-white@2x.png */; };
 		21EDB74617D8E0460019DF14 /* firework-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 21EDB74417D8E0460019DF14 /* firework-white.png */; };
@@ -379,6 +381,9 @@
 		21E4C68217D0564F00C4E6B7 /* iphone-cpu-connect-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-cpu-connect-white@2x.png"; sourceTree = "<group>"; };
 		21E4C68517D09D5200C4E6B7 /* SSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSConnection.h; sourceTree = "<group>"; };
 		21E4C68617D09D5200C4E6B7 /* SSConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSConnection.m; sourceTree = "<group>"; };
+		21E9DC6717E576750098B978 /* SSPhotoScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoScanViewController.h; sourceTree = "<group>"; };
+		21E9DC6817E576750098B978 /* SSPhotoScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhotoScanViewController.m; sourceTree = "<group>"; };
+		21E9DC6917E576750098B978 /* SSPhotoScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSPhotoScanViewController.xib; sourceTree = "<group>"; };
 		21EDB74017D8E0260019DF14 /* explosion-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explosion-white.png"; sourceTree = "<group>"; };
 		21EDB74117D8E0260019DF14 /* explosion-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explosion-white@2x.png"; sourceTree = "<group>"; };
 		21EDB74417D8E0460019DF14 /* firework-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firework-white.png"; sourceTree = "<group>"; };
@@ -592,6 +597,9 @@
 				2130610B17CF59610060644B /* MusicTableViewController.h */,
 				2130610C17CF59610060644B /* MusicTableViewController.m */,
 				2130610E17CF684E0060644B /* MusicTableView.xib */,
+				21E9DC6717E576750098B978 /* SSPhotoScanViewController.h */,
+				21E9DC6817E576750098B978 /* SSPhotoScanViewController.m */,
+				21E9DC6917E576750098B978 /* SSPhotoScanViewController.xib */,
 				2157E5D517C84CBE00729F30 /* MainStoryboard.storyboard */,
 				21C9F1D517DAD511006F773A /* SSTeamViewController.h */,
 				21C9F1D617DAD511006F773A /* SSTeamViewController.m */,
@@ -1077,6 +1085,7 @@
 				216A3E8F17E4A7110060C07F /* timer-white@2x.png in Resources */,
 				216A3E9217E4A7670060C07F /* volume-white.png in Resources */,
 				216A3E9317E4A7670060C07F /* volume-white@2x.png in Resources */,
+				21E9DC6B17E576750098B978 /* SSPhotoScanViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1134,6 +1143,7 @@
 				21EDB81617DA03FD0019DF14 /* SSExtraViewController.m in Sources */,
 				21C9F1E717DB9EB6006F773A /* SSTabBarViewController.m in Sources */,
 				216A3E7317E4223E0060C07F /* MeterTable.cpp in Sources */,
+				21E9DC6A17E576750098B978 /* SSPhotoScanViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

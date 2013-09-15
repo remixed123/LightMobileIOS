@@ -57,7 +57,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="990" text="Music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w4h-8U-1oJ">
-                                <rect key="frame" x="134.5" y="13" width="168" height="25"/>
+                                <rect key="frame" x="134" y="13" width="168" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,6 +154,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="photoScan:" destination="2" eventType="touchUpInside" id="LOv-TY-bTa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8Cr-ZE-2OC">
                                 <rect key="frame" x="187" y="317" width="50" height="50"/>
@@ -198,7 +201,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QZ2-pC-fJQ">
-                                <rect key="frame" x="247.5" y="319" width="50" height="50"/>
+                                <rect key="frame" x="247" y="319" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="timer-white@2x.png">
@@ -1468,6 +1471,7 @@
                 <relationship kind="action" name="microphoneToggle:"/>
                 <relationship kind="action" name="musicToggle:"/>
                 <relationship kind="action" name="nextSong:"/>
+                <relationship kind="action" name="photoScan:"/>
                 <relationship kind="action" name="selectEffect:"/>
                 <relationship kind="action" name="startRecording"/>
                 <relationship kind="outlet" name="acceleratorButton" candidateClass="UIButton"/>
@@ -1480,6 +1484,8 @@
                 <relationship kind="outlet" name="microphoneSensitivityButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="musicNextButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="musicPlayButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="photoImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="photosButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SSTabBarViewController" superclassName="UITabBarController">
