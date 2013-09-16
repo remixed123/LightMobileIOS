@@ -21,6 +21,9 @@
 		2130610D17CF59610060644B /* MusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2130610C17CF59610060644B /* MusicTableViewController.m */; };
 		2130610F17CF68500060644B /* MusicTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2130610E17CF684E0060644B /* MusicTableView.xib */; };
 		2130611117CF7BC00060644B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2130611017CF7BC00060644B /* CoreAudio.framework */; };
+		213154DA17E6299B00D77494 /* testflight in Resources */ = {isa = PBXBuildFile; fileRef = 213154D917E6299B00D77494 /* testflight */; };
+		213154DC17E629B400D77494 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 213154DB17E629B400D77494 /* libz.dylib */; };
+		213154DE17E629E700D77494 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213154DD17E629E700D77494 /* libTestFlight.a */; };
 		2157E5BE17C84CBE00729F30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2157E5BD17C84CBE00729F30 /* UIKit.framework */; };
 		2157E5C017C84CBE00729F30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2157E5BF17C84CBE00729F30 /* Foundation.framework */; };
 		2157E5C217C84CBE00729F30 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2157E5C117C84CBE00729F30 /* CoreGraphics.framework */; };
@@ -260,6 +263,9 @@
 		2130610C17CF59610060644B /* MusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTableViewController.m; sourceTree = "<group>"; };
 		2130610E17CF684E0060644B /* MusicTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicTableView.xib; sourceTree = "<group>"; };
 		2130611017CF7BC00060644B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		213154D917E6299B00D77494 /* testflight */ = {isa = PBXFileReference; lastKnownFileType = folder; name = testflight; path = lightcontroller/testflight; sourceTree = "<group>"; };
+		213154DB17E629B400D77494 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		213154DD17E629E700D77494 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = lightcontroller/testflight/libTestFlight.a; sourceTree = "<group>"; };
 		2157E5BA17C84CBE00729F30 /* LightMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2157E5BD17C84CBE00729F30 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2157E5BF17C84CBE00729F30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -393,6 +399,7 @@
 		21E9DC7017E5C1380098B978 /* SSAlarmClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAlarmClockViewController.m; sourceTree = "<group>"; };
 		21E9DC7217E5C1680098B978 /* SSAlarmTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlarmTimerViewController.h; sourceTree = "<group>"; };
 		21E9DC7317E5C1680098B978 /* SSAlarmTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAlarmTimerViewController.m; sourceTree = "<group>"; };
+		21E9DC7517E624650098B978 /* LightMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LightMobile.entitlements; sourceTree = "<group>"; };
 		21EDB74017D8E0260019DF14 /* explosion-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explosion-white.png"; sourceTree = "<group>"; };
 		21EDB74117D8E0260019DF14 /* explosion-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explosion-white@2x.png"; sourceTree = "<group>"; };
 		21EDB74417D8E0460019DF14 /* firework-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firework-white.png"; sourceTree = "<group>"; };
@@ -501,6 +508,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				213154DC17E629B400D77494 /* libz.dylib in Frameworks */,
+				213154DE17E629E700D77494 /* libTestFlight.a in Frameworks */,
 				2130610A17CF59080060644B /* MediaPlayer.framework in Frameworks */,
 				2174E3D317E228D6005B52A2 /* Accelerate.framework in Frameworks */,
 				21EDB7E517D9E8300019DF14 /* CoreData.framework in Frameworks */,
@@ -531,6 +540,10 @@
 		2157E5B117C84CBE00729F30 = {
 			isa = PBXGroup;
 			children = (
+				213154DD17E629E700D77494 /* libTestFlight.a */,
+				213154DB17E629B400D77494 /* libz.dylib */,
+				213154D917E6299B00D77494 /* testflight */,
+				21E9DC7517E624650098B978 /* LightMobile.entitlements */,
 				2157E5C317C84CBE00729F30 /* lightcontroller */,
 				2157E5F217C84CBF00729F30 /* lightcontrollerTests */,
 				2157E5BC17C84CBE00729F30 /* Frameworks */,
@@ -1101,6 +1114,7 @@
 				216A3E9217E4A7670060C07F /* volume-white.png in Resources */,
 				216A3E9317E4A7670060C07F /* volume-white@2x.png in Resources */,
 				21E9DC6B17E576750098B978 /* SSPhotoScanViewController.xib in Resources */,
+				213154DA17E6299B00D77494 /* testflight in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1279,6 +1293,10 @@
 				GCC_PREFIX_HEADER = "lightcontroller/LightMobile-Prefix.pch";
 				INFOPLIST_FILE = "lightcontroller/LightMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/lightcontroller/testflight\"",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = LightMobile;
 				SDKROOT = iphoneos6.1;
@@ -1294,12 +1312,20 @@
 					armv7s,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lightcontroller/LightMobile-Prefix.pch";
 				INFOPLIST_FILE = "lightcontroller/LightMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/lightcontroller/testflight\"",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = LightMobile;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos6.1;
 				WRAPPER_EXTENSION = app;
 			};

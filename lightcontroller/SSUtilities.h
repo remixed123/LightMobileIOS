@@ -19,5 +19,6 @@
 - (NSString*)intToHex2Byte:(int)intValue;
 - (NSString*)createLwdpPacket:(NSString*)groupType :(NSString*)colorHex;
 - (NSString*)returnPinNumber;
+- (NSString*)returnUniverse;
 
 @end

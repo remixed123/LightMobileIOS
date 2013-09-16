@@ -27,19 +27,20 @@
 @property (nonatomic,strong) IBOutlet UIImage        *image;
 @property (nonatomic, strong) IBOutlet UIView        *view;
 
-@property (strong, nonatomic) IBOutlet UIView *colorView;
-@property (strong, nonatomic) IBOutlet UILabel *R;
-@property (strong, nonatomic) IBOutlet UILabel *G;
-@property (strong, nonatomic) IBOutlet UILabel *B;
-@property (strong, nonatomic) IBOutlet UILabel *hexCode;
-@property (strong, nonatomic) IBOutlet UILabel *c;
-@property (strong, nonatomic) IBOutlet UILabel *m;
-@property (strong, nonatomic) IBOutlet UILabel *y;
-@property (strong, nonatomic) IBOutlet UILabel *k;
-@property (strong, nonatomic) IBOutlet UILabel *hsb;
+//@property (strong, nonatomic) IBOutlet UIView *colorView;
+//@property (strong, nonatomic) IBOutlet UILabel *R;
+//@property (strong, nonatomic) IBOutlet UILabel *G;
+//@property (strong, nonatomic) IBOutlet UILabel *B;
+//@property (strong, nonatomic) IBOutlet UILabel *hexCode;
+//@property (strong, nonatomic) IBOutlet UILabel *c;
+//@property (strong, nonatomic) IBOutlet UILabel *m;
+//@property (strong, nonatomic) IBOutlet UILabel *y;
+//@property (strong, nonatomic) IBOutlet UILabel *k;
+//@property (strong, nonatomic) IBOutlet UILabel *hsb;
 
 
 - (IBAction)endPhotoScan:(id)sender;
-
+- (IBAction)effect1:(id)sender;
+- (IBAction)effect2:(id)sender;
 
 @end

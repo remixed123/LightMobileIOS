@@ -20,6 +20,7 @@
 #import "GCDAsyncSocket.h"
 #import "MeterTable.h"
 #import "SSPhotoScanViewController.h"
+#import "testflight/TestFlight.h"
 
 @interface SSSpecialViewController ()
 
@@ -127,6 +128,8 @@ int effectTypeSpecial = 1;
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     
     self.featureDescription.text = @"Tilt Adjust";
+    
+    [TestFlight passCheckpoint:@"ACCELEROMETER_START"];
 }
 
 -(void)accelerometerStop
@@ -197,6 +200,8 @@ int effectTypeSpecial = 1;
     {
         [self recorderStop];
     }
+    
+    [TestFlight passCheckpoint:@"MICROPHONE_TOGGLE"];
 }
 
 - (IBAction)microphoneSensitivity:(id)sender
@@ -282,6 +287,7 @@ int effectTypeSpecial = 1;
         [self musicPlay];
     }
     //_isPlaying = !_isPlaying;
+    [TestFlight passCheckpoint:@"MUSIC_TOGGLE"];
 }
 
 -(void)musicPlay
@@ -488,12 +494,30 @@ int effectTypeSpecial = 1;
         
     if (effectTypeSelected == 2)  // Black to Red for intensity
     {
+//        redInt = abs((int) (scale * 50));
+//        greenInt = 0;
+//        blueInt = 0;
+//        NSString *colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
+//        //  NSLog(@"recordTimerCallback: colorHex: %@", colorHex);
+//        lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
+        
         redInt = abs((int) (scale * 50));
         greenInt = 0;
-        blueInt = 0;
+        blueInt = abs((int) (255 - (scale * 60)));
         NSString *colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
-        //  NSLog(@"recordTimerCallback: colorHex: %@", colorHex);
-        lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
+        
+        NSString *hexTimeSeperation = @"0000";
+        NSString *hexStripeCount = @"00";
+        NSString *hexEffectType = @"0002";
+        
+        NSString *payLoad = [NSString stringWithFormat:@"%@%@%@%@",hexEffectType,hexTimeSeperation,hexStripeCount,colorHex];
+        
+        NSLog(@"sendPacket: hexEffectType: %@, hexTimeSeperation: %@, hexStripeCount: %@, colorHex: %@",hexEffectType,hexTimeSeperation,hexStripeCount,colorHex);
+        
+        lwdpPacket = [utils createLwdpPacket:@"50" :payLoad];
+        
+        NSLog(@"sendPacket: lwdpPacket: %@", lwdpPacket);
+        
     }
     else if (effectTypeSelected == 3) // Blue to Red for intensity
     {
@@ -504,16 +528,16 @@ int effectTypeSpecial = 1;
         //  NSLog(@"recordTimerCallback: colorHex: %@", colorHex);
         lwdpPacket = [utils createLwdpPacket:@"11" :colorHex];
     }
-     else if (effectTypeSelected == 4)  // Candy cane blue and red to green for intensity
+     else if (effectTypeSelected == 4)  // Candy cane red and green to blue for intensity
      {
          redInt = 0;
-         greenInt = abs((int) (scale * 50));
-         blueInt = abs((int) (255 - (scale * 60)));
+         greenInt = abs((int) (255 - (scale * 60)));
+         blueInt = abs((int) (scale * 50)); 
          NSString *colorHex = [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
          
          redInt = abs((int) (255 - (scale * 60)));
-         greenInt = abs((int) (scale * 50)); 
-         blueInt = 0;
+         greenInt = 0;
+         blueInt = abs((int) (scale * 50)); 
 
          NSString *colorHex2 =  [utils createHexColorFromIntColors:redInt :greenInt :blueInt];
          
@@ -566,6 +590,7 @@ int effectTypeSpecial = 1;
     
     self.featureDescription.text = @"Photo Scan";
     
+    
     //if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
 
 }
@@ -589,7 +614,7 @@ int effectTypeSpecial = 1;
     [picker pushViewController:photoScanView animated:YES];
     
     imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(20, 20, 280, 280);
+    imageView.frame = CGRectMake(20, 50, 280, 280);
     [imageView setUserInteractionEnabled:YES];
     [photoScanView.imageView setUserInteractionEnabled:YES];
     [photoScanView.view addSubview:imageView];
@@ -597,9 +622,20 @@ int effectTypeSpecial = 1;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:photoScanView action:@selector(endPhotoScan:) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"done" forState:UIControlStateNormal];
-    button.frame = CGRectMake(140.0, 330.0, 80.0, 25.0);
+    button.frame = CGRectMake(240.0, 350.0, 60.0, 25.0);
     [photoScanView.view addSubview:button];
-      
+    
+    UIButton *effect1Button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [effect1Button addTarget:photoScanView action:@selector(effect1:) forControlEvents:UIControlEventTouchUpInside];
+    [effect1Button setTitle:@"effect 1" forState:UIControlStateNormal];
+    effect1Button.frame = CGRectMake(20, 10, 60.0, 25.0);
+    [photoScanView.view addSubview:effect1Button];
+    
+    UIButton *effect2Button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [effect2Button addTarget:photoScanView action:@selector(effect2:) forControlEvents:UIControlEventTouchUpInside];
+    [effect2Button setTitle:@"effect 2" forState:UIControlStateNormal];
+    effect2Button.frame = CGRectMake(240, 10.0, 60.0, 25.0);
+    [photoScanView.view addSubview:effect2Button];
     
 }
 
@@ -660,31 +696,5 @@ int effectTypeSpecial = 1;
 {
     [self.view endEditing:YES];
 }
-
-//- (void)sendSingleColor:(NSString*)singleColor
-//{
-//    dispatch_queue_t mainQueue = dispatch_get_main_queue();
-//    
-//    asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
-//    
-//    NSError *err = nil;
-//    if (![asyncSocket connectToHost:@"192.168.1.8" onPort:8999 error:&err]) // Asynchronous!
-//    {
-//        // If there was an error, it's likely something like "already connected" or "no delegate set"
-//        NSLog(@"It Broke...perhaps: %@", err);
-//    }
-//    else
-//    {
-//        NSLog(@"All Good!");
-//    }
-//    
-//    //IBOutlet HV
-//    
-//    NSString *requestStr = [NSString stringWithFormat:@"%@",singleColor];
-//    NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    [asyncSocket writeData:requestData withTimeout:-1 tag:1];
-//    [asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:0];
-//}
 
 @end

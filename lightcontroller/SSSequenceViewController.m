@@ -9,6 +9,7 @@
 #import "SSSequenceViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SSTeamViewController.h"
+#import "testflight/TestFlight.h"
 
 @interface SSSequenceViewController ()
 
@@ -59,7 +60,9 @@
         [segue.destinationViewController setSortType:@"NRL"];
     } else if ([segue.identifier isEqualToString:@"AFL"]) {
         [segue.destinationViewController setSortType:@"AFL"];
-    } 
+    }
+    
+    [TestFlight passCheckpoint:@"SEQUENCE_VIEW_SEGUEING"];
 }
 - (void)didReceiveMemoryWarning
 {

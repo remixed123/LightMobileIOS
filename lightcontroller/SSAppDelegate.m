@@ -8,6 +8,7 @@
 
 #import "SSAppDelegate.h"
 #import "SSConnection.h"
+#import "testflight/TestFlight.h"
 
 @implementation SSAppDelegate
 
@@ -21,11 +22,22 @@
 //    conn = [[SSConnection alloc] init];
 //    [conn initNetworkCommunication];
     
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+    [TestFlight takeOff:@"90ae6b92-ba5d-42ea-b80b-7b1f4a709616"];
+    
+    [TestFlight passCheckpoint:@"APPLICATION_STARTED"];
+    
     NSLog(@"application");
     
-        return YES;
+    
+    
+        return YES;    
+
+
 }
-							
+    
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

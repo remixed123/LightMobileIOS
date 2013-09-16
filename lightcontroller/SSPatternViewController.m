@@ -11,6 +11,7 @@
 #import "SSConnection.h"
 #import "SSUtilities.h"
 #import <QuartzCore/QuartzCore.h>
+#import "testflight/TestFlight.h"
 
 @interface SSPatternViewController ()
 
@@ -179,6 +180,8 @@ int sliderSpeed = 500;
 
 -(IBAction)sendPacket:(id)sender
 {
+    [TestFlight passCheckpoint:@"CANDY_CANE_SENDPACKET_CP1"];
+    
     NSString *colorHex = @"";
     
     int stripeCount = 0;

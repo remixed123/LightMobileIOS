@@ -11,6 +11,7 @@
 #import "SSUtilities.h"
 #import "SSGlobalSettings.h"
 #import "GCDAsyncSocket.h"
+#import "testflight/TestFlight.h"
 
 @interface SSConfigViewController ()
 
@@ -42,6 +43,8 @@
     [conn initNetworkCommunication];
     
     self.statusDescription.text = @"Connected";
+    
+    [TestFlight passCheckpoint:@"CONFIG_CONNECT_NOW"];
     
 }
 
@@ -96,6 +99,8 @@
    // Setup to dismiss the number or decimal pad
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [self.view addGestureRecognizer:tapRecognizer];
+    
+    [TestFlight passCheckpoint:@"CONFIG"];
 }
 
 

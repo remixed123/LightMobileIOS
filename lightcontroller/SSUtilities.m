@@ -77,13 +77,18 @@
 
 - (NSString*)createLwdpPacket:(NSString*)groupType :(NSString*)payLoad
 {
-    return [NSString stringWithFormat:@"%@%@%@%@",@"45", self.returnPinNumber, groupType, payLoad];
+    return [NSString stringWithFormat:@"%@%@%@%@%@",@"45", self.returnPinNumber, self.returnUniverse, groupType, payLoad];
 
 }
 
 - (NSString*)returnPinNumber
 {
-    return @"0000";  //this will need to be updated to read the pic number set via the gui and saved in NSDefaults
+    return @"0000";  //this will need to be updated to read the pin number set via the gui and saved in NSDefaults
+}
+
+- (NSString*)returnUniverse
+{
+    return @"01"; //universe not implimented yet, this is here to provide future support.
 }
 
 

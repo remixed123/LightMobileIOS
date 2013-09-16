@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SSConnection.h"
+#import "testflight/TestFlight.h"
 
 @class GCDAsyncSocket;
 @class SSSpecialViewController;
