@@ -300,6 +300,13 @@ int effectTypeSpecial = 1;
     _isPlaying = true;
     
     musicTimer = [NSTimer scheduledTimerWithTimeInterval: 0.05 target: self selector: @selector(musicTimerCallback:) userInfo: nil repeats: YES];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(musicNext:)
+//                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+//                                               object:[_audioPlayer currentItem]];
+    
+
 }
 
 -(void)musicStop
@@ -330,7 +337,7 @@ int effectTypeSpecial = 1;
     _isPlaying = false;
 }
 
--(IBAction)nextSong:(id)sender
+-(void)musicNext
 {
     [self musicStop];
     
@@ -340,14 +347,24 @@ int effectTypeSpecial = 1;
         MPMediaItem *item = [[self.userMediaItemCollection items] objectAtIndex:itemPosition];
         NSURL *url = [item valueForProperty:MPMediaItemPropertyAssetURL];
         // Play the item using AVPlayer
-        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
         [self musicPlay];
     }
     else
     {
         [self musicStop];
     }
+}
 
+-(IBAction)nextSong:(id)sender
+{
+    [self musicNext];
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)_audioPlayer successfully:(BOOL)flag
+{
+    NSLog(@"Audio finished playing.");
+    [self musicNext];
 }
 
 // If there is no selected media item collection, display the media item picker. If there's
@@ -439,9 +456,10 @@ int effectTypeSpecial = 1;
     totalItemCount = mediaItemCollection.count;
     
     // Play the item using AVPlayer
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     [self stateManager:@"music"];
     self.featureDescription.text = @"Music Paused";
+
 }
 
 // Invoked when the user taps the Done button in the media item picker having chosen zero media items to play

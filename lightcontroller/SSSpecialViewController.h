@@ -48,7 +48,7 @@
     IBOutlet UIButton*          photosButton;
     IBOutlet UISegmentedControl *effectsSegment;
     
-	MPMusicPlayerController		*musicPlayer;
+	//MPMusicPlayerController		*musicPlayer;
 	MPMediaItemCollection		*userMediaItemCollection;
         
     //AVAudioPlayer               *audioPlayer;
